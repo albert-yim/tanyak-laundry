@@ -1,6 +1,7 @@
 import React from "react";
 import "./BasicButton.scss";
 
+
 export type ButtonTypes = {
   name: string;
   onClick?: any;
