@@ -5,6 +5,7 @@ import Compoennts from "./Components/Components";
 import Login from "./Login/Login";
 
 function App() {
+  let buttonClick = () => console.log("button clicked");
   return (
     <BrowserRouter>
       <Routes>
@@ -12,7 +13,6 @@ function App() {
         <Route path="/components" element={<Compoennts />}></Route>
       </Routes>
     </BrowserRouter>
-  );
 }
 
 export default App;
