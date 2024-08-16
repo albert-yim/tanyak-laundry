@@ -1,11 +1,17 @@
 import React from "react";
 import "./App.scss";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Compoennts from "./Components/Components";
+import Login from "./Login/Login";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">Hello Tanyak Laundry 3</header>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Login />}></Route>
+        <Route path="/components" element={<Compoennts />}></Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 
