@@ -1,16 +1,17 @@
 import React from "react";
 import "./App.scss";
-import BasicButton from "../components/BasicButton/BasicButton";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Compoennts from "./Components/Components";
+import Login from "./Login/Login";
 
 function App() {
-  let buttonClick = () => console.log("button clicked");
   return (
-    <div className="App">
-      <header className="App-header">Hello Tanyak Laundry 3 with scss</header>
-      <div style={{ width: 322, height: 48 }}>
-        <BasicButton name="로그인" onClick={buttonClick} />
-      </div>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Login />}></Route>
+        <Route path="/components" element={<Compoennts />}></Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 

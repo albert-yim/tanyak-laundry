@@ -22,5 +22,10 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
+<<<<<<< HEAD
 # replit related
 /.replit
+=======
+#replit
+.replit
+>>>>>>> PAGE-001
