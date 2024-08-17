@@ -1,10 +1,14 @@
-.modeButtonWrapper {
+.modeOptionWrapper {
   display: flex;
   align-items: center;
   gap: 10px;
   width: fit-content;
+  position: relative;
 
-  .modeButton {
+  .optionButton {
+    position: absolute;
+    right: 0;
+    margin-right: 20px; //10px(modeCircle) + 10px(gap)
     background: var(--secondary-color);
     color: var(--text-color);
     border-radius: 30px;
@@ -20,7 +24,7 @@
       transform: translateY(18px);
     }
   }
-  .modeButtonCircle {
+  .optionCircle {
     background: var(--text-reverse-color);
     width: 10px;
     height: 10px;
@@ -28,13 +32,16 @@
   }
 
   &__right {
-    flex-direction: row-reverse;
+    .optionButton {
+      left: 0;
+      margin-left: 20px;
+    }
   }
   &__selected {
-    .modeButton {
+    .optionButton {
       background: var(--primary-color);
     }
-    .modeButtonCircle {
+    .optionCircle {
       background: var(--primary-color);
     }
   }
