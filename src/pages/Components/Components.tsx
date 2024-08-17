@@ -1,16 +1,17 @@
 import React, { useState } from "react";
 import BasicButton from "../../components/BasicButton/BasicButton";
+import { ModeOptionTest } from "../../components/ModeOption/ModeOption";
 
 type Components = "button" | "modebutton";
 export default function ComponentsPage() {
   const [selectedComponent, setSelectedComponent] =
-    useState<Components>("button");
+    useState<Components>("modebutton");
   const COMPONENT_LIST: Components[] = ["button", "modebutton"];
 
   const renderComponent = () => {
     switch (selectedComponent) {
       case "modebutton":
-        return <div> mode button test</div>;
+        return <ModeOptionTest />;
       case "button":
         return (
           <div style={{ width: 322, height: 48 }}>
