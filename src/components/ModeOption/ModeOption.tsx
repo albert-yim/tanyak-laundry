@@ -31,22 +31,21 @@ export default function ModeOption({
   return (
     <div
       key={mode}
-      className={cn(styles.modeButtonWrapper, {
-        [styles.modeButtonWrapper__right]: lr === "right",
-        [styles.modeButtonWrapper__selected]: mode === currentMode,
+      className={cn(styles.modeOptionWrapper, {
+        [styles.modeOptionWrapper__right]: lr === "right",
+        [styles.modeOptionWrapper__selected]: mode === currentMode,
       })}
     >
       <div
-        className={cn(styles.modeButton, {
-          [styles.modeButton__top]: tcb === "top",
-          [styles.modeButton__bottom]: tcb === "bottom",
-          [styles.modeButton__right]: lr === "right",
+        className={cn(styles.optionButton, {
+          [styles.optionButton__top]: tcb === "top",
+          [styles.optionButton__bottom]: tcb === "bottom",
         })}
         onClick={() => setMode(mode)}
       >
         <span>{mode}</span>
       </div>
-      <div className={styles.modeButtonCircle} onClick={() => setMode(mode)} />
+      <div className={styles.optionCircle} onClick={() => setMode(mode)} />
     </div>
   );
 }
