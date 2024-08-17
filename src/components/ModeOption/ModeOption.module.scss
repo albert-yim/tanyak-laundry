@@ -1,0 +1,41 @@
+.modeButtonWrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: fit-content;
+
+  .modeButton {
+    background: var(--secondary-color);
+    color: var(--text-color);
+    border-radius: 30px;
+    width: 65px;
+    height: 26px;
+    font-size: 13px;
+    text-align: center;
+
+    &__top {
+      transform: translateY(-18px);
+    }
+    &__bottom {
+      transform: translateY(18px);
+    }
+  }
+  .modeButtonCircle {
+    background: var(--text-reverse-color);
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+  }
+
+  &__right {
+    flex-direction: row-reverse;
+  }
+  &__selected {
+    .modeButton {
+      background: var(--primary-color);
+    }
+    .modeButtonCircle {
+      background: var(--primary-color);
+    }
+  }
+}

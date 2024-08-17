@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import BasicButton from "../../components/BasicButton/BasicButton";
 import { InputTest } from "../../components/Input/Input";
+import { ModeOptionTest } from "../../components/ModeOption/ModeOption";
 
 type Components = "button" | "modebutton" | "input";
 export default function ComponentsPage() {
@@ -11,7 +12,7 @@ export default function ComponentsPage() {
   const renderComponent = () => {
     switch (selectedComponent) {
       case "modebutton":
-        return <div> mode button test</div>;
+        return <ModeOptionTest />;
       case "button":
         return (
           <div style={{ width: 322, height: 48 }}>
