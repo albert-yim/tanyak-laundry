@@ -2,7 +2,13 @@
   display: flex;
 
   position: relative;
-  width: fit-content;
+  //optionButton (65px) * 2 + padding (10px) * 2 + outerCircle(150px)
+  width: 300px;
+  height: 150px;
+  //height of outerCircle
+  align-items: center;
+  justify-content: center;
+
   .outerCircle {
     background: var(--secondary-color);
     width: 150px;
@@ -52,9 +58,6 @@
       > div:first-child,
       > div:last-child {
         margin-left: -18px;
-      }
-      .modeOptionWrapper {
-        background: red;
       }
     }
   }
