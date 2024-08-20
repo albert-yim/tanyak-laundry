@@ -49,29 +49,3 @@ export default function ModeOption({
     </div>
   );
 }
-
-export function ModeOptionTest() {
-  const [option, setMode] = useState<string>("표준세탁");
-  return (
-    <div
-      style={{
-        background: "#5067AA",
-        width: 320,
-        height: 340,
-      }}
-    >
-      <ModeOption
-        mode={"표준세탁"}
-        currentMode={option}
-        setMode={setMode}
-        position={"right-top"}
-      />
-      <ModeOption
-        mode={"강력세탁"}
-        currentMode={option}
-        setMode={setMode}
-        position={"right-center"}
-      />
-    </div>
-  );
-}
