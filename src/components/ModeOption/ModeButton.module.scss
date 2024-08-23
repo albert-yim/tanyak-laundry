@@ -46,22 +46,26 @@
     .left,
     .right {
       display: flex;
+      height: 100%;
       flex-direction: column;
-      gap: 27px;
+      justify-content: space-between;
     }
     // indent top and bottom mode options
     .left {
-      padding-left: 6px;
+      margin-left: 8px;
       > div:first-child,
       > div:last-child {
+        margin: 30px 0;
         margin-left: 18px;
       }
     }
     .right {
-      padding-right: 6px;
+      margin-right: 8px;
+      align-items: end;
       > div:first-child,
       > div:last-child {
-        margin-left: -18px;
+        margin: 30px;
+        margin-right: 18px;
       }
     }
   }
