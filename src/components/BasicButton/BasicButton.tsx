@@ -1,5 +1,5 @@
 import React, { MouseEventHandler, ReactNode } from "react";
-import "./BasicButton.scss";
+import styles from "./BasicButton.module.scss";
 
 export type ButtonTypes = {
   onClick: () => void;
@@ -8,7 +8,7 @@ export type ButtonTypes = {
 
 function BasicButton({ children, onClick }: ButtonTypes) {
   return (
-    <button className="basicButtonWrapper" onClick={onClick}>
+    <button className={styles.basicButtonWrapper} onClick={onClick}>
       {children}
     </button>
   );
