@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import BasicButton from "../../components/BasicButton/BasicButton";
+import TextField from "../../components/TextField/TextField";
 
-type Components = "button" | "modebutton";
+type Components = "button" | "modebutton" | "textfield";
 export default function ComponentsPage() {
   const [selectedComponent, setSelectedComponent] =
     useState<Components>("button");
-  const COMPONENT_LIST: Components[] = ["button", "modebutton"];
+  const COMPONENT_LIST: Components[] = ["button", "modebutton", "textfield"];
 
   const renderComponent = () => {
     switch (selectedComponent) {
@@ -17,6 +18,16 @@ export default function ComponentsPage() {
             <BasicButton
               children="로그인"
               onClick={() => console.log("button clicked")}
+            />
+          </div>
+        );
+      case "textfield":
+        return (
+          <div>
+            <TextField
+              placeholder="이름"
+              variable="username"
+              setValue={() => console.log("textfield clicked")}
             />
           </div>
         );
