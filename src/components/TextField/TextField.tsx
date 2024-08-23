@@ -2,7 +2,7 @@
 //아래 밑줄 위치 등등
 
 import React from "react";
-//import "./TextField.scss"
+import style from "./TextField.scss"
 
 export type TextFieldProps = {
   placeholder: string;
