@@ -72,7 +72,7 @@ export function ModeButtonTest() {
         flexDirection: "column",
         background: "#5067AA",
         width: "100%",
-        height: 340,
+        height: "100%",
         padding: 30,
       }}
     >
@@ -92,49 +92,99 @@ export function ModeButtonTest() {
         />
         <div>{`start with ${laundryStart}`}</div>
       </div>
+      <h3>Dryer mode button</h3>
+      <div
+        style={{
+          display: "flex",
+          width: "100%",
+        }}
+      >
+        <ModeButton
+          onClick={() => setLaundryStart(laundryMode)}
+          modeOptions={DRYER_OPTIONS}
+          mode={laundryMode}
+          setMode={setLaundryMode}
+          icon={"laundry"}
+        />
+        <div>{`start with ${laundryStart}`}</div>
+      </div>
+      <h3>Dryer mode button</h3>
+      <div
+        style={{
+          display: "flex",
+          width: "100%",
+        }}
+      >
+        <ModeButton
+          onClick={() => setLaundryStart(laundryMode)}
+          modeOptions={RUNNING_MODE}
+          mode={laundryMode}
+          setMode={setLaundryMode}
+          icon={"laundry"}
+        />
+        <div>{`start with ${laundryStart}`}</div>
+      </div>
     </div>
   );
 }
 
-const LAUNDRY_OPTIONS: ModeButtonOptionType = {
+const RUNNING_MODE: ModeButtonOptionType = {
   left: [
     {
-      mode: "1",
+      mode: "표준건조",
+      position: "center",
+    },
+  ],
+};
+const DRYER_OPTIONS: ModeButtonOptionType = {
+  left: [
+    {
+      mode: "표준건조",
       position: "top",
     },
     {
-      mode: "2",
-      position: "center",
-    },
-    {
-      mode: "3",
+      mode: "강력건조",
       position: "bottom",
     },
   ],
   right: [
     {
-      mode: "4",
+      mode: "섬세의류",
       position: "top",
     },
     {
-      mode: "5",
-      position: "center",
-    },
-    {
-      mode: "6",
+      mode: "10분건조",
       position: "bottom",
     },
   ],
 };
-// <ModeOption
-//   mode={"표준세탁"}
-//   currentMode={option}
-//   setMode={setMode}
-//   position={"right-top"}
-// />
-// <ModeOption
-//   mode={"강력세탁"}
-//   currentMode={option}
-//   setMode={setMode}
-//   position={"right-center"}
-// />
+const LAUNDRY_OPTIONS: ModeButtonOptionType = {
+  left: [
+    {
+      mode: "표준세탁",
+      position: "top",
+    },
+    {
+      mode: "강력세탁",
+      position: "center",
+    },
+    {
+      mode: "청정세탁",
+      position: "bottom",
+    },
+  ],
+  right: [
+    {
+      mode: "물/란제리",
+      position: "top",
+    },
+    {
+      mode: "합성섬유",
+      position: "center",
+    },
+    {
+      mode: "헹굼+탈수",
+      position: "bottom",
+    },
+  ],
+};
