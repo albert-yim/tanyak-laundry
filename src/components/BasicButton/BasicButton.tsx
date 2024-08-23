@@ -1,19 +1,15 @@
-import React from "react";
+import React, { MouseEventHandler, ReactNode } from "react";
 import "./BasicButton.scss";
 
 export type ButtonTypes = {
-  name: string;
-  onClick?: any;
+  onClick: () => void;
+  children: ReactNode;
 };
 
-interface ButtonProps extends ButtonTypes {
-  onClick?: () => void;
-}
-
-function BasicButton({ name, onClick }: ButtonProps) {
+function BasicButton({ children, onClick }: ButtonTypes) {
   return (
     <button className="basicButtonWrapper" onClick={onClick}>
-      {name}
+      {children}
     </button>
   );
 }

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import BasicButton from "../../components/BasicButton/BasicButton";
 
 type Components = "button" | "modebutton";
 export default function ComponentsPage() {
@@ -11,7 +12,14 @@ export default function ComponentsPage() {
       case "modebutton":
         return <div> mode button test</div>;
       case "button":
-        return <div> basic button test</div>;
+        return (
+          <div style={{ width: 322, height: 48 }}>
+            <BasicButton
+              children="로그인"
+              onClick={() => console.log("button clicked")}
+            />
+          </div>
+        );
     }
   };
 
