@@ -1,0 +1,18 @@
+.textFieldWrapper{
+  position: absolute;
+  background-color: #5067AA;
+  height: 100%;
+  width: 100%;
+  input{
+    position: relative;
+    border-width: 0 0 1px;
+    height: 29px;
+    width: 306px;
+    border-color: white;
+    color: white;
+    background-color: transparent;
+  }
+  input::placeholder{
+    color: white;
+  }
+}

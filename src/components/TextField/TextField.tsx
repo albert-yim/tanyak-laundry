@@ -2,7 +2,7 @@
 //아래 밑줄 위치 등등
 
 import React from "react";
-import style from "./TextField.scss"
+import styles from "./TextField.module.scss";
 
 export type TextFieldProps = {
   placeholder: string;
@@ -16,12 +16,8 @@ export default function TextField({
   setValue,
 }: TextFieldProps) {
   return (
-    <div className="textFieldWrapper">
-      <input
-        className="textField"
-        placeholder={placeholder}
-        variable={variable}
-      />
+    <div className={styles.textFieldWrapper}>
+      <input placeholder={placeholder} variable={variable} />
     </div>
   );
 }
