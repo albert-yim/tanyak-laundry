@@ -24,11 +24,7 @@ export default function ComponentsPage() {
       case "textfield":
         return (
           <div>
-            <TextField
-              placeholder="이름"
-              variable="username"
-              setValue={() => console.log("textfield clicked")}
-            />
+            <TextField placeholder="이름" />
           </div>
         );
     }

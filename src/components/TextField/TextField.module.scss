@@ -5,14 +5,25 @@
   width: 100%;
   input{
     position: relative;
-    border-width: 0 0 1px;
+    border:none;
+    border-bottom: 1px solid white;
     height: 29px;
     width: 306px;
-    border-color: white;
+    padding-bottom: 9px;
+    
     color: white;
+    font-size: 20px;
+    
+    font-family: 'NanumSquareRoundB';
     background-color: transparent;
   }
   input::placeholder{
-    color: white;
+    color: #aba9a9;
+    font-family: 'NanumSquareRoundB';
+    font-size: 20px;
+    margin-bottom: 30px;
+  }
+  input:focus{
+    outline:none;
   }
 }

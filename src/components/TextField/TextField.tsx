@@ -1,23 +1,22 @@
 //PlaceHolder, Value, Setvalue
 //아래 밑줄 위치 등등
 
-import React from "react";
+import React, { useState } from "react";
 import styles from "./TextField.module.scss";
 
 export type TextFieldProps = {
   placeholder: string;
-  variable: string;
-  setValue: (variable: string) => void;
 };
 
-export default function TextField({
-  placeholder,
-  variable,
-  setValue,
-}: TextFieldProps) {
+export default function TextField({ placeholder }: TextFieldProps) {
+  const [value, setValue] = useState<string>("");
   return (
     <div className={styles.textFieldWrapper}>
-      <input placeholder={placeholder} variable={variable} />
+      <input
+        placeholder={placeholder}
+        value={value}
+        onChange={(event) => setValue(event.target.value)}
+      />
     </div>
   );
 }
