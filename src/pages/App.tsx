@@ -5,7 +5,6 @@ import Compoennts from "./Components/Components";
 import Login from "./Login/Login";
 
 function App() {
-  let buttonClick = () => console.log("button clicked");
   return (
     <BrowserRouter>
       <Routes>

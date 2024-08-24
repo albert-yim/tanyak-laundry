@@ -24,7 +24,11 @@ export default function ComponentsPage() {
       case "input":
         return (
           <div>
+<<<<<<< HEAD
             <InputTest/>
+=======
+            <TextField placeholder="이름" />
+>>>>>>> 661a34a (made Input functional)
           </div>
         );
     }
