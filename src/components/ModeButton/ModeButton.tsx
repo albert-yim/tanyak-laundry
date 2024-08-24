@@ -2,7 +2,6 @@ import React, { MouseEventHandler, useEffect, useState } from "react";
 import styles from "./ModeButton.module.scss";
 import cn from "classnames";
 import ModeOption from "./ModeOption";
-import LAUNDRY_ICON from "../../assets/laundry.svg";
 
 type ModeButtonOptionType = {
   left?: OptionType[];
@@ -55,7 +54,7 @@ export default function ModeButton({
         </div>
       </div>
       <div className={styles.innerCircle} onClick={onClick}>
-        <img src={LAUNDRY_ICON} />
+        <img src={""} alt={icon} />
         <span>{icon === "stop" ? "Stop" : "Start"}</span>
       </div>
     </div>
@@ -108,34 +107,10 @@ export function ModeButtonTest() {
         />
         <div>{`start with ${laundryStart}`}</div>
       </div>
-      <h3>Dryer mode button</h3>
-      <div
-        style={{
-          display: "flex",
-          width: "100%",
-        }}
-      >
-        <ModeButton
-          onClick={() => setLaundryStart(laundryMode)}
-          modeOptions={RUNNING_MODE}
-          mode={laundryMode}
-          setMode={setLaundryMode}
-          icon={"laundry"}
-        />
-        <div>{`start with ${laundryStart}`}</div>
-      </div>
     </div>
   );
 }
 
-const RUNNING_MODE: ModeButtonOptionType = {
-  left: [
-    {
-      mode: "표준건조",
-      position: "center",
-    },
-  ],
-};
 const DRYER_OPTIONS: ModeButtonOptionType = {
   left: [
     {
