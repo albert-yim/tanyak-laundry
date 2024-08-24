@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import BasicButton from "../../components/BasicButton/BasicButton";
+
 import { InputTest } from "../../components/Input/Input";
-import { ModeButtonTest } from "../../components/ModeOption/ModeButton";
+import { ModeButtonTest } from "../../components/ModeButton/ModeButton";
 
 type Components = "button" | "modebutton" | "input";
 export default function ComponentsPage() {
