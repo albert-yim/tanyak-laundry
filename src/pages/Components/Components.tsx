@@ -1,13 +1,17 @@
 import React, { useState } from "react";
 import BasicButton from "../../components/BasicButton/BasicButton";
+
 import { InputTest } from "../../components/Input/Input";
 import { ModeButtonTest } from "../../components/ModeButton/ModeButton";
+
 
 type Components = "button" | "modebutton" | "input";
 export default function ComponentsPage() {
   const [selectedComponent, setSelectedComponent] =
+
     useState<Components>("button");
   const COMPONENT_LIST: Components[] = ["button", "modebutton", "input"];
+
 
   const renderComponent = () => {
     switch (selectedComponent) {
