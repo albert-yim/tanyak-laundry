@@ -2,14 +2,15 @@
 //아래 밑줄 위치 등등
 
 import React, { useState } from "react";
-import styles from "./TextField.module.scss";
+import styles from "./Input.module.scss";
 
-export type TextFieldProps = {
+export type InputProps = {
   placeholder: string;
+  value: string;
+  setValue: (s: string) => void;
 };
 
-export default function TextField({ placeholder }: TextFieldProps) {
-  const [value, setValue] = useState<string>("");
+export default function Input({ placeholder, value, setValue }: InputProps) {
   return (
     <div className={styles.textFieldWrapper}>
       <input
@@ -19,4 +20,8 @@ export default function TextField({ placeholder }: TextFieldProps) {
       />
     </div>
   );
+}
+
+export function InputTEST(){
+  
 }

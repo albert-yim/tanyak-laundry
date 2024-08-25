@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import BasicButton from "../../components/BasicButton/BasicButton";
-import TextField from "../../components/TextField/TextField";
+import Input from "../../components/Input/Input";
 
-type Components = "button" | "modebutton" | "textfield";
+type Components = "button" | "modebutton" | "input";
 export default function ComponentsPage() {
   const [selectedComponent, setSelectedComponent] =
     useState<Components>("button");
-  const COMPONENT_LIST: Components[] = ["button", "modebutton", "textfield"];
+  const COMPONENT_LIST: Components[] = ["button", "modebutton", "input"];
+
+  const [name, setName] = useState("");
 
   const renderComponent = () => {
     switch (selectedComponent) {
@@ -21,10 +23,11 @@ export default function ComponentsPage() {
             />
           </div>
         );
-      case "textfield":
+      case "input":
         return (
           <div>
-            <TextField placeholder="이름" />
+            <Input placeholder="이름" value={name} setValue={setName} />
+            <Input placeholder="군번" value={name} setValue={setName} />
           </div>
         );
     }
