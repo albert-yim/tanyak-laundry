@@ -1,14 +1,12 @@
 import React, { useState } from "react";
 import BasicButton from "../../components/BasicButton/BasicButton";
-import Input from "../../components/Input/Input";
+import {InputTest} from "../../components/Input/Input";
 
 type Components = "button" | "modebutton" | "input";
 export default function ComponentsPage() {
   const [selectedComponent, setSelectedComponent] =
     useState<Components>("button");
   const COMPONENT_LIST: Components[] = ["button", "modebutton", "input"];
-
-  const [name, setName] = useState("");
 
   const renderComponent = () => {
     switch (selectedComponent) {
@@ -26,8 +24,7 @@ export default function ComponentsPage() {
       case "input":
         return (
           <div>
-            <Input placeholder="이름" value={name} setValue={setName} />
-            <Input placeholder="군번" value={name} setValue={setName} />
+            <InputTest/>
           </div>
         );
     }
