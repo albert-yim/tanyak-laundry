@@ -16,6 +16,7 @@
     height: 26px;
     font-size: 13px;
     text-align: center;
+    box-shadow: var(--default-box-shadow);
 
     &__top {
       transform: translateY(-18px);

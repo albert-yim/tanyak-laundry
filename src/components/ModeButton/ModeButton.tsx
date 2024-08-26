@@ -1,6 +1,5 @@
 import React, { MouseEventHandler, useEffect, useState } from "react";
 import styles from "./ModeButton.module.scss";
-import cn from "classnames";
 import ModeOption from "./ModeOption";
 
 type ModeButtonOptionType = {
@@ -62,7 +61,9 @@ export default function ModeButton({
 }
 
 export function ModeButtonTest() {
-  const [laundryMode, setLaundryMode] = useState<string>("1");
+  const [laundryMode, setLaundryMode] = useState<string>(
+    LAUNDRY_OPTIONS?.left?.[0].mode || "",
+  );
   const [laundryStart, setLaundryStart] = useState<string>("");
   return (
     <div
