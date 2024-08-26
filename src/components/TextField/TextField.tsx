@@ -8,7 +8,7 @@ export type TextFieldProps = {
   placeholder: string;
 };
 
-export default function TextField({ placeholder }: TextFieldProps) {
+export default function TextFigiteld({ placeholder }: TextFieldProps) {
   const [value, setValue] = useState<string>("");
   return (
     <div className={styles.textFieldWrapper}>
