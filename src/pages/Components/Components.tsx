@@ -12,7 +12,6 @@ export default function ComponentsPage() {
     useState<Components>("button");
   const COMPONENT_LIST: Components[] = ["button", "modebutton", "input"];
 
-
   const renderComponent = () => {
     switch (selectedComponent) {
       case "modebutton":
@@ -29,7 +28,7 @@ export default function ComponentsPage() {
       case "input":
         return (
           <div>
-            <InputTest />
+            <InputTest/>
           </div>
         );
     }

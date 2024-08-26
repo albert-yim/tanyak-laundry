@@ -22,7 +22,6 @@ export default function Input({ placeholder, value, setValue }: InputProps) {
   );
 }
 
-<<<<<<< HEAD
 export function InputTest() {
   const [name, setName] = useState("");
   const [number, setNumber] = useState("");
@@ -33,8 +32,3 @@ export function InputTest() {
     </div>
   );
 }
-=======
-export function InputTEST(){
-  
-}
->>>>>>> 5598571 (applied multiple Input components)
