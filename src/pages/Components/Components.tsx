@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import BasicButton from "../../components/BasicButton/BasicButton";
-import {InputTest} from "../../components/Input/Input";
+import { InputTest } from "../../components/Input/Input";
 
 type Components = "button" | "modebutton" | "input";
 export default function ComponentsPage() {
@@ -24,11 +24,7 @@ export default function ComponentsPage() {
       case "input":
         return (
           <div>
-<<<<<<< HEAD
-            <InputTest/>
-=======
-            <TextField placeholder="이름" />
->>>>>>> 661a34a (made Input functional)
+            <InputTest />
           </div>
         );
     }

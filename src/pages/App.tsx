@@ -12,5 +12,7 @@ function App() {
         <Route path="/components" element={<Compoennts />}></Route>
       </Routes>
     </BrowserRouter>
-}
+    );
+  }
+
 export default App;
