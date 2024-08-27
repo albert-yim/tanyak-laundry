@@ -4,7 +4,6 @@ import BasicButton from "../../components/BasicButton/BasicButton";
 import { InputTest } from "../../components/Input/Input";
 import { ModeButtonTest } from "../../components/ModeButton/ModeButton";
 
-
 type Components = "button" | "modebutton" | "input";
 export default function ComponentsPage() {
   const [selectedComponent, setSelectedComponent] =
@@ -28,7 +27,7 @@ export default function ComponentsPage() {
       case "input":
         return (
           <div>
-            <InputTest/>
+            <InputTest />
           </div>
         );
     }
