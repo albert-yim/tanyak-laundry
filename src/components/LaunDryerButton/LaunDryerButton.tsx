@@ -40,6 +40,7 @@ export default function LaunDryerButton({
   }, [endTime]);
   return (
     <div className={styles.wrapper}>
+      <div className={styles.progress} />
       <div className={styles.header}>
         <div className={styles.iconWrapper}>
           <img src={typeIcon} alt="dryer icon"></img>
@@ -50,7 +51,7 @@ export default function LaunDryerButton({
       <span className={styles.time}>
         {isUsed ? "35m 25s" : "마지막 사용: "}
       </span>
-      <span>{`${user.rank} ${user.name}`}</span>
+      <span className={styles.name}>{`${user.rank} ${user.name}`}</span>
     </div>
   );
 }
@@ -67,6 +68,8 @@ export function LaunDryerButtonTest() {
         display: "flex",
         flexDirection: "row",
         gap: 30,
+        background: "#5067AA",
+        padding: 30,
       }}
     >
       <LaunDryerButton
