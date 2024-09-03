@@ -1,10 +1,16 @@
 import React, { useState } from "react";
 import BasicButton from "../../components/BasicButton/BasicButton";
+import { LaunDryerButtonTest } from "../../components/LaunDryerButton/LaunDryerButton";
 import { InputTest } from "../../components/Input/Input";
 import { ModalTest } from "../../components/Modal/Modal";
 import { ModeButtonTest } from "../../components/ModeButton/ModeButton";
 
-type Components = "button" | "modebutton" | "input" | "modal";
+type Components =
+  | "button"
+  | "modebutton"
+  | "input"
+  | "modal"
+  | "laundryerButton";
 
 export default function ComponentsPage() {
   const [selectedComponent, setSelectedComponent] =
@@ -14,11 +20,14 @@ export default function ComponentsPage() {
     "modebutton",
     "input",
     "modal",
+    "laundryerButton",
   ];
   const renderComponent = () => {
     switch (selectedComponent) {
       case "modebutton":
         return <ModeButtonTest />;
+      case "laundryerButton":
+        return <LaunDryerButtonTest />;
       case "button":
         return (
           <div style={{ width: 322, height: 48 }}>
@@ -29,9 +38,9 @@ export default function ComponentsPage() {
           </div>
         );
       case "input":
-        return <InputTest />
+        return <InputTest />;
       case "modal":
-        return <ModalTest />
+        return <ModalTest />;
     }
   };
 
