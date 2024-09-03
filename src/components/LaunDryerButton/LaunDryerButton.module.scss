@@ -2,7 +2,34 @@
   background: var(--primary-color);
   width: 145px;
   height: 145px;
+  border-radius: 30px;
+  padding: 15px;
 
   display: flex;
   flex-direction: column;
+
+  .header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    .iconWrapper {
+      width: 35px;
+      height: 35px;
+      background: white;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+    }
+    img {
+      width: 15px;
+    }
+  }
+  .usage {
+    font-size: 20px;
+    margin-top: 15px;
+    margin-bottom: 10px;
+  }
+  .time {
+    margin-bottom: 4px;
+  }
 }
