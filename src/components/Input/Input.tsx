@@ -1,6 +1,3 @@
-//PlaceHolder, Value, Setvalue
-//아래 밑줄 위치 등등
-
 import React, { useState } from "react";
 import styles from "./Input.module.scss";
 
