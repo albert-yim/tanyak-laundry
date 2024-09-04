@@ -68,7 +68,6 @@ export function LaunDryerButtonTest() {
         display: "flex",
         flexDirection: "row",
         gap: 30,
-        background: "#5067AA",
         padding: 30,
       }}
     >
