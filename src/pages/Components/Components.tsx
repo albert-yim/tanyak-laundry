@@ -1,16 +1,17 @@
 import React, { useState } from "react";
 import BasicButton from "../../components/BasicButton/BasicButton";
+import { ModeButtonTest } from "../../components/ModeButton/ModeButton";
 
 type Components = "button" | "modebutton";
 export default function ComponentsPage() {
   const [selectedComponent, setSelectedComponent] =
-    useState<Components>("button");
+    useState<Components>("modebutton");
   const COMPONENT_LIST: Components[] = ["button", "modebutton"];
 
   const renderComponent = () => {
     switch (selectedComponent) {
       case "modebutton":
-        return <div> mode button test</div>;
+        return <ModeButtonTest />;
       case "button":
         return (
           <div style={{ width: 322, height: 48 }}>
@@ -38,7 +39,7 @@ export default function ComponentsPage() {
                 padding: 10,
                 borderRadius: 8,
                 background:
-                  selectedComponent === component ? "yellow" : "transparent",
+                  selectedComponent === component ? "#5067aa" : "transparent",
               }}
               onClick={() => setSelectedComponent(component)}
             >
@@ -47,7 +48,9 @@ export default function ComponentsPage() {
           ))}
         </ul>
       </div>
-      <div style={{ flex: 1, padding: "20px" }}>{renderComponent()}</div>
+      <div style={{ flex: 1, padding: "20px", background: "#5067aa" }}>
+        {renderComponent()}
+      </div>
     </div>
   );
 }

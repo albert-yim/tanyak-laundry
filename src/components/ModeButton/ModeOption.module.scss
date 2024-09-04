@@ -1,0 +1,49 @@
+.modeOptionWrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: fit-content;
+  position: relative;
+
+  .optionButton {
+    position: absolute;
+    right: 0;
+    margin-right: 20px; //10px(modeCircle) + 10px(gap)
+    background: var(--secondary-color);
+    color: var(--text-color);
+    border-radius: 30px;
+    width: 65px;
+    height: 26px;
+    font-size: 13px;
+    text-align: center;
+    box-shadow: var(--default-box-shadow);
+
+    &__top {
+      transform: translateY(-18px);
+    }
+    &__bottom {
+      transform: translateY(18px);
+    }
+  }
+  .optionCircle {
+    background: var(--text-reverse-color);
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+  }
+
+  &__right {
+    .optionButton {
+      left: 0;
+      margin-left: 20px;
+    }
+  }
+  &__selected {
+    .optionButton {
+      background: var(--primary-color);
+    }
+    .optionCircle {
+      background: var(--primary-color);
+    }
+  }
+}
