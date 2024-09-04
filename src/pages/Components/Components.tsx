@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import BasicButton from "../../components/BasicButton/BasicButton";
+
+import { InputTest } from "../../components/Input/Input";
 import { ModeButtonTest } from "../../components/ModeButton/ModeButton";
 
-type Components = "button" | "modebutton";
+type Components = "button" | "modebutton" | "input";
 export default function ComponentsPage() {
   const [selectedComponent, setSelectedComponent] =
-    useState<Components>("modebutton");
-  const COMPONENT_LIST: Components[] = ["button", "modebutton"];
+    useState<Components>("button");
+  const COMPONENT_LIST: Components[] = ["button", "modebutton", "input"];
 
   const renderComponent = () => {
     switch (selectedComponent) {
@@ -21,6 +23,8 @@ export default function ComponentsPage() {
             />
           </div>
         );
+      case "input":
+        return <InputTest />;
     }
   };
 
