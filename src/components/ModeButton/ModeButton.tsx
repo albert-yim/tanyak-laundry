@@ -70,7 +70,6 @@ export function ModeButtonTest() {
       style={{
         display: "flex",
         flexDirection: "column",
-        background: "#5067AA",
         width: "100%",
         height: "100%",
         padding: 30,

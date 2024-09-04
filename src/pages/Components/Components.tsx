@@ -39,7 +39,7 @@ export default function ComponentsPage() {
                 padding: 10,
                 borderRadius: 8,
                 background:
-                  selectedComponent === component ? "yellow" : "transparent",
+                  selectedComponent === component ? "#5067aa" : "transparent",
               }}
               onClick={() => setSelectedComponent(component)}
             >
@@ -48,7 +48,9 @@ export default function ComponentsPage() {
           ))}
         </ul>
       </div>
-      <div style={{ flex: 1, padding: "20px" }}>{renderComponent()}</div>
+      <div style={{ flex: 1, padding: "20px", background: "#5067aa" }}>
+        {renderComponent()}
+      </div>
     </div>
   );
 }
