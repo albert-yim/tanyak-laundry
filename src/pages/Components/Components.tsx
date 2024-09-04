@@ -7,7 +7,6 @@ import { ModeButtonTest } from "../../components/ModeButton/ModeButton";
 type Components = "button" | "modebutton" | "input";
 export default function ComponentsPage() {
   const [selectedComponent, setSelectedComponent] =
-
     useState<Components>("button");
   const COMPONENT_LIST: Components[] = ["button", "modebutton", "input"];
 
@@ -25,11 +24,7 @@ export default function ComponentsPage() {
           </div>
         );
       case "input":
-        return (
-          <div>
-            <InputTest />
-          </div>
-        );
+        return <InputTest />;
     }
   };
 
