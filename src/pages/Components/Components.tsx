@@ -1,15 +1,20 @@
 import React, { useState } from "react";
 import BasicButton from "../../components/BasicButton/BasicButton";
-
 import { InputTest } from "../../components/Input/Input";
+import { ModalTest } from "../../components/Modal/Modal";
 import { ModeButtonTest } from "../../components/ModeButton/ModeButton";
 
-type Components = "button" | "modebutton" | "input";
+type Components = "button" | "modebutton" | "input" | "modal";
+
 export default function ComponentsPage() {
   const [selectedComponent, setSelectedComponent] =
-    useState<Components>("button");
-  const COMPONENT_LIST: Components[] = ["button", "modebutton", "input"];
-
+    useState<Components>("modal");
+  const COMPONENT_LIST: Components[] = [
+    "button",
+    "modebutton",
+    "input",
+    "modal",
+  ];
   const renderComponent = () => {
     switch (selectedComponent) {
       case "modebutton":
@@ -24,7 +29,9 @@ export default function ComponentsPage() {
           </div>
         );
       case "input":
-        return <InputTest />;
+        return <InputTest />
+      case "modal":
+        return <ModalTest />
     }
   };
 
