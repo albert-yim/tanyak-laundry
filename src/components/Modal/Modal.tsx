@@ -5,28 +5,30 @@ import { ReactComponent as CLOSEICON } from "../../assets/close.svg";
 export type ModalTypes = {
   onClose: () => void;
   children?: ReactNode;
+  visible: boolean;
 };
 
-export default function LaundryModal({ children, onClose }: ModalTypes) {
+export default function Modal({ visible, children, onClose }: ModalTypes) {
+  if (!visible) return <></>;
   return (
     <>
       <div className={styles.modalBackground} />
-        <div className={styles.modalWrapper}>
-          <div className={styles.closeButton} onClick={onClose}>
-            <CLOSEICON />
-          </div>
-          {children}
+      <div className={styles.modalWrapper}>
+        <div className={styles.closeButton} onClick={onClose}>
+          <CLOSEICON />
         </div>
+        {children}
+      </div>
     </>
   );
 }
 
 export function ModalTest() {
-  const [modal, setModal] = useState(false);
+  const [modalVisible, setModalVisible] = useState(false);
   return (
     <div>
-      <button onClick={() => setModal(true)}>Open Modal</button>
-      {modal === true ? <LaundryModal onClose={() => setModal(false)} /> : null}
+      <button onClick={() => setModalVisible(true)}>Open Modal</button>
+      <Modal visible={modalVisible} onClose={() => setModalVisible(false)} />
     </div>
   );
 }
