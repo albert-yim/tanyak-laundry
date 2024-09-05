@@ -1,0 +1,19 @@
+input{
+  border:none;
+  border-bottom: 1px solid var(--text-reverse-color);
+  width: 100%;
+  height:30px;
+  padding-bottom: 4px;
+  
+  color: var(--text-reverse-color);
+  font-size: 20px;
+  background-color: transparent;
+}
+input::placeholder{
+  color: var(--secondary-color);
+  font-size: 20px;
+  padding-bottom: 4px
+}
+input:focus{
+  outline:none;
+}

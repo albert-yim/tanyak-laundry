@@ -1,16 +1,14 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
+  font-family: "NanumSquareRoundB";
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  input, button{
+    font-family: inherit;
+  }
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
-}
 
 //  Global Color
 :root {
@@ -20,4 +18,5 @@ code {
   --text-color: #393939;
   --text-reverse-color: #ffffff;
   --default-box-shadow: 0px 5px 4px rgba(0, 0, 0, 0.25);
+  
 }
