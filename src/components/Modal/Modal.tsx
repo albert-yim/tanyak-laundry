@@ -1,5 +1,3 @@
-//Empty modal -> close button, background, shadow
-
 import React, { useState, ReactNode } from "react";
 import styles from "./Modal.module.scss";
 import { ReactComponent as CLOSEICON } from "../../assets/close.svg";
@@ -13,15 +11,12 @@ export default function LaundryModal({ children, onClose }: ModalTypes) {
   return (
     <>
       <div className={styles.modalBackground} />
-
-      <div className={styles.modalWrapper}>
-        <div className={styles.modalElement}>
-          <button onClick={onClose}>
+        <div className={styles.modalWrapper}>
+          <div className={styles.closeButton} onClick={onClose}>
             <CLOSEICON />
-          </button>
+          </div>
           {children}
         </div>
-      </div>
     </>
   );
 }

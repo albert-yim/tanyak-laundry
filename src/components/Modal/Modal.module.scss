@@ -1,28 +1,25 @@
 .modalBackground{
   position: fixed;
   top:0; left: 0; bottom: 0; right: 0;
-  background: #A8A5A5;
-  opacity: .4;
-  position: fixed;
-  z-index: 250;
+  background: var(--secondary-color);
+  opacity: 0.6;
+  z-index: 998;
 }
 
 .modalWrapper{
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 300;
-}
-
-.modalElement{
   height: 348px;
   width: 323px;
   border-radius: 30px;
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
-  background-color: #5067AA;
+  background-color: var(--background-color);
+
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 999;
   
-  button{
+  .closeButton{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -30,6 +27,7 @@
     width: 35px;
     border-radius: 30px;
     border-color: transparent;
+    background-color: var(--text-reverse-color);
     position: absolute;
     right: 17px;
     top: 17px;
