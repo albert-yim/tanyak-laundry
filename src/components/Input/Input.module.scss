@@ -1,27 +1,22 @@
-.textFieldWrapper{
-  background-color: #5067AA;
-  height: 100%;
-  width: 100%;
-  input{
-    border:none;
-    border-bottom: 1px solid white;
-    height: 29px;
-    width: 306px;
-    padding-bottom: 9px;
-    
-    color: white;
-    font-size: 20px;
-    
-    font-family: 'NanumSquareRoundB';
-    background-color: transparent;
-  }
-  input::placeholder{
-    color: #aba9a9;
-    font-family: 'NanumSquareRoundB';
-    font-size: 20px;
-    margin-bottom: 30px;
-  }
-  input:focus{
-    outline:none;
-  }
+input{
+  border:none;
+  border-bottom: 1px solid white;
+  height: 29px;
+  width: 306px;
+  padding-bottom: 9px;
+  
+  color: white;
+  font-size: 20px;
+  
+  font-family: 'NanumSquareRoundB';
+  background-color: transparent;
+}
+input::placeholder{
+  color: #aba9a9;
+  font-family: 'NanumSquareRoundB';
+  font-size: 20px;
+  margin-bottom: 30px;
+}
+input:focus{
+  outline:none;
 }
