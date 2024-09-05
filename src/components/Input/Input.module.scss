@@ -1,21 +1,18 @@
 input{
   border:none;
-  border-bottom: 1px solid white;
-  height: 29px;
-  width: 306px;
-  padding-bottom: 9px;
+  border-bottom: 1px solid var(--text-reverse-color);
+  width: 100%;
+  height:30px;
+  padding-bottom: 4px;
   
-  color: white;
+  color: var(--text-reverse-color);
   font-size: 20px;
-  
-  font-family: 'NanumSquareRoundB';
   background-color: transparent;
 }
 input::placeholder{
-  color: #aba9a9;
-  font-family: 'NanumSquareRoundB';
+  color: var(--secondary-color);
   font-size: 20px;
-  margin-bottom: 30px;
+  padding-bottom: 4px
 }
 input:focus{
   outline:none;
