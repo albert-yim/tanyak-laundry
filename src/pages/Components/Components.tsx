@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import BasicButton from "../../components/BasicButton/BasicButton";
+import { ButtonTest } from "../../components/Button/Button";
 import { LaunDryerButtonTest } from "../../components/LaunDryerButton/LaunDryerButton";
 import { InputTest } from "../../components/Input/Input";
 import { ModalTest } from "../../components/Modal/Modal";
@@ -29,14 +29,7 @@ export default function ComponentsPage() {
       case "laundryerButton":
         return <LaunDryerButtonTest />;
       case "button":
-        return (
-          <div style={{ width: 322, height: 48 }}>
-            <BasicButton
-              children="로그인"
-              onClick={() => console.log("button clicked")}
-            />
-          </div>
-        );
+        return <ButtonTest />;
       case "input":
         return <InputTest />;
       case "modal":
