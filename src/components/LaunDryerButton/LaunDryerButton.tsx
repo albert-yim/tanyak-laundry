@@ -24,15 +24,8 @@ export default function LaunDryerButton({
   startTime,
   endTime,
 }: LaunDryerButton) {
-  const [typeName, typeIcon] = useMemo(() => {
-    let icon = LAUNDRY_ICON;
-    let name = "세탁기";
-    if (type === "dryer") {
-      icon = DRYER_ICON;
-      name = "건조기";
-    }
-    return [name, icon];
-  }, [type]);
+  const typeName = type === "dryer" ? "건조기" : "세탁기";
+  const typeIcon = type === "dryer" ? DRYER_ICON : LAUNDRY_ICON;
   const isUsed = useMemo(() => {
     //TODO: Implement the logic to calculate the rest time
     const isUsed = false;
