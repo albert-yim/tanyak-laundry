@@ -47,7 +47,7 @@ export default function LaunDryerButton({
         </div>
         <span>{`${typeNumber}번 ${typeName}`}</span>
       </div>
-      <span className={styles.usage}>{isUsed ? "사용중" : "사용가능"}</span>
+      <span className={styles.usage}>{isUsed ? "사용 중" : "사용 가능"}</span>
       <span className={styles.time}>
         {isUsed ? "35m 25s" : "마지막 사용: "}
       </span>
