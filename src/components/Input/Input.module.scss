@@ -5,7 +5,7 @@ input{
   height:30px;
   padding-bottom: 4px;
   
-  color: var(--text-reverse-color);
+  color: var(--text-reverse-color) !important;
   font-size: 20px;
   background-color: transparent;
 }

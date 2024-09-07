@@ -10,7 +10,11 @@ export default function Login() {
   return (
     <div className={styles.loginWrapper}>
       <LOGOICON />
-      <span className={styles.text}>더욱 간단해진 /n 탄약중대 세탁 시스템</span>
+      <span className={styles.text}>
+        더욱 간단해진
+        <br />
+        탄약중대 세탁 시스템
+      </span>
       <div className={styles.inputWrapper}>
         <Input placeholder="이름" value={name} setValue={setName} />
         <Input placeholder="군번" value={number} setValue={setNumber} />
