@@ -22,7 +22,7 @@ export default function Login() {
       <div className={styles.buttonWrapper}>
         <Button
           children="로그인"
-          onClick={() => console.log("button clicked")}
+          onClick={() => (location.href = "/Components")}
         />
       </div>
     </div>
