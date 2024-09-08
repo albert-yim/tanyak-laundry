@@ -1,0 +1,12 @@
+.mainWrapper{
+  background-color: var(--background-color);
+  height: 100dvh;
+  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  .machineWrapper{
+    display: flex;
+  }
+}

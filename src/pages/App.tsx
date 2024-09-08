@@ -12,7 +12,7 @@ function App() {
         {" "}
         //Edited to show Main page first for testing
         <Route path="/login" element={<Login />}></Route>
-        <Route path="/" element={<Main />}></Route>
+        <Route path="/" element={<Main userName="김공군" />}></Route>
         <Route path="/components" element={<Compoennts />}></Route>
       </Routes>
     </BrowserRouter>
