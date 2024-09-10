@@ -1,6 +1,6 @@
 .mainWrapper{
   background-color: var(--background-color);
-  height: 100dvh;
+  height: 100vh;
   
   display: flex;
   flex-direction: column;
@@ -8,5 +8,9 @@
   justify-content: center;
   .machineWrapper{
     display: flex;
+    justify-content: space-between;
+    width: 319px;
+    height: 145px;
+    margin-bottom: 55px;
   }
 }
