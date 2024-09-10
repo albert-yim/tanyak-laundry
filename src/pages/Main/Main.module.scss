@@ -6,6 +6,12 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
+  .mainText{
+    font-size: 25px;
+    color: var(--text-reverse-color);
+    padding-bottom: 55px;
+  }
   .machineWrapper{
     display: flex;
     justify-content: space-between;
