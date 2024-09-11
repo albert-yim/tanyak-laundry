@@ -10,7 +10,7 @@ type MainType = {
 };
 
 
-
+// Demo Database for each laundry machine
 const LAUNDRIES: Laundry[] = [
   {
     user: {
@@ -56,6 +56,7 @@ const LAUNDRIES: Laundry[] = [
   },
 ]
 
+// Demo Database for each dryer
 const DRYERS: Dryer[] = [
   {
     user: {
@@ -89,20 +90,20 @@ const DRYERS: Dryer[] = [
 
 
 export default function Main({ userName }: MainType) {
-  const [modalVisible, setModalVisible] = useState(false);
+  const [modalVisible, setModalVisible] = useState(false); // useState for modal visibility
   return (
-    <div className={styles.mainWrapper}>
-      <span className={styles.mainText}>{userName}님 환영합니다</span>
+    <div className={styles.mainWrapper}> /** welcoming text */
+      <span className={styles.mainText}>{userName}님 환영합니다</span> 
       
-      <div className={styles.machineWrapper}>
+      <div className={styles.machineWrapper}> /** used map for aligning LaunDryerButtons with demo database info */
         {DRYERS.slice(0,2).map((dryer)=>(<LaunDryerButton key={`dryer-${dryer.position}`} onClick={() => setModalVisible(true)} type={"dryer"} typeNumber={dryer.position} user={dryer.user} startTime={dryer.startTime} endTime={dryer.endTime}/>))}
       </div>
 
-      <div className={styles.machineWrapper}>
+      <div className={styles.machineWrapper}> 
         {LAUNDRIES.slice(0,2).map((laundry)=>(<LaunDryerButton key={`laundry-${laundry.position}`} onClick={() => setModalVisible(true)} type={"laundry"} typeNumber={laundry.position} user={laundry.user} startTime={laundry.startTime} endTime={laundry.endTime}/>))}
       </div>
 
-      <Modal visible={modalVisible} onClose={() => setModalVisible(false)} />
+      <Modal visible={modalVisible} onClose={() => setModalVisible(false)} />  /** empty modal component */
     </div>
   );
 }
