@@ -101,6 +101,8 @@ export default function Main({ userName }: MainType) {
       <div className={styles.machineWrapper}>
         {LAUNDRIES.slice(0,2).map((laundry)=>(<LaunDryerButton key={`laundry-${laundry.position}`} onClick={() => setModalVisible(true)} type={"laundry"} typeNumber={laundry.position} user={laundry.user} startTime={laundry.startTime} endTime={laundry.endTime}/>))}
       </div>
+
+      <Modal visible={modalVisible} onClose={() => setModalVisible(false)} />
     </div>
   );
 }
