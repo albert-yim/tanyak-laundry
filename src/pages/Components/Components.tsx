@@ -4,23 +4,26 @@ import { LaunDryerButtonTest } from "../../components/LaunDryerButton/LaunDryerB
 import { InputTest } from "../../components/Input/Input";
 import { ModalTest } from "../../components/Modal/Modal";
 import { ModeButtonTest } from "../../components/ModeButton/ModeButton";
+import { CarouselTest } from "../../components/Carousel/Carousel";
 
 type Components =
   | "button"
   | "modebutton"
   | "input"
   | "modal"
-  | "laundryerButton";
+  | "laundryerButton"
+  | "carousel";
 
 export default function ComponentsPage() {
   const [selectedComponent, setSelectedComponent] =
-    useState<Components>("modal");
+    useState<Components>("carousel");
   const COMPONENT_LIST: Components[] = [
     "button",
     "modebutton",
     "input",
     "modal",
     "laundryerButton",
+    "carousel",
   ];
   const renderComponent = () => {
     switch (selectedComponent) {
@@ -41,6 +44,8 @@ export default function ComponentsPage() {
         return <InputTest />;
       case "modal":
         return <ModalTest />;
+      case "carousel":
+        return <CarouselTest />;
     }
   };
 
