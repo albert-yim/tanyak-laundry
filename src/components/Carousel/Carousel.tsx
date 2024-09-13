@@ -12,22 +12,6 @@ export type CarouselTypes = {
 
 export default function Carousel({contents}:CarouselTypes) {
     const [contentIndex, setContentIndex] = useState(0)
-    function showNextContent() {
-        setContentIndex(index => {
-            if ( index === contents.length - 1)
-                return 0
-            return index + 1
-        })
-    }
-
-    function showPrevContent() {
-        setContentIndex(index => {
-            if ( index === 0)
-                return contents.length - 1
-            return index - 1
-        })
-    }
-
     return(
         <div style={{
             width: "100%",
