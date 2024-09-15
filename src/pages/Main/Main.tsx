@@ -3,6 +3,7 @@ import styles from "./Main.module.scss";
 import LaunDryerButton from "../../components/LaunDryerButton/LaunDryerButton";
 import Modal from "../../components/Modal/Modal";
 import ModeButton from "../../components/ModeButton/ModeButton";
+import Carousel from "../../components/Carousel/Carousel";
 import {User, Dryer, Laundry} from "../../types"
 
 type MainType = {
@@ -52,7 +53,21 @@ const LAUNDRIES: Laundry[] = [
     // type_id: ""
     startTime: "2024-09-03T23:23:23",
     endTime: "2024-09-03T23:59:59",
-    position: 2,
+    position: 3,
+  },
+  {
+    user: {
+      id: "24-70001991",
+      name: "조현제",
+      rank: "일병",
+    },
+    mode: "표준세탁",
+    //isostring
+    // type: "dryer"
+    // type_id: ""
+    startTime: "2024-09-03T23:23:23",
+    endTime: "2024-09-03T23:59:59",
+    position: 4,
   },
 ]
 
@@ -86,23 +101,74 @@ const DRYERS: Dryer[] = [
     endTime: "2024-09-03T23:59:59",
     position: 2,
   },
+  {
+    user: {
+      id: "23-70016324",
+      name: "김건중",
+      rank: "상병",
+    },
+    mode: "regular",
+    //isostring
+    // type: "dryer"
+    // type_id: ""
+    startTime: "2024-09-03T23:23:23",
+    endTime: "2024-09-03T23:59:59",
+    position: 3,
+  },
+  {
+    user: {
+      id: "23-70016324",
+      name: "김건중",
+      rank: "상병",
+    },
+    mode: "regular",
+    //isostring
+    // type: "dryer"
+    // type_id: ""
+    startTime: "2024-09-03T23:23:23",
+    endTime: "2024-09-03T23:59:59",
+    position: 4,
+  },
 ]
 
 
 export default function Main({ userName }: MainType) {
   const [modalVisible, setModalVisible] = useState(false); // useState for modal visibility
+  function FirstSlide(){
+    return(
+      <>
+        <div className={styles.machineWrapper}> {/** used map for aligning LaunDryerButtons with demo database info */}
+          {DRYERS.slice(0,2).map((dryer)=>(<LaunDryerButton key={`dryer-${dryer.position}`} onClick={() => setModalVisible(true)} type={"dryer"} typeNumber={dryer.position} user={dryer.user} startTime={dryer.startTime} endTime={dryer.endTime}/>))}
+        </div>
+
+        <div className={styles.machineWrapper}> 
+          {LAUNDRIES.slice(0,2).map((laundry)=>(<LaunDryerButton key={`laundry-${laundry.position}`} onClick={() => setModalVisible(true)} type={"laundry"} typeNumber={laundry.position} user={laundry.user} startTime={laundry.startTime} endTime={laundry.endTime}/>))}
+        </div>
+      </>
+    )
+  }
+  function SecondSlide(){
+    return(
+      <>
+        <div className={styles.machineWrapper}> {/** used map for aligning LaunDryerButtons with demo database info */}
+          {DRYERS.slice(2,4).map((dryer)=>(<LaunDryerButton key={`dryer-${dryer.position}`} onClick={() => setModalVisible(true)} type={"dryer"} typeNumber={dryer.position} user={dryer.user} startTime={dryer.startTime} endTime={dryer.endTime}/>))}
+        </div>
+
+        <div className={styles.machineWrapper}> 
+          {LAUNDRIES.slice(2,4).map((laundry)=>(<LaunDryerButton key={`laundry-${laundry.position}`} onClick={() => setModalVisible(true)} type={"laundry"} typeNumber={laundry.position} user={laundry.user} startTime={laundry.startTime} endTime={laundry.endTime}/>))}
+        </div>
+      </>
+    )
+  }
+  
+  const SLIDES = [FirstSlide, SecondSlide]
+
   return (
     <div className={styles.mainWrapper}> {/* welcoming text */}
       <span className={styles.mainText}>{userName}님 환영합니다</span> 
-      
-      <div className={styles.machineWrapper}> {/** used map for aligning LaunDryerButtons with demo database info */}
-        {DRYERS.slice(0,2).map((dryer)=>(<LaunDryerButton key={`dryer-${dryer.position}`} onClick={() => setModalVisible(true)} type={"dryer"} typeNumber={dryer.position} user={dryer.user} startTime={dryer.startTime} endTime={dryer.endTime}/>))}
+      <div style={{height: 450}}>
+        <Carousel contents={SLIDES}/>
       </div>
-
-      <div className={styles.machineWrapper}> 
-        {LAUNDRIES.slice(0,2).map((laundry)=>(<LaunDryerButton key={`laundry-${laundry.position}`} onClick={() => setModalVisible(true)} type={"laundry"} typeNumber={laundry.position} user={laundry.user} startTime={laundry.startTime} endTime={laundry.endTime}/>))}
-      </div>
-
       <Modal visible={modalVisible} onClose={() => setModalVisible(false)} />  {/** empty modal component */}
     </div>
   );
