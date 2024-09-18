@@ -49,7 +49,7 @@ export function CarouselTest() {
             </div>
         )
     }
-    const PAGES = [FirstPage,SecondPage] //an array of components
+    const PAGES = [FirstPage,SecondPage]
 
     
     return(
