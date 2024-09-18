@@ -34,9 +34,6 @@ const LAUNDRIES: Laundry[] = [
       rank: "상병",
     },
     mode: "청정세탁",
-    //isostring
-    // type: "dryer"
-    // type_id: ""
     startTime: "2024-09-03T23:23:23",
     endTime: "2024-09-03T23:59:59",
     position: 2,
@@ -48,9 +45,6 @@ const LAUNDRIES: Laundry[] = [
       rank: "일병",
     },
     mode: "표준세탁",
-    //isostring
-    // type: "dryer"
-    // type_id: ""
     startTime: "2024-09-03T23:23:23",
     endTime: "2024-09-03T23:59:59",
     position: 3,
@@ -62,9 +56,6 @@ const LAUNDRIES: Laundry[] = [
       rank: "일병",
     },
     mode: "표준세탁",
-    //isostring
-    // type: "dryer"
-    // type_id: ""
     startTime: "2024-09-03T23:23:23",
     endTime: "2024-09-03T23:59:59",
     position: 4,
@@ -94,9 +85,6 @@ const DRYERS: Dryer[] = [
       rank: "상병",
     },
     mode: "regular",
-    //isostring
-    // type: "dryer"
-    // type_id: ""
     startTime: "2024-09-03T23:23:23",
     endTime: "2024-09-03T23:59:59",
     position: 2,
@@ -108,9 +96,6 @@ const DRYERS: Dryer[] = [
       rank: "상병",
     },
     mode: "regular",
-    //isostring
-    // type: "dryer"
-    // type_id: ""
     startTime: "2024-09-03T23:23:23",
     endTime: "2024-09-03T23:59:59",
     position: 3,
@@ -122,9 +107,6 @@ const DRYERS: Dryer[] = [
       rank: "상병",
     },
     mode: "regular",
-    //isostring
-    // type: "dryer"
-    // type_id: ""
     startTime: "2024-09-03T23:23:23",
     endTime: "2024-09-03T23:59:59",
     position: 4,
