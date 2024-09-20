@@ -1,45 +1,46 @@
 import React, {useState} from "react";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 import styles from "./Carousel.module.scss";
+import BasicButton from "../BasicButton/BasicButton"
 
 export type CarouselTypes = {
-    contents: (()=>JSX.Element)[];
+    contents: JSX.Element[];
 };
 
 export default function Carousel({contents}:CarouselTypes) {
-    const [contentIndex, setContentIndex] = useState(0) //set array index as 0
-    
+    var settings = {
+        dots: true,
+        infinite: true,
+        speed: 500,
+        slidesToShow:1,
+        slidesToScroll:1,
+        arrows: false,
+
+    }
     return(
-        <div className={styles.carouselWrapper}>
-            <div className={styles.contentsWrapper}> {/*align components in the array*/}
-                {contents.map(element => <div className={styles.sliderContent} style={{translate: `${-100 * contentIndex}%`}}> {element()} </div>
-                )} {/*show the only component on the appropriate index*/}
-            </div>
-            
-            <div className={styles.buttonsWrapper}> {/*button underneath  that allows users switch to the other component*/}
-                {contents.map((_,index) => ( 
-                    <div className={`${styles.button} ${index === contentIndex ? styles.buttonClicked : styles.button}`} onClick={() => setContentIndex(index)}></div>
-                ))}
-            </div>
+        <div className = {styles.sliderWrapper}>
+            <Slider {...settings}>
+            {contents.map(element => <div> {element} </div>
+                )}
+            </Slider>
         </div>
     );
 }
 
 export function CarouselTest() {
 
-
-    function FirstPage(){
-        return(
-            <div style = {{
-                height: 300,
-                width: 400,
-                backgroundColor: "blue"
-            }}>
-                First Page 
-            </div>
-        )
-    }
-    function SecondPage(){
-        return(
+    const FirstPage = 
+        <div style = {{
+            height: 300,
+            width: 400,
+            backgroundColor: "blue"
+        }}>
+            First Page 
+        </div>
+    
+    const SecondPage =
             <div style = {{
                 height: 300,
                 width: 400,
@@ -47,8 +48,7 @@ export function CarouselTest() {
             }}>
                 Second Page 
             </div>
-        )
-    }
+
     const PAGES = [FirstPage,SecondPage]
 
     
