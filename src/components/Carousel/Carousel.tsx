@@ -21,12 +21,12 @@ export default function Carousel({contents}:CarouselTypes) {
 
     }
     return(
-        <div className = {styles.sliderWrapper}>
+        // <div className = {styles.sliderWrapper}>
             <Slider {...settings}>
-            {contents.map(element => <div> {element} </div>
+            {contents.map(element => element
                 )}
             </Slider>
-        </div>
+        // </div>
     );
 }
 

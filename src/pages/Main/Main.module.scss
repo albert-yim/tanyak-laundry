@@ -13,12 +13,13 @@
     padding-bottom: 55px;
   }
   .machineWrapper{
-    display: flex;
-    justify-content: space-between;
-    
-    width: 319px;
-    height: 145px;
-    margin-bottom: 55px;
+    width: 320px + 24px;
+    padding: 0 24;
+    display: flex !important;
+    flex-wrap: wrap;
+    gap: 24px;
+    // space between dot and page
+    margin-bottom: 30px
   }
 
   .carouselWrapper{

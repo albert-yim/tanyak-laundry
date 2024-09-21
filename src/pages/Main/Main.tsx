@@ -117,26 +117,21 @@ const DRYERS: Dryer[] = [
 export default function Main({ userName }: MainType) {
   const [modalVisible, setModalVisible] = useState(false); // useState for modal visibility
   const FirstSlide =
-      <>
         <div className={styles.machineWrapper}> {/** used map for aligning LaunDryerButtons with demo database info */}
-          {DRYERS.slice(0,2).map((dryer)=>(<LaunDryerButton key={`dryer-${dryer.position}`} onClick={() => setModalVisible(true)} type={"dryer"} typeNumber={dryer.position} user={dryer.user} startTime={dryer.startTime} endTime={dryer.endTime}/>))}
-        </div>
+          <>
 
-        <div className={styles.machineWrapper}> 
+          {DRYERS.slice(0,2).map((dryer)=>(<LaunDryerButton key={`dryer-${dryer.position}`} onClick={() => setModalVisible(true)} type={"dryer"} typeNumber={dryer.position} user={dryer.user} startTime={dryer.startTime} endTime={dryer.endTime}/>))}
           {LAUNDRIES.slice(0,2).map((laundry)=>(<LaunDryerButton key={`laundry-${laundry.position}`} onClick={() => setModalVisible(true)} type={"laundry"} typeNumber={laundry.position} user={laundry.user} startTime={laundry.startTime} endTime={laundry.endTime}/>))}
+        </>
         </div>
-      </>
 
   const SecondSlide =
-      <>
         <div className={styles.machineWrapper}> {/** used map for aligning LaunDryerButtons with demo database info */}
+          <>
           {DRYERS.slice(2,4).map((dryer)=>(<LaunDryerButton key={`dryer-${dryer.position}`} onClick={() => setModalVisible(true)} type={"dryer"} typeNumber={dryer.position} user={dryer.user} startTime={dryer.startTime} endTime={dryer.endTime}/>))}
-        </div>
-
-        <div className={styles.machineWrapper}> 
           {LAUNDRIES.slice(2,4).map((laundry)=>(<LaunDryerButton key={`laundry-${laundry.position}`} onClick={() => setModalVisible(true)} type={"laundry"} typeNumber={laundry.position} user={laundry.user} startTime={laundry.startTime} endTime={laundry.endTime}/>))}
-        </div>
-      </>
+          </>
+      </div>
     
   
   const SLIDES = [FirstSlide, SecondSlide]
