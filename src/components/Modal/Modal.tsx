@@ -1,6 +1,6 @@
 import React, { useState, ReactNode } from "react";
 import styles from "./Modal.module.scss";
-import { ReactComponent as CLOSEICON } from "../../assets/close.svg";
+import { ReactComponent as CLOSE_ICON } from "../../assets/close.svg";
 
 export type ModalTypes = {
   onClose: () => void;
@@ -15,7 +15,7 @@ export default function Modal({ visible, children, onClose }: ModalTypes) {
       <div className={styles.modalBackground} />
       <div className={styles.modalWrapper}>
         <div className={styles.closeButton} onClick={onClose}>
-          <CLOSEICON />
+          <CLOSE_ICON />
         </div>
         {children}
       </div>

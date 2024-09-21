@@ -1,8 +1,8 @@
 import React, { useMemo } from "react";
 
 import styles from "./LaunDryerButton.module.scss";
-import DRYER_ICON from "../../assets/dryer.svg";
-import LAUNDRY_ICON from "../../assets/washingMachine.svg";
+import {ReactComponent as DRYER_ICON} from "../../assets/dryer.svg";
+import {ReactComponent as LAUNDRY_ICON} from "../../assets/washingMachine.svg";
 
 type User = {
   id: string;
@@ -27,7 +27,7 @@ export default function LaunDryerButton({
   endTime,
 }: LaunDryerButton) {
   const typeName = type === "dryer" ? "건조기" : "세탁기";
-  const typeIcon = type === "dryer" ? DRYER_ICON : LAUNDRY_ICON;
+  const typeIcon = type === "dryer" ? <DRYER_ICON width="15"/> : <LAUNDRY_ICON width="15"/>
   const isUsed = useMemo(() => {
     //TODO: Implement the logic to calculate the rest time
     const isUsed = false;
@@ -36,17 +36,21 @@ export default function LaunDryerButton({
   return (
     <div className={styles.wrapper} onClick={onClick}>
       <div className={styles.progress} />
-      <div className={styles.header}>
-        <div className={styles.iconWrapper}>
-          <img src={typeIcon} alt="dryer icon"></img>
+
+      <div className={styles.contentsWrapper}>
+        <div className={styles.header}>
+          <div className={styles.iconWrapper}>
+            {typeIcon}
+          </div>
+          <span>{`${typeNumber}번 ${typeName}`}</span>
         </div>
-        <span>{`${typeNumber}번 ${typeName}`}</span>
+        <span className={styles.usage}>{isUsed ? "사용 중" : "사용 가능"}</span>
+        <span className={styles.time}>
+          {isUsed ? "35m 25s" : "마지막 사용: "}
+        </span>
+        <span className={styles.name}>{`${user.rank} ${user.name}`}</span>
       </div>
-      <span className={styles.usage}>{isUsed ? "사용 중" : "사용 가능"}</span>
-      <span className={styles.time}>
-        {isUsed ? "35m 25s" : "마지막 사용: "}
-      </span>
-      <span className={styles.name}>{`${user.rank} ${user.name}`}</span>
+
     </div>
   );
 }
