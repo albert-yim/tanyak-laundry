@@ -35,7 +35,7 @@ export default function LaunDryerButton({
     <div className={styles.wrapper}>
       <div className={styles.progress} />
 
-      <div className={styles.contents}>
+      <div className={styles.contentsWrapper}>
         <div className={styles.header}>
           <div className={styles.iconWrapper}>
             {typeIcon}
