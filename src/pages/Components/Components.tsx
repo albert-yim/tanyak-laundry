@@ -14,7 +14,7 @@ type Components =
 
 export default function ComponentsPage() {
   const [selectedComponent, setSelectedComponent] =
-    useState<Components>("modal");
+    useState<Components>("laundryerButton");
   const COMPONENT_LIST: Components[] = [
     "button",
     "modebutton",
