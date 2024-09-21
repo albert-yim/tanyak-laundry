@@ -34,17 +34,21 @@ export default function LaunDryerButton({
   return (
     <div className={styles.wrapper}>
       <div className={styles.progress} />
-      <div className={styles.header}>
-        <div className={styles.iconWrapper}>
-          {typeIcon}
+
+      <div className={styles.contents}>
+        <div className={styles.header}>
+          <div className={styles.iconWrapper}>
+            {typeIcon}
+          </div>
+          <span>{`${typeNumber}번 ${typeName}`}</span>
         </div>
-        <span>{`${typeNumber}번 ${typeName}`}</span>
+        <span className={styles.usage}>{isUsed ? "사용 중" : "사용 가능"}</span>
+        <span className={styles.time}>
+          {isUsed ? "35m 25s" : "마지막 사용: "}
+        </span>
+        <span className={styles.name}>{`${user.rank} ${user.name}`}</span>
       </div>
-      <span className={styles.usage}>{isUsed ? "사용 중" : "사용 가능"}</span>
-      <span className={styles.time}>
-        {isUsed ? "35m 25s" : "마지막 사용: "}
-      </span>
-      <span className={styles.name}>{`${user.rank} ${user.name}`}</span>
+
     </div>
   );
 }
