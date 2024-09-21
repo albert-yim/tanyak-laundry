@@ -21,12 +21,10 @@ export default function Carousel({contents}:CarouselTypes) {
 
     }
     return(
-        // <div className = {styles.sliderWrapper}>
-            <Slider {...settings}>
-            {contents.map(element => element
-                )}
-            </Slider>
-        // </div>
+        <Slider {...settings}>
+        {contents.map(element => element
+            )}
+        </Slider>
     );
 }
 
@@ -42,13 +40,13 @@ export function CarouselTest() {
         </div>
     
     const SecondPage =
-            <div style = {{
-                height: 300,
-                width: 400,
-                backgroundColor: "red"
-            }}>
-                Second Page 
-            </div>
+        <div style = {{
+            height: 300,
+            width: 400,
+            backgroundColor: "red"
+        }}>
+            Second Page 
+        </div>
 
     const PAGES = [FirstPage,SecondPage]
 
