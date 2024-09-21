@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useCallback} from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -17,6 +17,7 @@ export default function Carousel({contents}:CarouselTypes) {
         slidesToShow:1,
         slidesToScroll:1,
         arrows: false,
+        dotsClass: `slick-dots ${styles.sliderButton}`
 
     }
     return(
