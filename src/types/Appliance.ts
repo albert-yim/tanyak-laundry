@@ -20,18 +20,17 @@ export type Appliance = {
   type: ApplianceType;
 };
 
-export type ApplianceHistory = {
-  id: number;
+export type UsageHistory = {
   // start time of Appliance
   created_at: string;
   // end time of Appliance
   end_at: string;
   // which appliance is
-  applianceId: number;
+  appliance_id: number;
   // user who used appliance
-  userId: number;
+  user_id: string;
   // which mode is applied
-  modeId: number;
+  mode_id: number;
 };
 
 export type Dryer = {
