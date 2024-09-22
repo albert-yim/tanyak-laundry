@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { ButtonTest } from "../../components/Button/Button";
 import { LaunDryerButtonTest } from "../../components/LaunDryerButton/LaunDryerButton";
 import { InputTest } from "../../components/Input/Input";
