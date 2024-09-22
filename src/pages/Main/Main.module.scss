@@ -1,0 +1,28 @@
+.mainWrapper{
+  background-color: var(--background-color);
+  height: 100vh;
+  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  .mainText{
+    font-size: 25px;
+    color: var(--text-reverse-color);
+    padding-bottom: 55px;
+  }
+  .machineWrapper{
+    width: 320px;
+    display: flex !important;
+    flex-wrap: wrap;
+    gap: 24px;
+    // space between dot and page
+    margin-bottom: 30px
+  }
+
+  .carouselWrapper{
+    width: 319px;
+    height: 500px;
+  }
+}

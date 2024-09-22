@@ -10,6 +10,7 @@ type User = {
   rank: "병장" | "상병" | "일병" | "이병";
 };
 type LaunDryerButton = {
+  onClick: () => void;
   type: "laundry" | "dryer";
   typeNumber: 1 | 2 | 3 | 4;
   user: User;
@@ -18,6 +19,7 @@ type LaunDryerButton = {
 };
 
 export default function LaunDryerButton({
+  onClick,
   type,
   typeNumber,
   user,
@@ -32,7 +34,7 @@ export default function LaunDryerButton({
     return isUsed;
   }, [endTime]);
   return (
-    <div className={styles.wrapper}>
+    <div className={styles.wrapper} onClick={onClick}>
       <div className={styles.progress} />
 
       <div className={styles.contentsWrapper}>
@@ -69,6 +71,7 @@ export function LaunDryerButtonTest() {
       }}
     >
       <LaunDryerButton
+        onClick= {()=>console.log("Clicked!")}
         type="laundry"
         typeNumber={1}
         user={USER1}
@@ -76,6 +79,7 @@ export function LaunDryerButtonTest() {
         endTime={"2024-09-03T23:59:59"}
       />
       <LaunDryerButton
+        onClick= {()=>console.log("Clicked!")}
         type="dryer"
         typeNumber={3}
         user={USER1}
