@@ -1,9 +1,10 @@
 import { User } from "./User";
 
-type ApplianceType = "dryer" | "washing_machine";
+export type ApplianceType = "dryer" | "washing_machine";
+
 export type ApplianceMode = {
   id: number;
-  type: ApplianceType;
+  applianceType: ApplianceType;
   // name of mode
   name: string;
   // duration of mode in min
@@ -18,19 +19,19 @@ export type Appliance = {
   status: boolean;
   // type of Appliance
   type: ApplianceType;
+  // last usage of this appliance
+  last_usage: UsageHistory | null;
 };
 
 export type UsageHistory = {
   // start time of Appliance
-  created_at: string;
+  createdAt: string;
   // end time of Appliance
-  end_at: string;
-  // which appliance is
-  appliance_id: number;
+  endAt: string;
   // user who used appliance
-  user_id: string;
+  user: User;
   // which mode is applied
-  mode_id: number;
+  // mode_id: number;
 };
 
 export type Dryer = {
