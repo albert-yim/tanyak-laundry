@@ -22,7 +22,7 @@ export function convertAppliancesPayload(
       ? {
           createdAt: data.usage_history.created_at,
           endAt: data.usage_history.end_at,
-          user: data.usage_history.User,
+          user: data.usage_history.user,
         }
       : null,
   }));
