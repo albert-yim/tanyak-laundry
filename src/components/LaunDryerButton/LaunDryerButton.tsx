@@ -1,8 +1,8 @@
 import React, { useMemo } from "react";
 
 import styles from "./LaunDryerButton.module.scss";
-import {ReactComponent as DRYER_ICON} from "../../assets/dryer.svg";
-import {ReactComponent as LAUNDRY_ICON} from "../../assets/washingMachine.svg";
+import { ReactComponent as DRYER_ICON } from "../../assets/dryer.svg";
+import { ReactComponent as LAUNDRY_ICON } from "../../assets/washingMachine.svg";
 
 type User = {
   id: string;
@@ -27,7 +27,8 @@ export default function LaunDryerButton({
   endTime,
 }: LaunDryerButton) {
   const typeName = type === "dryer" ? "건조기" : "세탁기";
-  const typeIcon = type === "dryer" ? <DRYER_ICON width="15"/> : <LAUNDRY_ICON width="15"/>
+  const typeIcon =
+    type === "dryer" ? <DRYER_ICON width="15" /> : <LAUNDRY_ICON width="15" />;
   const isUsed = useMemo(() => {
     //TODO: Implement the logic to calculate the rest time
     const isUsed = false;
@@ -39,9 +40,7 @@ export default function LaunDryerButton({
 
       <div className={styles.contentsWrapper}>
         <div className={styles.header}>
-          <div className={styles.iconWrapper}>
-            {typeIcon}
-          </div>
+          <div className={styles.iconWrapper}>{typeIcon}</div>
           <span>{`${typeNumber}번 ${typeName}`}</span>
         </div>
         <span className={styles.usage}>{isUsed ? "사용 중" : "사용 가능"}</span>
@@ -50,7 +49,6 @@ export default function LaunDryerButton({
         </span>
         <span className={styles.name}>{`${user.rank} ${user.name}`}</span>
       </div>
-
     </div>
   );
 }
@@ -71,7 +69,7 @@ export function LaunDryerButtonTest() {
       }}
     >
       <LaunDryerButton
-        onClick= {()=>console.log("Clicked!")}
+        onClick={() => console.log("Clicked!")}
         type="laundry"
         typeNumber={1}
         user={USER1}
@@ -79,7 +77,7 @@ export function LaunDryerButtonTest() {
         endTime={"2024-09-03T23:59:59"}
       />
       <LaunDryerButton
-        onClick= {()=>console.log("Clicked!")}
+        onClick={() => console.log("Clicked!")}
         type="dryer"
         typeNumber={3}
         user={USER1}
