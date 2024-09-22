@@ -8,12 +8,11 @@ import { CarouselTest } from "../../components/Carousel/Carousel";
 import { supabase } from "../../supabase";
 import {
   fetchDryerModes,
-  fetchModes,
-  fetchWasherModes,
-  fetchWashingMachineHistory,
+  fetchWashingMachineModes,
   insertUsageHistory,
+  fetchAppliances,
 } from "../../api";
-import { UsageHistory } from "../../types/Appliance";
+import { UsageHistoryInsertPayload } from "../../types";
 
 type Components =
   | "button"
@@ -21,22 +20,10 @@ type Components =
   | "input"
   | "modal"
   | "laundryerButton"
-  | "carousel";
+  | "carousel"
+  | "apis";
 
 export default function ComponentsPage() {
-  const getDB = async () => {
-    // const mode = await fetchModes();
-    const washerMode = await fetchWasherModes();
-    const dryerMode = await fetchDryerModes();
-    const washer = await fetchWashingMachineHistory();
-    // console.log(mode);
-    console.log(washerMode);
-    console.log(dryerMode);
-    console.log(washer);
-  };
-  useEffect(() => {
-    getDB();
-  }, []);
   const [selectedComponent, setSelectedComponent] =
     useState<Components>("carousel");
   const COMPONENT_LIST: Components[] = [
@@ -46,6 +33,7 @@ export default function ComponentsPage() {
     "modal",
     "laundryerButton",
     "carousel",
+    "apis",
   ];
   const renderComponent = () => {
     switch (selectedComponent) {
@@ -61,25 +49,16 @@ export default function ComponentsPage() {
         return <ModalTest />;
       case "carousel":
         return <CarouselTest />;
+      case "apis":
+        return <ApiTest />;
     }
   };
-
-  function insertWasher() {
-    const data: Omit<UsageHistory, "created_at"> = {
-      user_id: "23-70006795",
-      mode_id: 1,
-      appliance_id: 1,
-      end_at: "20240921T2326",
-    };
-    insertUsageHistory(data);
-  }
 
   return (
     <div style={{ display: "flex", height: "100vh" }}>
       <div
         style={{ width: "200px", backgroundColor: "#f4f4f4", padding: "10px" }}
       >
-        <button onClick={() => insertWasher()}>test</button>
         <h3>Components</h3>
         <ul>
           {COMPONENT_LIST.map((component) => (
@@ -101,6 +80,63 @@ export default function ComponentsPage() {
       </div>
       <div style={{ flex: 1, padding: "20px", background: "#5067aa" }}>
         {renderComponent()}
+      </div>
+    </div>
+  );
+}
+
+function ApiTest() {
+  const insertHistory = () => {
+    const data: UsageHistoryInsertPayload = {
+      user_id: "23-70006795",
+      mode_id: 1,
+      appliance_id: 1,
+      end_at: "20240921T2326",
+    };
+    insertUsageHistory(data);
+    console.log("===================================");
+    alert("Success to Insert UsageHistory ");
+  };
+
+  const getAppliances = async () => {
+    const data = await fetchAppliances();
+    console.log("===================================");
+    console.log(data);
+    alert("Success to fetch Appliance (see the console)");
+  };
+  const getWashingMachineModes = async () => {
+    const mode = await fetchWashingMachineModes();
+    console.log("===================================");
+    console.log(mode);
+    alert("Success to fetch washer modes(see the console)");
+  };
+  const getDryerModes = async () => {
+    const mode = await fetchDryerModes();
+    console.log("===================================");
+    console.log(mode);
+    alert("Success to fetch dryer modes (see the console)");
+  };
+  return (
+    <div>
+      <div>
+        <h1>Fetch appliance </h1>
+        <button onClick={getAppliances}>fetch Appliance</button>
+      </div>
+      <div>
+        <h1>Fetch WashingMachine Modes </h1>
+        <button onClick={getWashingMachineModes}>fetch Appliance</button>
+      </div>
+      <div>
+        <h1>Fetch Dryer Modes </h1>
+        <button onClick={getDryerModes}>fetch Appliance</button>
+      </div>
+      <div>
+        <h1>Insert UsageHistory</h1>
+        <h4>
+          Test Data: user_id:1, appliance_id: 1, mode_id:1, end_at:
+          "20240921T2326"
+        </h4>
+        <button onClick={insertHistory}>Insert UsageHistory</button>
       </div>
     </div>
   );
