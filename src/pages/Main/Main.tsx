@@ -1,17 +1,16 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import styles from "./Main.module.scss";
 import LaunDryerButton from "../../components/LaunDryerButton/LaunDryerButton";
 import Modal from "../../components/Modal/Modal";
 import Carousel from "../../components/Carousel/Carousel";
-import {User, Dryer, Laundry} from "../../types"
+import { User } from "../../types";
 
 type MainType = {
   user: User;
 };
 
-
 // Demo Database for each laundry machine
-const LAUNDRIES: Laundry[] = [
+const LAUNDRIES: any[] = [
   {
     user: {
       id: "23-70006795",
@@ -59,10 +58,10 @@ const LAUNDRIES: Laundry[] = [
     endTime: "2024-09-03T23:59:59",
     position: 4,
   },
-]
+];
 
 // Demo Database for each dryer
-const DRYERS: Dryer[] = [
+const DRYERS: any[] = [
   {
     user: {
       id: "23-70006795",
@@ -110,37 +109,78 @@ const DRYERS: Dryer[] = [
     endTime: "2024-09-03T23:59:59",
     position: 4,
   },
-]
-
+];
 
 export default function Main({ user }: MainType) {
   const [modalVisible, setModalVisible] = useState(false); // useState for modal visibility
-  const FirstSlide =
-        <div className={styles.machineWrapper}> {/** used map for aligning LaunDryerButtons with demo database info */}
-          <>
-          {DRYERS.slice(0,2).map((dryer)=>(<LaunDryerButton key={`dryer-${dryer.position}`} onClick={() => setModalVisible(true)} type={"dryer"} typeNumber={dryer.position} user={dryer.user} startTime={dryer.startTime} endTime={dryer.endTime}/>))}
-          {LAUNDRIES.slice(0,2).map((laundry)=>(<LaunDryerButton key={`laundry-${laundry.position}`} onClick={() => setModalVisible(true)} type={"laundry"} typeNumber={laundry.position} user={laundry.user} startTime={laundry.startTime} endTime={laundry.endTime}/>))}
-          </>
-        </div>
+  const FirstSlide = (
+    <div className={styles.machineWrapper}>
+      <>
+        {DRYERS.slice(0, 2).map((dryer) => (
+          <LaunDryerButton
+            key={`dryer-${dryer.position}`}
+            onClick={() => setModalVisible(true)}
+            type={"dryer"}
+            typeNumber={dryer.position}
+            user={dryer.user}
+            startTime={dryer.startTime}
+            endTime={dryer.endTime}
+          />
+        ))}
+        {LAUNDRIES.slice(0, 2).map((laundry) => (
+          <LaunDryerButton
+            key={`laundry-${laundry.position}`}
+            onClick={() => setModalVisible(true)}
+            type={"laundry"}
+            typeNumber={laundry.position}
+            user={laundry.user}
+            startTime={laundry.startTime}
+            endTime={laundry.endTime}
+          />
+        ))}
+      </>
+    </div>
+  );
 
-  const SecondSlide =
-        <div className={styles.machineWrapper}> {/** used map for aligning LaunDryerButtons with demo database info */}
-          <>
-          {DRYERS.slice(2,4).map((dryer)=>(<LaunDryerButton key={`dryer-${dryer.position}`} onClick={() => setModalVisible(true)} type={"dryer"} typeNumber={dryer.position} user={dryer.user} startTime={dryer.startTime} endTime={dryer.endTime}/>))}
-          {LAUNDRIES.slice(2,4).map((laundry)=>(<LaunDryerButton key={`laundry-${laundry.position}`} onClick={() => setModalVisible(true)} type={"laundry"} typeNumber={laundry.position} user={laundry.user} startTime={laundry.startTime} endTime={laundry.endTime}/>))}
-          </>
-        </div>
-    
-  
-  const SLIDES = [FirstSlide, SecondSlide]
+  const SecondSlide = (
+    <div className={styles.machineWrapper}>
+      <>
+        {DRYERS.slice(2, 4).map((dryer) => (
+          <LaunDryerButton
+            key={`dryer-${dryer.position}`}
+            onClick={() => setModalVisible(true)}
+            type={"dryer"}
+            typeNumber={dryer.position}
+            user={dryer.user}
+            startTime={dryer.startTime}
+            endTime={dryer.endTime}
+          />
+        ))}
+        {LAUNDRIES.slice(2, 4).map((laundry) => (
+          <LaunDryerButton
+            key={`laundry-${laundry.position}`}
+            onClick={() => setModalVisible(true)}
+            type={"laundry"}
+            typeNumber={laundry.position}
+            user={laundry.user}
+            startTime={laundry.startTime}
+            endTime={laundry.endTime}
+          />
+        ))}
+      </>
+    </div>
+  );
+
+  const SLIDES = [FirstSlide, SecondSlide];
 
   return (
-    <div className={styles.mainWrapper}> {/* welcoming text */}
-      <span className={styles.mainText}>{user.name}님 환영합니다</span> 
+    <div className={styles.mainWrapper}>
+      <span className={styles.mainText}>{user.name}님 환영합니다</span>
       <div className={styles.carouselWrapper}>
-        <Carousel contents={SLIDES}/>
+        <Carousel contents={SLIDES} />
       </div>
-      <Modal visible={modalVisible} onClose={() => setModalVisible(false)} />  {/** empty modal component */}
+      <Modal visible={modalVisible} onClose={() => setModalVisible(false)} />{" "}
+      {/** empty modal component */}
     </div>
   );
 }

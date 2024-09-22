@@ -5,6 +5,14 @@ import { InputTest } from "../../components/Input/Input";
 import { ModalTest } from "../../components/Modal/Modal";
 import { ModeButtonTest } from "../../components/ModeButton/ModeButton";
 import { CarouselTest } from "../../components/Carousel/Carousel";
+import { supabase } from "../../supabase";
+import {
+  fetchDryerModes,
+  fetchWashingMachineModes,
+  insertUsageHistory,
+  fetchAppliances,
+} from "../../api";
+import { UsageHistoryInsertPayload } from "../../types";
 
 type Components =
   | "button"
@@ -12,7 +20,8 @@ type Components =
   | "input"
   | "modal"
   | "laundryerButton"
-  | "carousel";
+  | "carousel"
+  | "apis";
 
 export default function ComponentsPage() {
   const [selectedComponent, setSelectedComponent] =
@@ -24,6 +33,7 @@ export default function ComponentsPage() {
     "modal",
     "laundryerButton",
     "carousel",
+    "apis",
   ];
   const renderComponent = () => {
     switch (selectedComponent) {
@@ -39,6 +49,8 @@ export default function ComponentsPage() {
         return <ModalTest />;
       case "carousel":
         return <CarouselTest />;
+      case "apis":
+        return <ApiTest />;
     }
   };
 
@@ -68,6 +80,63 @@ export default function ComponentsPage() {
       </div>
       <div style={{ flex: 1, padding: "20px", background: "#5067aa" }}>
         {renderComponent()}
+      </div>
+    </div>
+  );
+}
+
+function ApiTest() {
+  const insertHistory = () => {
+    const data: UsageHistoryInsertPayload = {
+      user_id: "23-70006795",
+      mode_id: 1,
+      appliance_id: 1,
+      end_at: "20240921T2326",
+    };
+    insertUsageHistory(data);
+    console.log("===================================");
+    alert("Success to Insert UsageHistory ");
+  };
+
+  const getAppliances = async () => {
+    const data = await fetchAppliances();
+    console.log("===================================");
+    console.log(data);
+    alert("Success to fetch Appliance (see the console)");
+  };
+  const getWashingMachineModes = async () => {
+    const mode = await fetchWashingMachineModes();
+    console.log("===================================");
+    console.log(mode);
+    alert("Success to fetch washer modes(see the console)");
+  };
+  const getDryerModes = async () => {
+    const mode = await fetchDryerModes();
+    console.log("===================================");
+    console.log(mode);
+    alert("Success to fetch dryer modes (see the console)");
+  };
+  return (
+    <div>
+      <div>
+        <h1>Fetch appliance </h1>
+        <button onClick={getAppliances}>fetch Appliance</button>
+      </div>
+      <div>
+        <h1>Fetch WashingMachine Modes </h1>
+        <button onClick={getWashingMachineModes}>fetch Appliance</button>
+      </div>
+      <div>
+        <h1>Fetch Dryer Modes </h1>
+        <button onClick={getDryerModes}>fetch Appliance</button>
+      </div>
+      <div>
+        <h1>Insert UsageHistory</h1>
+        <h4>
+          Test Data: user_id:1, appliance_id: 1, mode_id:1, end_at:
+          "20240921T2326"
+        </h4>
+        <button onClick={insertHistory}>Insert UsageHistory</button>
       </div>
     </div>
   );

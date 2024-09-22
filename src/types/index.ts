@@ -1,8 +1,3 @@
-import {User} from "./User"
-import {Dryer, Laundry} from "./Laundry"
-
-export type {
-    Dryer,
-    Laundry,
-    User
-}
+export * from "./User";
+export * from "./Appliance";
+export * from "./Payload";
