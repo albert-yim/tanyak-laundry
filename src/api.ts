@@ -1,3 +1,4 @@
+import { AuthResponse, AuthTokenResponsePassword } from "@supabase/supabase-js";
 import {
   convertApplianceModePayload,
   convertAppliancesPayload,
@@ -9,6 +10,7 @@ import {
   AppliancePayload,
   ApplianceModePayload,
   UsageHistoryInsertPayload,
+  User,
 } from "./types";
 
 export const fetchAppliances = async (): Promise<Appliance[]> => {
@@ -72,4 +74,37 @@ export const insertUsageHistory = async (data: UsageHistoryInsertPayload) => {
   if (error) {
     console.log("Error insert data in UsageHistory");
   }
+};
+
+/**
+ * SignUp with email
+ */
+export const signUpWithUserData = async (user: User): Promise<AuthResponse> => {
+  const { id } = user;
+  const signUpPromise = await supabase.auth.signUp({
+    email: `${id}@tanyak.com`,
+    password: id,
+  });
+
+  if (signUpPromise.data.user) {
+    supabase.from("user").insert([
+      {
+        ...user,
+        id: signUpPromise.data.user.id,
+      },
+    ]);
+  }
+
+  return signUpPromise;
+};
+
+/**
+ * SignIn with email
+ */
+export const signInWithId = async (id: string) => {
+  const { data, error } = await supabase.auth.signInWithPassword({
+    email: `${id}@tanyak.com`,
+    password: id,
+  });
+  return { data, error };
 };
