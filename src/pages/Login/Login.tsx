@@ -8,6 +8,7 @@ import { signInWithId, signUpWithUserData } from "../../api";
 export default function Login() {
   const [name, setName] = useState("");
   const [number, setNumber] = useState("");
+  const [userClass, setUserClass] = useState("");
   const [isSignUp, setIsSignUp] = useState(false);
 
   const loginButtonClicked = async () => {
@@ -20,8 +21,9 @@ export default function Login() {
     if (isSignUp) {
       //should show someting to indicate signUp
       signUpWithUserData({
-        id: number,
+        serviceId: number,
         name,
+        class: userClass,
         rank: "병장",
         serviceStartedAt: "20230320T0000",
       });
@@ -45,7 +47,14 @@ export default function Login() {
       <div className={styles.inputWrapper}>
         <Input placeholder="군번" value={number} setValue={setNumber} />
         {isSignUp ? (
-          <Input placeholder="이름" value={name} setValue={setName} />
+          <>
+            <Input placeholder="이름" value={name} setValue={setName} />
+            <Input
+              placeholder="기수"
+              value={userClass}
+              setValue={setUserClass}
+            />
+          </>
         ) : (
           <></>
         )}

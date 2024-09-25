@@ -11,6 +11,7 @@ import {
   ApplianceModePayload,
   UsageHistoryInsertPayload,
   User,
+  InsertUser,
 } from "./types";
 
 export const fetchAppliances = async (): Promise<Appliance[]> => {
@@ -80,19 +81,21 @@ export const insertUsageHistory = async (data: UsageHistoryInsertPayload) => {
  * SignUp with email
  */
 export const signUpWithUserData = async (user: User): Promise<AuthResponse> => {
-  const { id } = user;
+  const { serviceId } = user;
+  //SignUp with supabase email auth
   const signUpPromise = await supabase.auth.signUp({
-    email: `${id}@tanyak.com`,
-    password: id,
+    email: `${serviceId}@tanyak.com`,
+    password: serviceId,
   });
 
   if (signUpPromise.data.user) {
-    supabase.from("user").insert([
-      {
-        ...user,
-        id: signUpPromise.data.user.id,
-      },
-    ]);
+    //Add user data on supabse backend
+    const insertData: InsertUser = {
+      service_id: serviceId,
+      class: user.class,
+      name: user.name,
+    };
+    await supabase.from("user").insert([insertData]);
   }
 
   return signUpPromise;
