@@ -17,7 +17,7 @@ export const fetchAppliances = async (): Promise<Appliance[]> => {
       location,
       status,
       type,
-      usage_history!last_usage_id(created_at, end_at, user(name))`,
+      usage_history!last_usage_id(start_time, end_time, user(*))`,
     )
     .returns<AppliancePayload[]>();
   if (error) {
