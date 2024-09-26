@@ -1,6 +1,6 @@
 export type User = {
   // auth id
-  // id: string;
+  id: string;
   // user name
   name: string;
   //기수
