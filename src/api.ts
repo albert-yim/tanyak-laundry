@@ -1,17 +1,12 @@
 import { AuthResponse, AuthTokenResponsePassword } from "@supabase/supabase-js";
-import {
-  convertApplianceModePayload,
-  convertAppliancesPayload,
-} from "./helper/payloadConvert";
+import { convertAppliancesPayload } from "./helper/payloadConvert";
 import { supabase } from "./supabase";
 import {
   ApplianceMode,
   Appliance,
   AppliancePayload,
-  ApplianceModePayload,
   UsageHistoryInsertPayload,
-  User,
-  InsertUser,
+  UserInsertPayload,
 } from "./types";
 
 export const fetchAppliances = async (): Promise<Appliance[]> => {
@@ -34,40 +29,6 @@ export const fetchAppliances = async (): Promise<Appliance[]> => {
 };
 
 /*
- * fetch washing_machine modes
- */
-export const fetchWashingMachineModes = async (): Promise<ApplianceMode[]> => {
-  const { data, error } = await supabase
-    .from("appliance_mode")
-    .select("*")
-    .eq("appliance_type", "washing_machine")
-    .returns<ApplianceModePayload[]>();
-  if (error) {
-    console.error("Error fetching modes:", error);
-    return [];
-  }
-
-  return convertApplianceModePayload(data);
-};
-
-/*
- * fetch dryer modes
- */
-export const fetchDryerModes = async (): Promise<ApplianceMode[]> => {
-  const { data, error } = await supabase
-    .from("appliance_mode")
-    .select("*")
-    .eq("appliance_type", "dryer")
-    .returns<ApplianceModePayload[]>();
-  if (error) {
-    console.error("Error fetching modes:", error);
-    return [];
-  }
-
-  return convertApplianceModePayload(data);
-};
-
-/*
  * Insert UsageHistory to Backend
  */
 export const insertUsageHistory = async (data: UsageHistoryInsertPayload) => {
@@ -80,22 +41,19 @@ export const insertUsageHistory = async (data: UsageHistoryInsertPayload) => {
 /**
  * SignUp with email
  */
-export const signUpWithUserData = async (user: User): Promise<AuthResponse> => {
-  const { serviceId } = user;
+export const signUpWithUserData = async (
+  userData: UserInsertPayload,
+): Promise<AuthResponse> => {
+  const { service_id } = userData;
   //SignUp with supabase email auth
   const signUpPromise = await supabase.auth.signUp({
-    email: `${serviceId}@tanyak.com`,
-    password: serviceId,
+    email: `${service_id}@tanyak.com`,
+    password: service_id,
   });
 
   if (signUpPromise.data.user) {
     //Add user data on supabse backend
-    const insertData: InsertUser = {
-      service_id: serviceId,
-      class: user.class,
-      name: user.name,
-    };
-    await supabase.from("user").insert([insertData]);
+    await supabase.from("user").insert([userData]);
   }
 
   return signUpPromise;
