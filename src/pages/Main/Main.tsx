@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styles from "./Main.module.scss";
-import LaunDryerButton from "../../components/LaunDryerButton/LaunDryerButton";
+import LaunDryerButton from "../../components/ApplianceButton/ApplianceButton";
 import Modal from "../../components/Modal/Modal";
 import Carousel from "../../components/Carousel/Carousel";
 import { User } from "../../types";

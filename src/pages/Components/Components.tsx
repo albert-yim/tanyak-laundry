@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { ButtonTest } from "../../components/Button/Button";
-import { LaunDryerButtonTest } from "../../components/LaunDryerButton/LaunDryerButton";
+import { ApplianceButtonTest } from "../../components/ApplianceButton/ApplianceButton";
 import { InputTest } from "../../components/Input/Input";
 import { ModalTest } from "../../components/Modal/Modal";
 import { ModeButtonTest } from "../../components/ModeButton/ModeButton";
@@ -40,7 +40,7 @@ export default function ComponentsPage() {
       case "modebutton":
         return <ModeButtonTest />;
       case "laundryerButton":
-        return <LaunDryerButtonTest />;
+        return <ApplianceButtonTest />;
       case "button":
         return <ButtonTest />;
       case "input":
