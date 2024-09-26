@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./Main.module.scss";
 import LaunDryerButton from "../../components/ApplianceButton/ApplianceButton";
 import Modal from "../../components/Modal/Modal";
 import Carousel from "../../components/Carousel/Carousel";
-import { User } from "../../types";
+import { Appliance, User } from "../../types";
+import { fetchAppliances } from "../../api";
 
 type MainType = {
   user: User;
@@ -113,6 +114,19 @@ const DRYERS: any[] = [
 
 export default function Main({ user }: MainType) {
   const [modalVisible, setModalVisible] = useState(false); // useState for modal visibility
+
+  const [washingMachine, setWashingMachine] = useState<Appliance[]>([]);
+  const [dryer, setDryer] = useState<Appliance[]>([]);
+  console.log(washingMachine);
+  console.log(dryer);
+
+  useEffect(() => {
+    fetchAppliances().then((appliances) => {
+      setWashingMachine(appliances.filter((a) => a.type === "washing_machine"));
+      setDryer(appliances.filter((a) => a.type === "dryer"));
+    });
+  }, []);
+
   const FirstSlide = (
     <div className={styles.machineWrapper}>
       <>
