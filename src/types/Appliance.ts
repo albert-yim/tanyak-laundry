@@ -21,7 +21,7 @@ export type Appliance = {
   // type of Appliance
   type: ApplianceType;
   // last usage of this appliance
-  last_usage: UsageHistory | null;
+  lastUsage: UsageHistory;
 };
 
 export type UsageHistory = {
