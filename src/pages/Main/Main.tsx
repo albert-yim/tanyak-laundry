@@ -24,10 +24,10 @@ export default function Main({ user }: MainType) {
       .filter((a) => a.type === "dryer")
       .sort((a, b) => a.location - b.location);
     return [
-      ...washingMachines.slice(0, 2),
       ...dryers.slice(0, 2),
-      ...washingMachines.slice(2, 4),
+      ...washingMachines.slice(0, 2),
       ...dryers.slice(2, 4),
+      ...washingMachines.slice(2, 4),
     ];
   };
 
