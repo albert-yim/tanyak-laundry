@@ -1,34 +1,28 @@
 import React, { useMemo } from "react";
 
 import styles from "./ApplianceButton.module.scss";
-import {ReactComponent as DRYER_ICON} from "../../assets/dryer.svg";
-import {ReactComponent as LAUNDRY_ICON} from "../../assets/washingMachine.svg";
+import { ReactComponent as DRYER_ICON } from "../../assets/dryer.svg";
+import { ReactComponent as LAUNDRY_ICON } from "../../assets/washingMachine.svg";
+import { UsageHistory } from "../../types";
 
-type User = {
-  id: string;
-  name: string;
-  rank: "병장" | "상병" | "일병" | "이병";
-};
 type ApplianceButtonType = {
   onClick: () => void;
-  type: "laundry" | "dryer";
-  typeNumber: 1 | 2 | 3 | 4;
-  user: User;
-  startTime: string;
-  endTime: string;
+  type: "washing_machine" | "dryer";
+  position: number;
+  lastUsage: UsageHistory;
 };
 
 export default function ApplianceButton({
   onClick,
   type,
-  typeNumber,
-  user,
-  startTime,
-  endTime,
+  position,
+  lastUsage,
 }: ApplianceButtonType) {
   const typeName = type === "dryer" ? "건조기" : "세탁기";
   const typeIcon =
     type === "dryer" ? <DRYER_ICON width="15" /> : <LAUNDRY_ICON width="15" />;
+
+  const { endTime, user } = lastUsage;
   const isUsed = useMemo(() => {
     //TODO: Implement the logic to calculate the rest time
     const isUsed = false;
@@ -41,7 +35,7 @@ export default function ApplianceButton({
       <div className={styles.contentsWrapper}>
         <div className={styles.header}>
           <div className={styles.iconWrapper}>{typeIcon}</div>
-          <span>{`${typeNumber}번 ${typeName}`}</span>
+          <span>{`${position}번 ${typeName}`}</span>
         </div>
         <span className={styles.usage}>{isUsed ? "사용 중" : "사용 가능"}</span>
         <span className={styles.time}>
@@ -53,12 +47,18 @@ export default function ApplianceButton({
   );
 }
 
-const USER1: User = {
-  id: "23-70006795",
+const USER1: UsageHistory["user"] = {
+  id: "11",
+  serviceId: "23-70006795",
   name: "임찬양",
-  rank: "병장",
+  class: "846",
 };
 export function ApplianceButtonTest() {
+  const lastUsage: UsageHistory = {
+    user: USER1,
+    startTime: "2024-09-03T23:23:23",
+    endTime: "2024-09-03T23:59:59",
+  };
   return (
     <div
       style={{
@@ -69,20 +69,16 @@ export function ApplianceButtonTest() {
       }}
     >
       <ApplianceButton
-        onClick= {()=>console.log("Clicked!")}
-        type="laundry"
-        typeNumber={1}
-        user={USER1}
-        startTime={"2024-09-03T23:23:23"}
-        endTime={"2024-09-03T23:59:59"}
+        onClick={() => console.log("Clicked!")}
+        type="washing_machine"
+        position={1}
+        lastUsage={lastUsage}
       />
       <ApplianceButton
-        onClick= {()=>console.log("Clicked!")}
+        onClick={() => console.log("Clicked!")}
         type="dryer"
-        typeNumber={3}
-        user={USER1}
-        startTime={"2024-09-03T23:23:23"}
-        endTime={"2024-09-03T23:59:59"}
+        position={3}
+        lastUsage={lastUsage}
       />
     </div>
   );
