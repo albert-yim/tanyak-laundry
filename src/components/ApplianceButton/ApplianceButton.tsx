@@ -8,14 +8,14 @@ import { UsageHistory } from "../../types";
 type ApplianceButtonType = {
   onClick: () => void;
   type: "washing_machine" | "dryer";
-  position: number;
+  location: number;
   lastUsage: UsageHistory;
 };
 
 export default function ApplianceButton({
   onClick,
   type,
-  position,
+  location,
   lastUsage,
 }: ApplianceButtonType) {
   const typeName = type === "dryer" ? "건조기" : "세탁기";
@@ -35,13 +35,13 @@ export default function ApplianceButton({
       <div className={styles.contentsWrapper}>
         <div className={styles.header}>
           <div className={styles.iconWrapper}>{typeIcon}</div>
-          <span>{`${position}번 ${typeName}`}</span>
+          <span>{`${location}번 ${typeName}`}</span>
         </div>
         <span className={styles.usage}>{isUsed ? "사용 중" : "사용 가능"}</span>
         <span className={styles.time}>
           {isUsed ? "35m 25s" : "마지막 사용: "}
         </span>
-        <span className={styles.name}>{`${user.rank} ${user.name}`}</span>
+        <span className={styles.name}>{`${user.class}기 ${user.name}`}</span>
       </div>
     </div>
   );
@@ -71,13 +71,13 @@ export function ApplianceButtonTest() {
       <ApplianceButton
         onClick={() => console.log("Clicked!")}
         type="washing_machine"
-        position={1}
+        location={1}
         lastUsage={lastUsage}
       />
       <ApplianceButton
         onClick={() => console.log("Clicked!")}
         type="dryer"
-        position={3}
+        location={3}
         lastUsage={lastUsage}
       />
     </div>
