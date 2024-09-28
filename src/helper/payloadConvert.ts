@@ -1,4 +1,4 @@
-import { Appliance, ApplianceMode, AppliancePayload } from "../types";
+import { Appliance, AppliancePayload } from "../types";
 
 /**
  * helper function to convert
@@ -25,25 +25,3 @@ export function convertAppliancesPayload(
     },
   }));
 }
-// const [appliances, setAppliances] = useState<Appliance[]>([]);
-//
-// const rearrangeAppliances = (apps: Appliance[]) => {
-//   const washingMachines = apps
-//     .filter((a) => a.type === "washing_machine")
-//     .sort((a, b) => a.location - b.location);
-//   const dryers = apps
-//     .filter((a) => a.type === "dryer")
-//     .sort((a, b) => a.location - b.location);
-//   return [
-//     ...washingMachines.slice(0, 2),
-//     ...dryers.slice(0, 2),
-//     ...washingMachines.slice(2, 4),
-//     ...dryers.slice(2, 4),
-//   ];
-// };
-//
-// useEffect(() => {
-//   fetchAppliances().then((appliances) => {
-//     setAppliances(rearrangeAppliances(appliances));
-//   });
-// }, []);
