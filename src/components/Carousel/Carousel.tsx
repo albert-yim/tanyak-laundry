@@ -10,7 +10,7 @@ export type CarouselTypes = {
 export default function Carousel({ contents }: CarouselTypes) {
   const settings = {
     dots: true,
-    infinite: true,
+    infinite: false,
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
