@@ -27,7 +27,7 @@ export type AppliancePayload = {
   location: number;
   type: ApplianceType;
   status: boolean;
-  usage_history: UsageHistoryPayload;
+  usage_history?: UsageHistoryPayload;
 };
 
 /**
