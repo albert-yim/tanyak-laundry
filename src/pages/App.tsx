@@ -10,6 +10,7 @@ import { supabase } from "../supabase";
 import { Session } from "@supabase/supabase-js";
 
 const DemoUser: User = {
+  id: "uuid",
   serviceId: "23-70001234",
   class: "846",
   name: "김공군",

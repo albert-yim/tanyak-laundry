@@ -1,9 +1,4 @@
-import {
-  Appliance,
-  ApplianceMode,
-  ApplianceModePayload,
-  AppliancePayload,
-} from "../types";
+import { Appliance, AppliancePayload } from "../types";
 
 /**
  * helper function to convert
@@ -18,28 +13,15 @@ export function convertAppliancesPayload(
     location: data.location,
     type: data.type,
     status: data.status,
-    last_usage: data.usage_history
-      ? {
-          createdAt: data.usage_history.created_at,
-          endAt: data.usage_history.end_at,
-          user: data.usage_history.user,
-        }
-      : null,
-  }));
-}
-
-/**
- * helper function to convert
- * from ApplianceMode backend data type
- * to applianceMode frontend data type
- */
-export function convertApplianceModePayload(
-  payload: ApplianceModePayload[],
-): ApplianceMode[] {
-  return payload.map((data) => ({
-    id: data.id,
-    applianceType: data.appliance_type,
-    name: data.name,
-    duration: data.duration,
+    lastUsage: {
+      startTime: data.usage_history?.start_time ?? "20230320T000000",
+      endTime: data.usage_history?.end_time ?? "20241219T000000",
+      user: data.usage_history?.user ?? {
+        name: "김공군",
+        serviceId: "00-00000000",
+        class: "000",
+        id: "",
+      },
+    },
   }));
 }

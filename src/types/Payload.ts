@@ -5,8 +5,8 @@ import { User } from "./User";
  * UsageHistory Payload from backend
  */
 export type UsageHistoryPayload = {
-  created_at: string;
-  end_at: string;
+  start_time: string;
+  end_time: string;
   user: User;
 };
 
@@ -14,33 +14,26 @@ export type UsageHistoryPayload = {
  * Payload for insert usageHistroy to backend
  */
 export type UsageHistoryInsertPayload = {
-  user_id: string;
-  mode_id: number;
-  appliance_id: number;
-  end_at: string;
+  //user id
+  uid: string;
+  //appliance id
+  aid: string;
+  // end time of appliance
+  end_time: string;
 };
 
 export type AppliancePayload = {
-  id: number;
+  id: string;
   location: number;
   type: ApplianceType;
   status: boolean;
-  usage_history: UsageHistoryPayload;
-};
-
-export type ApplianceModePayload = {
-  id: number;
-  appliance_type: ApplianceType;
-  // name of mode
-  name: string;
-  // duration of mode in min
-  duration: number;
+  usage_history?: UsageHistoryPayload;
 };
 
 /**
  * payload for insert user data
  */
-export type InsertUser = {
+export type UserInsertPayload = {
   name: string;
   class: string;
   service_id: string;

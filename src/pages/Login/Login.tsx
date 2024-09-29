@@ -21,11 +21,9 @@ export default function Login() {
     if (isSignUp) {
       //should show someting to indicate signUp
       signUpWithUserData({
-        serviceId: number,
+        service_id: number,
         name,
         class: userClass,
-        rank: "병장",
-        serviceStartedAt: "20230320T0000",
       });
       return;
     }

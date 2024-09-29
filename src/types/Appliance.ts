@@ -12,7 +12,8 @@ export type ApplianceMode = {
 };
 
 export type Appliance = {
-  id: number;
+  //uuid
+  id: string;
   // location of Appliance
   location: number;
   // is the appliacne running or not
@@ -20,16 +21,14 @@ export type Appliance = {
   // type of Appliance
   type: ApplianceType;
   // last usage of this appliance
-  last_usage: UsageHistory | null;
+  lastUsage: UsageHistory;
 };
 
 export type UsageHistory = {
   // start time of Appliance
-  createdAt: string;
+  startTime: string;
   // end time of Appliance
-  endAt: string;
+  endTime: string;
   // user who used appliance
   user: User;
-  // which mode is applied
-  // mode_id: number;
 };

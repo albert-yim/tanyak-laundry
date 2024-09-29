@@ -22,7 +22,7 @@ export default function Modal({ visible, children, onClose }: ModalTypes) {
         <div className={styles.closeButton} onClick={onClose}>
           <CLOSE_ICON />
         </div>
-        {children}       
+        {children}
       </div>
     </>
   );
