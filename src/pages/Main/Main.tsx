@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styles from "./Main.module.scss";
 import ApplianceButton from "../../components/ApplianceButton/ApplianceButton";
-import Modal from "../../components/Modal/Modal";
 import Carousel from "../../components/Carousel/Carousel";
 import { Appliance, User } from "../../types";
 import { fetchAppliances } from "../../api";
