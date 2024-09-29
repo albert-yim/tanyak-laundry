@@ -1,36 +1,38 @@
-import React, { MouseEventHandler, useEffect, useState } from "react";
+import React, { MouseEventHandler, useMemo } from "react";
 import styles from "./ModeButton.module.scss";
 import ModeOption from "./ModeOption";
-
-type ModeButtonOptionType = {
-  left?: OptionType[];
-  right?: OptionType[];
-};
-type OptionType = {
-  // name of the mode
-  mode: string;
-  position: "top" | "center" | "bottom";
-};
+import { ReactComponent as DRYER_ICON } from "../../assets/dryer.svg";
+import { ReactComponent as LAUNDRY_ICON } from "../../assets/washingMachine.svg";
+import { ReactComponent as PAUSE_ICON } from "../../assets/pause.svg";
+import { ModeButtonOptionType, OptionType } from "../../types";
 
 type ModeButtonType = {
-  // Options to swho on ModeButton
+  // Options to show on ModeButton
   modeOptions: ModeButtonOptionType;
   // callback function when modebutton clicked
   onClick: MouseEventHandler;
-  // current selected mode
-  mode: string;
-  // set mode
-  setMode: (m: string) => void;
+  selectedMode: OptionType;
+  setSelectedMode: (m: OptionType) => void;
   // icon name
-  icon: "laundry" | "dryer" | "stop";
+  icon: "washing_machine" | "dryer" | "stop";
 };
 export default function ModeButton({
   modeOptions,
   onClick,
-  mode,
-  setMode,
+  selectedMode,
+  setSelectedMode,
   icon,
 }: ModeButtonType) {
+  const typeIcon = useMemo(() => {
+    if (icon === "dryer") {
+      return <DRYER_ICON width="24" />;
+    } else if (icon === "washing_machine") {
+      return <LAUNDRY_ICON width="24" />;
+    } else {
+      return <PAUSE_ICON width="24" />;
+    }
+  }, [icon]);
+
   return (
     <div className={styles.modeButtonWrapper}>
       <div className={styles.outerCircle}>
@@ -42,8 +44,10 @@ export default function ModeButton({
                 {modeOptions[lr]?.map((option) => (
                   <ModeOption
                     mode={option.mode}
-                    currentMode={mode}
-                    setMode={setMode}
+                    selected={option.mode === selectedMode.mode}
+                    optionClicked={() => {
+                      setSelectedMode(option);
+                    }}
                     position={`${lr}-${option.position}`}
                   />
                 ))}
@@ -53,113 +57,13 @@ export default function ModeButton({
         </div>
       </div>
       <div className={styles.innerCircle} onClick={onClick}>
-        <img src={""} alt={icon} />
-        <span>{icon === "stop" ? "Stop" : "Start"}</span>
+        {typeIcon}
+        <span>{icon === "stop" ? "정지" : "시작"}</span>
       </div>
     </div>
   );
 }
 
 export function ModeButtonTest() {
-  const [laundryMode, setLaundryMode] = useState<string>(
-    LAUNDRY_OPTIONS?.left?.[0].mode || "",
-  );
-  const [laundryStart, setLaundryStart] = useState<string>("");
-  return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        width: "100%",
-        height: "100%",
-        padding: 30,
-      }}
-    >
-      <h3>Laundry mode button</h3>
-      <div
-        style={{
-          display: "flex",
-          width: "100%",
-        }}
-      >
-        <ModeButton
-          onClick={() => setLaundryStart(laundryMode)}
-          modeOptions={LAUNDRY_OPTIONS}
-          mode={laundryMode}
-          setMode={setLaundryMode}
-          icon={"laundry"}
-        />
-        <div>{`start with ${laundryStart}`}</div>
-      </div>
-      <h3>Dryer mode button</h3>
-      <div
-        style={{
-          display: "flex",
-          width: "100%",
-        }}
-      >
-        <ModeButton
-          onClick={() => setLaundryStart(laundryMode)}
-          modeOptions={DRYER_OPTIONS}
-          mode={laundryMode}
-          setMode={setLaundryMode}
-          icon={"laundry"}
-        />
-        <div>{`start with ${laundryStart}`}</div>
-      </div>
-    </div>
-  );
+  return <div>modebutton test</div>;
 }
-
-const DRYER_OPTIONS: ModeButtonOptionType = {
-  left: [
-    {
-      mode: "표준건조",
-      position: "top",
-    },
-    {
-      mode: "강력건조",
-      position: "bottom",
-    },
-  ],
-  right: [
-    {
-      mode: "섬세의류",
-      position: "top",
-    },
-    {
-      mode: "10분건조",
-      position: "bottom",
-    },
-  ],
-};
-const LAUNDRY_OPTIONS: ModeButtonOptionType = {
-  left: [
-    {
-      mode: "표준세탁",
-      position: "top",
-    },
-    {
-      mode: "강력세탁",
-      position: "center",
-    },
-    {
-      mode: "청정세탁",
-      position: "bottom",
-    },
-  ],
-  right: [
-    {
-      mode: "물/란제리",
-      position: "top",
-    },
-    {
-      mode: "합성섬유",
-      position: "center",
-    },
-    {
-      mode: "헹굼+탈수",
-      position: "bottom",
-    },
-  ],
-};
