@@ -31,6 +31,9 @@
     height: 90px;
     border-radius: 50%;
     box-shadow: var(--default-box-shadow);
+    span{
+      margin-top: 3px;
+    }
   }
   .modeOptions {
     width: 100%;

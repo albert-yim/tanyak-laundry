@@ -1,12 +1,15 @@
-.modalBackground{
+.modalBackground {
   position: fixed;
-  top:0; left: 0; bottom: 0; right: 0;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
   background: var(--secondary-color);
   opacity: 0.6;
   z-index: 998;
 }
 
-.modalWrapper{
+.modalWrapper {
   height: 348px;
   width: 323px;
   border-radius: 30px;
@@ -18,8 +21,13 @@
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 999;
-  
-  .closeButton{
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  .closeButton {
     display: flex;
     justify-content: center;
     align-items: center;
