@@ -16,7 +16,8 @@ export default function Main({ user }: MainType) {
     null,
   );
 
-  useEffect(() => {
+  const getAppliances = () => {
+    // alert("get appliances");
     // rearrage appliances
     const rearrangeAppliances = (apps: Appliance[]) => {
       const washingMachines = apps
@@ -37,6 +38,9 @@ export default function Main({ user }: MainType) {
     fetchAppliances().then((appliances) => {
       setAppliances(rearrangeAppliances(appliances));
     });
+  };
+  useEffect(() => {
+    getAppliances();
   }, []);
 
   const FirstSlide = (
@@ -76,9 +80,13 @@ export default function Main({ user }: MainType) {
         <Carousel contents={SLIDES} />
       </div>
       <ModeModal
+        user={user}
         visible={!!selectedAppliance}
         appliance={selectedAppliance}
-        onClose={() => setSelectedAppliance(null)}
+        onClose={(refetch: boolean) => {
+          if (refetch) getAppliances();
+          setSelectedAppliance(null);
+        }}
       />
     </div>
   );
