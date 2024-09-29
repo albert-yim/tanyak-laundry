@@ -7,6 +7,7 @@ import {
   AppliancePayload,
   UsageHistoryInsertPayload,
   UserInsertPayload,
+  UserPayload,
 } from "./types";
 
 export const fetchAppliances = async (): Promise<Appliance[]> => {
@@ -68,4 +69,33 @@ export const signInWithId = async (id: string) => {
     password: id,
   });
   return { data, error };
+};
+
+/**
+ * fetch user data with session user id
+ */
+export const fetchCurrentUser = async () => {
+  //get current session user
+  const authResponse = await supabase.auth.getUser();
+  if (!!authResponse.error || !authResponse.data.user?.id) {
+    console.log("[ERROR] fetch current user: error getUser");
+    return null;
+  }
+  const uid = authResponse.data.user.id;
+  const { data, error } = await supabase
+    .from("user")
+    .select("id, name, class, service_id")
+    .eq("id", uid)
+    .returns<UserPayload[]>();
+  if (!!error || !data.length) {
+    console.log("[ERROR] fetch current user: error fetch user data");
+    return null;
+  }
+  const user = data[0];
+  return {
+    id: user.id,
+    name: user.name,
+    class: user.class,
+    serviceId: user.service_id,
+  };
 };
