@@ -8,6 +8,7 @@ import Logout from "./Logout/Logout";
 import { User } from "../types";
 import { supabase } from "../supabase";
 import { Session } from "@supabase/supabase-js";
+import { fetchCurrentUser } from "../api";
 
 const DemoUser: User = {
   id: "uuid",
@@ -20,6 +21,7 @@ const DemoUser: User = {
 
 function App() {
   const [session, setSession] = useState<Session | null>(null);
+  const [user, setUser] = useState<User | null>(null);
 
   useEffect(() => {
     supabase.auth.getSession().then(({ data: { session } }) => {
@@ -28,11 +30,19 @@ function App() {
     const {
       data: { subscription },
     } = supabase.auth.onAuthStateChange((_e, session) => {
-      console.log("auth state changed");
       setSession(session);
     });
     return () => subscription.unsubscribe();
   }, []);
+
+  useEffect(() => {
+    if (!session) {
+      setUser(null);
+      return;
+    }
+
+    fetchCurrentUser().then((user) => setUser(user));
+  }, [session]);
 
   return (
     <BrowserRouter>
@@ -43,13 +53,7 @@ function App() {
         ></Route>
         <Route
           path="/"
-          element={
-            session ? (
-              <Main user={DemoUser} />
-            ) : (
-              <Navigate to="/login" replace />
-            )
-          }
+          element={user ? <Main user={user} /> : <>Loading</>}
         ></Route>
         <Route path="/components" element={<Compoennts />}></Route>
         <Route path="/logout" element={<Logout />}></Route>
