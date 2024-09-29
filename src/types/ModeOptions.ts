@@ -1,4 +1,4 @@
-export type ModeButtonOpionType = {
+export type ModeButtonOptionType = {
   left?: OptionType[];
   right?: OptionType[];
 };
