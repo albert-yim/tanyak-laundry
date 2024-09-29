@@ -36,3 +36,12 @@ export type ApplianceModePayload = {
   // duration of mode in min
   duration: number;
 };
+
+/**
+ * payload for insert user data
+ */
+export type InsertUser = {
+  name: string;
+  class: string;
+  service_id: string;
+};
