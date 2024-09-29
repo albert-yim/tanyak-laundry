@@ -5,10 +5,10 @@ import cn from "classnames";
 type ModeOptionTypes = {
   // name of the mode
   mode: string;
-  // selected mode
-  currentMode: string;
-  // callback function to call when button is clicked
-  setMode: (mode: string) => void;
+  // whether current option is selected or not
+  selected: boolean;
+  // callback function to click current option button
+  optionClicked: () =>void;
   // position of the mode button
   position:
     | "left-top"
@@ -23,8 +23,8 @@ type ModeOptionTypes = {
  */
 export default function ModeOption({
   mode,
-  currentMode,
-  setMode,
+  selected,
+  optionClicked,
   position,
 }: ModeOptionTypes) {
   const [lr, tcb] = position.split("-");
@@ -33,7 +33,7 @@ export default function ModeOption({
       key={mode}
       className={cn(styles.modeOptionWrapper, {
         [styles.modeOptionWrapper__right]: lr === "right",
-        [styles.modeOptionWrapper__selected]: mode === currentMode,
+        [styles.modeOptionWrapper__selected]: selected,
       })}
     >
       <div
@@ -41,11 +41,11 @@ export default function ModeOption({
           [styles.optionButton__top]: tcb === "top",
           [styles.optionButton__bottom]: tcb === "bottom",
         })}
-        onClick={() => setMode(mode)}
+        onClick={optionClicked}
       >
         <span>{mode}</span>
       </div>
-      <div className={styles.optionCircle} onClick={() => setMode(mode)} />
+      <div className={styles.optionCircle} onClick={optionClicked} />
     </div>
   );
 }
