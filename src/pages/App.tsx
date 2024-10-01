@@ -47,14 +47,14 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route
-          path="/login"
-          element={session ? <Navigate to="/" replace /> : <Login />}
-        ></Route>
-        <Route
-          path="/"
-          element={user ? <Main user={user} /> : <>Loading</>}
-        ></Route>
+        {session ? (
+          <Route
+            path="/"
+            element={user ? <Main user={user} /> : <>Loading</>}
+          ></Route>
+        ) : (
+          <Route path="/" element={<Login />}></Route>
+        )}
         <Route path="/components" element={<Compoennts />}></Route>
         <Route path="/logout" element={<Logout />}></Route>
       </Routes>
