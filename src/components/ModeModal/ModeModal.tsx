@@ -48,13 +48,13 @@ export default function ModeModal({
   };
 
   // insert data on the backend and close modal
-  const modeButtonClicked = () => {
+  const modeButtonClicked = async () => {
     if (!appliance?.id) {
       console.log("[ERROR] Insert usageHistory: aid cannot be empty stirng");
       return;
     }
 
-    insertUsageHistory({
+    await insertUsageHistory({
       uid: user.id,
       aid: appliance.id,
       end_time: getEndTime(),

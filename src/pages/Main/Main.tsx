@@ -16,8 +16,12 @@ export default function Main({ user }: MainType) {
     null,
   );
 
+  useEffect(() => {
+    //get appliances at first
+    getAppliances();
+  }, []);
+
   const getAppliances = () => {
-    // alert("get appliances");
     // rearrage appliances
     const rearrangeAppliances = (apps: Appliance[]) => {
       const washingMachines = apps
@@ -34,14 +38,11 @@ export default function Main({ user }: MainType) {
       ];
     };
 
-    // fetch appliances at first
+    // fetch appliances
     fetchAppliances().then((appliances) => {
       setAppliances(rearrangeAppliances(appliances));
     });
   };
-  useEffect(() => {
-    getAppliances();
-  }, []);
 
   const FirstSlide = (
     <div className={styles.machineWrapper}>
@@ -84,6 +85,7 @@ export default function Main({ user }: MainType) {
         visible={!!selectedAppliance}
         appliance={selectedAppliance}
         onClose={(refetch: boolean) => {
+          //get Appliances from backend when refetch=true
           if (refetch) getAppliances();
           setSelectedAppliance(null);
         }}
