@@ -24,30 +24,31 @@ export default function ApplianceButton({
   const typeName = type === "dryer" ? "건조기" : "세탁기";
   const typeIcon =
     type === "dryer" ? <DRYER_ICON width="15" /> : <LAUNDRY_ICON width="15" />;
+  const totalTime = moment(lastUsage.endTime).diff(
+    moment(lastUsage.startTime),
+    "second",
+  );
+  const remainingPercent = (remainingTime / totalTime) * 100;
 
   function calTimeDiffInSec(endTime: string) {
     const timeDiff = moment(endTime).diff(moment(), "second");
     if (endTime === "" || timeDiff <= 0) return 0;
-    console.log("caltimer");
-    console.log(moment().toLocaleString());
-    console.log(moment(endTime).toLocaleString());
-    console.log(timeDiff);
     return timeDiff;
   }
 
   useEffect(() => {
-    console.log("useEffect lastUsage");
     const timeDiff = calTimeDiffInSec(lastUsage.endTime);
+    // Do not run timer if endTime is passed
     if (timeDiff <= 0) return;
-    setRemainingTime(timeDiff);
 
+    setRemainingTime(timeDiff);
     //set timer to re calculate remainingTime every 10sec
     const timer = setInterval(() => {
-      console.log("Interval");
       const timeDiff = calTimeDiffInSec(lastUsage.endTime);
       setRemainingTime(timeDiff);
 
       if (timeDiff <= 0) {
+        // stop to run inerval if endtime is over current time
         setRemainingTime(0);
         clearInterval(timer);
       }
@@ -60,12 +61,12 @@ export default function ApplianceButton({
   return (
     <div className={styles.wrapper} onClick={onClick}>
       <div
-        className={styles.progress}
+        className={styles.waveProgress}
         style={{
-          height: isUsed ? 0 : "100%",
+          display: isUsed ? "unset" : "none",
+          top: `${remainingPercent}%`,
         }}
       />
-
       <div className={styles.contentsWrapper}>
         <div className={styles.header}>
           <div className={styles.iconWrapper}>{typeIcon}</div>
