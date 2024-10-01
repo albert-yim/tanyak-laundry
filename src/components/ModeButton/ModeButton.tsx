@@ -43,6 +43,7 @@ export default function ModeButton({
               <div className={styles[lr]}>
                 {modeOptions[lr]?.map((option) => (
                   <ModeOption
+                    key={option.mode}
                     mode={option.mode}
                     selected={option.mode === selectedMode.mode}
                     optionClicked={() => {

@@ -31,6 +31,16 @@ export type AppliancePayload = {
 };
 
 /**
+ * payload for fetch user data
+ */
+export type UserPayload = {
+  id: string;
+  name: string;
+  class: string;
+  service_id: string;
+};
+
+/**
  * payload for insert user data
  */
 export type UserInsertPayload = {

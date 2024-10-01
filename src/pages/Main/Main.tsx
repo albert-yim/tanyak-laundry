@@ -17,6 +17,11 @@ export default function Main({ user }: MainType) {
   );
 
   useEffect(() => {
+    //get appliances at first
+    getAppliances();
+  }, []);
+
+  const getAppliances = () => {
     // rearrage appliances
     const rearrangeAppliances = (apps: Appliance[]) => {
       const washingMachines = apps
@@ -33,14 +38,14 @@ export default function Main({ user }: MainType) {
       ];
     };
 
-    // fetch appliances at first
+    // fetch appliances
     fetchAppliances().then((appliances) => {
       setAppliances(rearrangeAppliances(appliances));
     });
-  }, []);
+  };
 
   const FirstSlide = (
-    <div className={styles.machineWrapper}>
+    <div key={"carousel-firstSlide"} className={styles.machineWrapper}>
       {appliances.slice(0, 4).map((appliance) => (
         <ApplianceButton
           key={`${appliance.type}-${appliance.location}`}
@@ -54,7 +59,7 @@ export default function Main({ user }: MainType) {
   );
 
   const SecondSlide = (
-    <div className={styles.machineWrapper}>
+    <div key={"carousel-secondSlide"} className={styles.machineWrapper}>
       {appliances.slice(4, 8).map((appliance) => (
         <ApplianceButton
           key={`${appliance.type}-${appliance.location}`}
@@ -76,9 +81,14 @@ export default function Main({ user }: MainType) {
         <Carousel contents={SLIDES} />
       </div>
       <ModeModal
+        user={user}
         visible={!!selectedAppliance}
         appliance={selectedAppliance}
-        onClose={() => setSelectedAppliance(null)}
+        onClose={(refetch: boolean) => {
+          //get Appliances from backend when refetch=true
+          if (refetch) getAppliances();
+          setSelectedAppliance(null);
+        }}
       />
     </div>
   );
