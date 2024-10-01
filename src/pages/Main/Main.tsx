@@ -45,7 +45,7 @@ export default function Main({ user }: MainType) {
   };
 
   const FirstSlide = (
-    <div className={styles.machineWrapper}>
+    <div key={"carousel-firstSlide"} className={styles.machineWrapper}>
       {appliances.slice(0, 4).map((appliance) => (
         <ApplianceButton
           key={`${appliance.type}-${appliance.location}`}
@@ -59,7 +59,7 @@ export default function Main({ user }: MainType) {
   );
 
   const SecondSlide = (
-    <div className={styles.machineWrapper}>
+    <div key={"carousel-secondSlide"} className={styles.machineWrapper}>
       {appliances.slice(4, 8).map((appliance) => (
         <ApplianceButton
           key={`${appliance.type}-${appliance.location}`}
