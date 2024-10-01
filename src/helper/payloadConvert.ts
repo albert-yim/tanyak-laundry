@@ -14,8 +14,8 @@ export function convertAppliancesPayload(
     type: data.type,
     status: data.status,
     lastUsage: {
-      startTime: data.usage_history?.start_time ?? "20230320T000000",
-      endTime: data.usage_history?.end_time ?? "20241219T000000",
+      startTime: data.usage_history?.start_time ?? "",
+      endTime: data.usage_history?.end_time ?? "",
       user: data.usage_history?.user ?? {
         name: "김공군",
         serviceId: "00-00000000",
