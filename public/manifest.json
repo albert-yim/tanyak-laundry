@@ -1,6 +1,6 @@
 {
-  "name": "tanyak laundry",
   "short_name": "tanyak",
+  "name": "tanyak laundary",
   "icons": [
     {
       "src": "favicon.ico",
@@ -26,13 +26,12 @@
     {
       "src": "icon-512-maskable.png",
       "type": "image/png",
-      "sizes": "512x512"
+      "sizes": "512x512",
       "purpose": "maskable"
-    },
+    }
   ],
   "start_url": ".",
   "display": "standalone",
   "theme_color": "#000000",
-  "background_color": "#ffffff",
-  "description": "tanyak laundry"
+  "background_color": "#ffffff"
 }
