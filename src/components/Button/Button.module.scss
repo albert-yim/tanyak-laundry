@@ -1,20 +1,9 @@
-
-@font-face {
-  font-family: "NanumSquareRoundB";
-  font-weight: normal;
-  src: url("https://replit.com/@KunjoongKim/tanyak-laundry#src/assets/fonts/NanumSquareRoundB.ttf") format("truetype");
-}
-
-
-
-.buttonWrapper{
-  background-color: #E8AE1E;
+.buttonWrapper {
+  background-color: var(--primary-color);
   border-radius: 30px;
   border-color: transparent;
 
-  font-family: 'NanumSquareRoundB';
   font-size: 25px;
   width: 100%;
   height: 100%;
-  
 }
