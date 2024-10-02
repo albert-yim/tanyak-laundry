@@ -1,8 +1,8 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./ApplianceButton.module.scss";
-import { ReactComponent as DRYER_ICON } from "../../assets/dryer.svg";
-import { ReactComponent as LAUNDRY_ICON } from "../../assets/washingMachine.svg";
-import { UsageHistory } from "../../types";
+import { ReactComponent as DRYER_ICON } from "@assets/dryer.svg";
+import { ReactComponent as LAUNDRY_ICON } from "@assets/washingMachine.svg";
+import { UsageHistory } from "@src/types";
 import moment from "moment";
 
 type ApplianceButtonType = {

@@ -1,10 +1,10 @@
 import React, { MouseEventHandler, useMemo } from "react";
 import styles from "./ModeButton.module.scss";
 import ModeOption from "./ModeOption";
-import { ReactComponent as DRYER_ICON } from "../../assets/dryer.svg";
-import { ReactComponent as LAUNDRY_ICON } from "../../assets/washingMachine.svg";
-import { ReactComponent as PAUSE_ICON } from "../../assets/pause.svg";
-import { ModeButtonOptionType, OptionType } from "../../types";
+import { ReactComponent as DRYER_ICON } from "@assets/dryer.svg";
+import { ReactComponent as LAUNDRY_ICON } from "@assets/washingMachine.svg";
+import { ReactComponent as PAUSE_ICON } from "@assets/pause.svg";
+import { ModeButtonOptionType, OptionType } from "@src/types";
 
 type ModeButtonType = {
   // Options to show on ModeButton

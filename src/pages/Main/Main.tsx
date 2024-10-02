@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from "react";
 import styles from "./Main.module.scss";
-import ApplianceButton from "../../components/ApplianceButton/ApplianceButton";
-import Carousel from "../../components/Carousel/Carousel";
-import { Appliance, User } from "../../types";
-import { fetchAppliances } from "../../api";
-import ModeModal from "../../components/ModeModal/ModeModal";
+import { Appliance, User } from "@src/types";
+import { fetchAppliances } from "@api";
+import { ModeModal, Carousel, ApplianceButton } from "@components";
 
 type MainType = {
   user: User;

@@ -1,4 +1,4 @@
-import { Appliance, AppliancePayload } from "../types";
+import { Appliance, AppliancePayload } from "@src/types";
 
 /**
  * helper function to convert

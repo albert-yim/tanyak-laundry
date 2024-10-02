@@ -2,9 +2,9 @@ import React, { useState, ReactNode, useEffect, useMemo } from "react";
 import styles from "./ModeModal.module.scss";
 import Modal from "../Modal/Modal";
 import ModeButton from "../ModeButton/ModeButton";
-import { Appliance, OptionType, ModeButtonOptionType, User } from "../../types";
+import { Appliance, OptionType, ModeButtonOptionType, User } from "@src/types";
 import moment from "moment";
-import { insertUsageHistory } from "../../api";
+import { insertUsageHistory } from "@api";
 
 export type ModeModalTypes = {
   // callback function to close modal

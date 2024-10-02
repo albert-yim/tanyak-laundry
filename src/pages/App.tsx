@@ -5,10 +5,10 @@ import Compoennts from "./Components/Components";
 import Login from "./Login/Login";
 import Main from "./Main/Main";
 import Logout from "./Logout/Logout";
-import { User } from "../types";
-import { supabase } from "../supabase";
+import { User } from "@src/types";
+import { supabase } from "@src/supabase";
 import { Session } from "@supabase/supabase-js";
-import { fetchCurrentUser } from "../api";
+import { fetchCurrentUser } from "@api";
 
 const DemoUser: User = {
   id: "uuid",

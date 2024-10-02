@@ -1,12 +1,14 @@
 import React, { useState } from "react";
-import { ButtonTest } from "../../components/Button/Button";
-import { ApplianceButtonTest } from "../../components/ApplianceButton/ApplianceButton";
-import { InputTest } from "../../components/Input/Input";
-import { ModalTest } from "../../components/Modal/Modal";
-import { ModeButtonTest } from "../../components/ModeButton/ModeButton";
-import { CarouselTest } from "../../components/Carousel/Carousel";
-import { insertUsageHistory, fetchAppliances } from "../../api";
-import { UsageHistoryInsertPayload } from "../../types";
+import {
+  ButtonTest,
+  ApplianceButtonTest,
+  InputTest,
+  ModalTest,
+  ModeButtonTest,
+  CarouselTest,
+} from "@components";
+import { insertUsageHistory, fetchAppliances } from "@api";
+import { UsageHistoryInsertPayload } from "@src/types";
 
 type Components =
   | "button"
