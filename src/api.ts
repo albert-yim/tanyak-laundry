@@ -1,14 +1,13 @@
-import { AuthResponse, AuthTokenResponsePassword } from "@supabase/supabase-js";
-import { convertAppliancesPayload } from "./helper/payloadConvert";
-import { supabase } from "./supabase";
+import { AuthResponse } from "@supabase/supabase-js";
+import { convertAppliancesPayload } from "@helper/payloadConvert";
+import { supabase } from "@src/supabase";
 import {
-  ApplianceMode,
   Appliance,
   AppliancePayload,
   UsageHistoryInsertPayload,
   UserInsertPayload,
   UserPayload,
-} from "./types";
+} from "@src/types";
 
 export const fetchAppliances = async (): Promise<Appliance[]> => {
   const { data, error } = await supabase

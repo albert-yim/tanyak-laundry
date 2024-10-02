@@ -14,7 +14,16 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    "baseUrl": "./",
+    "paths": {
+      "@src/*": ["src/*"],
+      "@components": ["src/components/index.ts"],
+      "@components/*": ["src/components/*"],
+      "@api": ["src/api.ts"],
+      "@assets/*": ["src/assets/*"],
+      "@helper/*": ["src/helper/*"]
+    }
   },
-  "include": ["src", "./declaration.d.ts"]
+  "include": ["src", "./declaration.d.ts", "carco.config.js"]
 }

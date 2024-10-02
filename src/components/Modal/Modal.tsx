@@ -1,6 +1,6 @@
 import React, { useState, ReactNode } from "react";
 import styles from "./Modal.module.scss";
-import { ReactComponent as CLOSE_ICON } from "../../assets/close.svg";
+import { ReactComponent as CLOSE_ICON } from "@assets/close.svg";
 
 export type ModalTypes = {
   onClose: () => void;
