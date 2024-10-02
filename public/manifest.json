@@ -1,6 +1,6 @@
 {
+  "name": "tanyak laundry",
   "short_name": "tanyak",
-  "name": "tanyak laundary",
   "icons": [
     {
       "src": "favicon.ico",
@@ -33,5 +33,6 @@
   "start_url": ".",
   "display": "standalone",
   "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "background_color": "#ffffff",
+  "description": "tanyak laundry"
 }
