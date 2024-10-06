@@ -1,18 +1,38 @@
 .timePickerWrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 500px;
     .numbersWrapper{
         display: flex;
-        gap: 5px;
-    }
-    .labelWrapper{
-        width: 30px;
-        height: 30px;
-        background-color: grey;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        span{
-            font-size: 30;
+        align-items:center;
+        width: 150px;
+        overflow-x: scroll;
+        transition: transform 0.3s ease;
+        scroll-snap-type: x mandatory;
+        .labelWrapper{
+            scroll-snap-align: start;
+            min-width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            span{
+                font-size: 50;
+                color: var(--secondary-color);
+            }
         }
-
+        
+    }
+    .numbersWrapper::-webkit-scrollbar{
+        display: none;
+    }
+    .vector{
+        width: 24px;
+        height: 1px;
+        background-color: white; 
+    }
+    .text{
+        padding: 5px;
     }
 }
