@@ -8,9 +8,13 @@ type TimePickerTypes = {
 }
 
 export default function TimePicker({duration, setDuration} : TimePickerTypes)  {
-    const numbers = [null,null,...Array.from({ length: 60 }, (_, i) => i),null,null];
+    //list necessary numbers for wheel component
+    const numbers = [null,null,...Array.from({ length: 60 }, (_, i) => i),null,null];\
+
+    //use div element for referencing a value
     const itemRefs = useRef<HTMLDivElement>(null);
 
+    //scroll automatically towards default duration number while rendering
     useEffect(() => {
         itemRefs?.current?.scrollTo({
             left: 30 * duration,
