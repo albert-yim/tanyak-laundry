@@ -1,40 +1,40 @@
-.timePickerWrapper{
+.timePickerWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 500px;
+  .numbersWrapper {
     display: flex;
-    flex-direction: column;
     align-items: center;
-    width: 500px;
-    .numbersWrapper{
-        display: flex;
-        align-items:center;
-        width: 150px;
-        overflow-x: scroll;
-        transition: transform 0.3s ease;
-        scroll-snap-type: x mandatory;
-        .labelWrapper{
-            scroll-snap-align: start;
-            min-width: 30px;
-            height: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            span{
-                font-size: 15px;
-                color: var(--text-color);
-            }
-            &__selected {
-                span{
-                    font-size: 18px;
-                    color: var(--text-reverse-color);
-                }
-            }
+    width: 150px;
+    overflow-x: scroll;
+    transition: transform 0.3s ease;
+    scroll-snap-type: x mandatory;
+    .labelWrapper {
+      scroll-snap-align: start;
+      min-width: 30px;
+      height: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      span {
+        font-size: 15px;
+        color: var(--text-color);
+      }
+      &__selected {
+        span {
+          font-size: 18px;
+          color: var(--text-reverse-color);
         }
+      }
     }
-    .numbersWrapper::-webkit-scrollbar{
-        display: none;
-    }
-    .vector{
-        width: 24px;
-        height: 1px;
-        background-color: var(--text-reverse-color); 
-    }
+  }
+  .numbersWrapper::-webkit-scrollbar {
+    display: none;
+  }
+  .vector {
+    width: 24px;
+    height: 1px;
+    background-color: var(--text-reverse-color);
+  }
 }

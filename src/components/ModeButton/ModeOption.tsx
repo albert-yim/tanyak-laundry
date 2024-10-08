@@ -8,7 +8,7 @@ type ModeOptionTypes = {
   // whether current option is selected or not
   selected: boolean;
   // callback function to click current option button
-  optionClicked: () =>void;
+  optionClicked: () => void;
   // position of the mode button
   position:
     | "left-top"
