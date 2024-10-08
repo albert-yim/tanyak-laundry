@@ -21,19 +21,41 @@ export default function TimePicker({duration, setDuration} : TimePickerTypes)  {
             left: 30 * duration,
         })
     },)
-        
+    
+    
     let xposNumber = 0
+    const timeoutRef = useRef<number | null>(null)
+    const [isScrolling, setIsScrolling] = useState(false)
+
+    //function that runs another function after ensuring scolling is done
+    function handleScroll() {
+        //clears previous timeout
+        if (timeoutRef.current) {
+            clearTimeout(timeoutRef.current)
+        }
+
+        setIsScrolling(true);
+
+        //sets a timeout to run after 200ms of no scrolling
+        timeoutRef.current = window.setTimeout(() => {
+            setIsScrolling(false);
+            handleScrollEnd();
+        }, 200)
+    }
+
+    //function that updates the current position
+    function handleScrollEnd(){
+        const xpos = itemRefs?.current?.scrollLeft ?? -1
+        if (xpos < 0) return
+        xposNumber = xpos/30
+        setDuration(xposNumber)
+    }
+
     return(
         <div className={styles.timePickerWrapper} >
             <div className={styles.numbersWrapper} 
                 ref={itemRefs}
-                onScroll = {() => {
-                    const xpos = itemRefs?.current?.scrollLeft ?? -1
-                        if (xpos < 0) return
-                        xposNumber = xpos/30
-                        console.log(xposNumber)
-                        setDuration(xposNumber)
-                }}
+                onScroll = {handleScroll}
                 >
                 {numbers.map((number) => {
                     return (
