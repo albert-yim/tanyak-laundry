@@ -15,16 +15,14 @@ export default function TimePicker({duration, setDuration} : TimePickerTypes)  {
     //use div element for referencing a value
     const itemRefs = useRef<HTMLDivElement>(null);
     
-    let xposNumber = 0
     //scroll automatically towards default duration number while rendering
     useEffect(() => {
         itemRefs?.current?.scrollTo({
             left: 30 * duration,
         })
+    },)
         
-    },[])
-        
-
+    let xposNumber = 0
     return(
         <div className={styles.timePickerWrapper} >
             <div className={styles.numbersWrapper} 
