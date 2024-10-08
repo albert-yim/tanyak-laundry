@@ -18,11 +18,16 @@
             align-items: center;
             justify-content: center;
             span{
-                font-size: 50;
-                color: var(--secondary-color);
+                font-size: 15px;
+                color: var(--text-color);
+            }
+            &__selected {
+                span{
+                    font-size: 20px;
+                    color: white;
+                }
             }
         }
-        
     }
     .numbersWrapper::-webkit-scrollbar{
         display: none;
