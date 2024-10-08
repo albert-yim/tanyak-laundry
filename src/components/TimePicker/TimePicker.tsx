@@ -2,43 +2,24 @@ import React, {useState,useRef, useEffect} from "react";
 import styles from "./TimePicker.module.scss";
 
 type TimePickerTypes = {
-    
+    duration: number;
+    setDuration: (m:number) => void;
+
 }
 
-export default function TimePicker({} : TimePickerTypes)  {
-    const [selectedNumber, setSelectedNumber] = useState(0);
-    const numbers = Array.from({ length: 60 }, (_, i) => i);
-    const defaultNumber = 36;
+export default function TimePicker({duration, setDuration} : TimePickerTypes)  {
+    const numbers = [null,null,...Array.from({ length: 60 }, (_, i) => i),null,null];
     const itemRefs = useRef<HTMLDivElement>(null);
-    const ITEM_HEIGHT = 30;
 
-    // const handleScroll = () => {
-    //     if (ref.current) {
-    //         if (ref.current.scrollTop < ITEM_HEIGHT) {
-    //             ref.current.scrollTop = ITEM_HEIGHT
-    //         }
-    //         const index = Math.floor(
-    //             (ref.current!.scrollTop | ITEM_HEIGHT / 2) /ITEM_HEIGHT);
-    //             if (list[index] !== "") {
-    //                 setSelectedNumber(index);
-    //                 itemRefs.current[index]?.scrollIntoView({
-    //                     behavior: "smooth",
-    //                     block: "center"
-    //                 })
-    //                 onSelectedChange && onSelectedChange(newList[index])
-    //             }
-    //         )
-    //     }
-    // }
-    
+    useEffect(() => {
+        itemRefs?.current?.scrollTo({
+            left: 30 * duration,
+        })
+    })
+
     return(
         <div className={styles.timePickerWrapper} >
-            <div className={styles.numbersWrapper} ref={itemRefs} onScroll={()=> {
-                const xpos = itemRefs.current?.scrollLeft ?? -1
-                if (xpos < 0) return
-                console.log(xpos/30)
-                setSelectedNumber(xpos/30)
-            }}>
+            <div className={styles.numbersWrapper} ref={itemRefs}>
                 {numbers.map((number) => {
                     return (
                         <div 
@@ -46,10 +27,10 @@ export default function TimePicker({} : TimePickerTypes)  {
                             className={styles.labelWrapper}
                             onClick={() => {
                                 itemRefs?.current?.scrollTo({
-                                    left: 30 * (number-2),
+                                    left: 30 * number!,
                                     behavior: "smooth",
                                 })
-                                setSelectedNumber(number)}}
+                                setDuration(number!)}}
                         >
                             <span>{number}</span>
                         </div>
@@ -57,15 +38,16 @@ export default function TimePicker({} : TimePickerTypes)  {
                 })}
             </div>
             <div className={styles.vector}/>
-            <div className={styles.text}>{selectedNumber}</div>
         </div>
     )
 }
 
 export function TimePickerTest(){
+    const [duration, setDuration] = useState<number>(40)
     return(
         <div>
-            <TimePicker/>
+            <TimePicker duration={duration} setDuration={setDuration}/>
+            <span>{duration}</span>
         </div>
     )
 } 
