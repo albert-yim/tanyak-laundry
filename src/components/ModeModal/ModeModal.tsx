@@ -27,7 +27,9 @@ export default function ModeModal({
   const [selectedMode, _setSelectedMode] = useState<OptionType>(
     LAUNDRY_OPTIONS?.left?.[0]!
   );
-  const [editDuration, setEditDuration] = useState<number>(selectedMode.duration);
+  const [editDuration, setEditDuration] = useState<number>(
+    selectedMode.duration
+  );
 
   const isUsed = appliance?.lastUsage.status === "active";
 
@@ -81,12 +83,11 @@ export default function ModeModal({
       return;
     }
     _setSelectedMode(mode);
+    setEditDuration(mode.duration);
   };
 
   // return empty node if appliance is null
   if (appliance == null) return <></>;
-
-  console.log(appliance?.lastUsage.status);
 
   return (
     <Modal onClose={() => onClose(false)} visible={visible}>
@@ -104,7 +105,9 @@ export default function ModeModal({
             icon={!isUsed ? appliance.type : "stop"}
           />
         </div>
-        <TimePicker time={editDuration} setTime={setEditDuration} />
+        <div className={styles.timePicker}>
+          <TimePicker time={editDuration} setTime={setEditDuration} />
+        </div>
         <div className={styles.endTimeText}>{getEndTime("HH:mm")}</div>
       </div>
     </Modal>
