@@ -11,7 +11,7 @@ type MainType = {
 export default function Main({ user }: MainType) {
   const [appliances, setAppliances] = useState<Appliance[]>([]);
   const [selectedAppliance, setSelectedAppliance] = useState<Appliance | null>(
-    null,
+    null
   );
 
   useEffect(() => {
