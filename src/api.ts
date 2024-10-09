@@ -70,6 +70,17 @@ export const signInWithId = async (id: string) => {
   return { data, error };
 };
 
+export const updateFCMToken = async (data: { uid: string; token: string }) => {
+  await supabase
+    .from("user")
+    .update([
+      {
+        fcm_token: data.token,
+      },
+    ])
+    .eq("id", data.uid);
+};
+
 /**
  * fetch user data with session user id
  */

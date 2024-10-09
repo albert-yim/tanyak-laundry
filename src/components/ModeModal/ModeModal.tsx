@@ -130,7 +130,7 @@ const LAUNDRY_OPTIONS: ModeButtonOptionType = {
     {
       mode: "청정세탁",
       position: "bottom",
-      duration: 36,
+      duration: 55,
     },
   ],
 
@@ -138,17 +138,17 @@ const LAUNDRY_OPTIONS: ModeButtonOptionType = {
     {
       mode: "물/란제리",
       position: "top",
-      duration: 36,
+      duration: 35,
     },
     {
       mode: "합성섬유",
       position: "center",
-      duration: 36,
+      duration: 38,
     },
     {
       mode: "헹굼+탈수",
       position: "bottom",
-      duration: 36,
+      duration: 20,
     },
   ],
 };
