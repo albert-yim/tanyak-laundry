@@ -2,8 +2,9 @@ import React, { useEffect, useState } from "react";
 import styles from "./Main.module.scss";
 import { Appliance, User } from "@src/types";
 import { fetchAppliances } from "@api";
-import { ModeModal, Carousel, ApplianceButton } from "@components";
+import { ModeModal, StopModal, Carousel, ApplianceButton } from "@components";
 import { requestForToken } from "@src/firebase";
+import moment from "moment";
 
 type MainType = {
   user: User;
@@ -12,7 +13,7 @@ type MainType = {
 export default function Main({ user }: MainType) {
   const [appliances, setAppliances] = useState<Appliance[]>([]);
   const [selectedAppliance, setSelectedAppliance] = useState<Appliance | null>(
-    null,
+    null
   );
 
   useEffect(() => {
@@ -44,6 +45,14 @@ export default function Main({ user }: MainType) {
     fetchAppliances().then((appliances) => {
       setAppliances(rearrangeAppliances(appliances));
     });
+  };
+
+  //function to check appliance is used or not (return true if it is used)
+  const isUsedAppliance = (appliance: Appliance | null) => {
+    if (!appliance) return true;
+    return (
+      moment(selectedAppliance?.lastUsage.endTime).diff(moment(), "second") > 0
+    );
   };
 
   const FirstSlide = (
@@ -82,9 +91,20 @@ export default function Main({ user }: MainType) {
       <div className={styles.carouselWrapper}>
         <Carousel contents={SLIDES} />
       </div>
+
+      <StopModal
+        visible={isUsedAppliance(selectedAppliance)}
+        appliance={selectedAppliance}
+        onClose={(refetch: boolean) => {
+          //get Appliances from backend when refetch=true
+          if (refetch) getAppliances();
+          setSelectedAppliance(null);
+        }}
+      />
+
       <ModeModal
         user={user}
-        visible={!!selectedAppliance}
+        visible={!isUsedAppliance(selectedAppliance)}
         appliance={selectedAppliance}
         onClose={(refetch: boolean) => {
           //get Appliances from backend when refetch=true

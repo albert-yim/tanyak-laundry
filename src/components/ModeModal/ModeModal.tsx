@@ -31,14 +31,9 @@ export default function ModeModal({
     selectedMode.duration
   );
 
-  const isUsed = appliance?.lastUsage.status === "active";
-
   // set modeOptions depend on appliance type
-  const modeOptions = isUsed
-    ? { left: [], right: [] }
-    : appliance?.type === "dryer"
-    ? DRYER_OPTIONS
-    : LAUNDRY_OPTIONS;
+  const modeOptions =
+    appliance?.type === "dryer" ? DRYER_OPTIONS : LAUNDRY_OPTIONS;
 
   useEffect(() => {
     if (!!visible && !!modeOptions.left) {
@@ -60,12 +55,6 @@ export default function ModeModal({
   const modeButtonClicked = async () => {
     if (!appliance?.id) {
       console.log("[ERROR] Insert usageHistory: aid cannot be empty stirng");
-      return;
-    }
-
-    if (isUsed) {
-      console.log("stopped");
-      onClose(true);
       return;
     }
 
@@ -102,7 +91,7 @@ export default function ModeModal({
             modeOptions={modeOptions}
             selectedMode={selectedMode}
             setSelectedMode={setSelectedMode}
-            icon={!isUsed ? appliance.type : "stop"}
+            icon={appliance.type}
           />
         </div>
         <div className={styles.timePicker}>
