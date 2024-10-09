@@ -25,6 +25,7 @@ export type Appliance = {
 };
 
 export type UsageHistory = {
+  id: string;
   // start time of Appliance
   startTime: string;
   // end time of Appliance
