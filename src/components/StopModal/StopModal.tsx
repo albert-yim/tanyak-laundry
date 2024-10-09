@@ -3,6 +3,7 @@ import styles from "./StopModal.module.scss";
 import Modal from "../Modal/Modal";
 import ModeButton from "../ModeButton/ModeButton";
 import { Appliance, OptionType, ModeButtonOptionType, User } from "@src/types";
+import { stopAppliance } from "@src/api";
 
 export type StopModalTypes = {
   onClose: (refetch: boolean) => void;
@@ -16,10 +17,11 @@ export default function StopModal({
   onClose,
 }: StopModalTypes) {
   const modeButtonClicked = async () => {
-    if (!appliance?.id) {
+    if (!appliance) {
       console.log("[ERROR] Insert usageHistory: aid cannot be empty stirng");
       return;
     }
+    await stopAppliance(appliance.lastUsage.id);
     onClose(true);
   };
 

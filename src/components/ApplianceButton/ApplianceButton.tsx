@@ -94,10 +94,11 @@ const USER1: UsageHistory["user"] = {
 };
 export function ApplianceButtonTest() {
   const lastUsage: UsageHistory = {
+    id: "",
     user: USER1,
     startTime: "2024-09-03T23:23:23",
     endTime: "2024-09-03T23:59:59",
-    status: "completed"
+    status: "completed",
   };
   return (
     <div

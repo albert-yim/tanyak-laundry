@@ -8,6 +8,7 @@ import {
   UserInsertPayload,
   UserPayload,
 } from "@src/types";
+import moment from "moment";
 
 export const fetchAppliances = async (): Promise<Appliance[]> => {
   const { data, error } = await supabase
@@ -17,7 +18,7 @@ export const fetchAppliances = async (): Promise<Appliance[]> => {
       location,
       status,
       type,
-      usage_history!last_usage_id(start_time, end_time, user(*), status)`,
+      usage_history!last_usage_id(id, start_time, end_time, user(*), status)`,
     )
     .returns<AppliancePayload[]>();
   if (error) {
@@ -38,6 +39,18 @@ export const insertUsageHistory = async (data: UsageHistoryInsertPayload) => {
   }
 };
 
+/*
+ * Update status value of UsageHistory to stop
+ */
+export const stopAppliance = async (id: string) => {
+  const { error } = await supabase
+    .from("usage_history")
+    .update({ status: "completed", end_time: moment().local().format() })
+    .eq("id", id);
+  if (error) {
+    console.log("Error update usage_history {status: stop}", error);
+  }
+};
 /**
  * SignUp with email
  */
