@@ -44,6 +44,7 @@ export default function ModeModal({
       // set selectedMode when modal is visible
       setSelectedMode(modeOptions.left[0]);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [visible, modeOptions]);
 
   //function to return estimate end time with selectedMode
