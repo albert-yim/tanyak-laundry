@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./App.scss";
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Compoennts from "./Components/Components";
 import Login from "./Login/Login";
 import Main from "./Main/Main";
@@ -9,15 +9,6 @@ import { User } from "@src/types";
 import { supabase } from "@src/supabase";
 import { Session } from "@supabase/supabase-js";
 import { fetchCurrentUser } from "@api";
-
-const DemoUser: User = {
-  id: "uuid",
-  serviceId: "23-70001234",
-  class: "846",
-  name: "김공군",
-  rank: "병장",
-  serviceStartedAt: "20240320T0000",
-};
 
 function App() {
   const [session, setSession] = useState<Session | null>(null);

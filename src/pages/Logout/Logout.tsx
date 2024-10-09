@@ -7,6 +7,6 @@ export default function LogOut() {
   useEffect(() => {
     supabase.auth.signOut();
     navigate("/", { replace: true });
-  }, []);
+  }, [navigate]);
   return <></>;
 }
