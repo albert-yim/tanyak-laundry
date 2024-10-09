@@ -3,18 +3,22 @@ import styles from "./TimePicker.module.scss";
 import cn from "classnames";
 
 type TimePickerTypes = {
-  duration: number;
-  setDuration: (m: number) => void;
+  time: number;
+  setTime: (duration: number) => void;
 };
 
-export default function TimePicker({ duration, setDuration }: TimePickerTypes) {
+//magic numbers
+const MAX_TIME = 60;
+const TIME_BLOCK_WIDTH = 30;
+
+export default function TimePicker({ time, setTime }: TimePickerTypes) {
   //list necessary numbers for wheel component
-  const numbers = [
-    null,
-    null,
-    ...Array.from({ length: 60 }, (_, i) => i),
-    null,
-    null,
+  const displayTimes = [
+    0,
+    0,
+    ...Array.from({ length: MAX_TIME }, (_, i) => i + 1),
+    0,
+    0,
   ];
 
   //use div element for referencing a value
@@ -23,13 +27,11 @@ export default function TimePicker({ duration, setDuration }: TimePickerTypes) {
   //scroll automatically towards default duration number while rendering
   useEffect(() => {
     itemRefs?.current?.scrollTo({
-      left: 30 * duration,
+      left: TIME_BLOCK_WIDTH * (time - 1),
     });
-  });
+  }, []);
 
-  let xposNumber = 0;
   const timeoutRef = useRef<number | null>(null);
-  const [isScrolling, setIsScrolling] = useState(false);
 
   //function that runs another function after ensuring scolling is done
   function handleScroll() {
@@ -38,11 +40,8 @@ export default function TimePicker({ duration, setDuration }: TimePickerTypes) {
       clearTimeout(timeoutRef.current);
     }
 
-    setIsScrolling(true);
-
     //sets a timeout to run after 200ms of no scrolling
     timeoutRef.current = window.setTimeout(() => {
-      setIsScrolling(false);
       handleScrollEnd();
     }, 200);
   }
@@ -51,8 +50,7 @@ export default function TimePicker({ duration, setDuration }: TimePickerTypes) {
   function handleScrollEnd() {
     const xpos = itemRefs?.current?.scrollLeft ?? -1;
     if (xpos < 0) return;
-    xposNumber = xpos / 30;
-    setDuration(xposNumber);
+    setTime(xpos / TIME_BLOCK_WIDTH + 1);
   }
 
   return (
@@ -62,22 +60,23 @@ export default function TimePicker({ duration, setDuration }: TimePickerTypes) {
         ref={itemRefs}
         onScroll={handleScroll}
       >
-        {numbers.map((number) => {
+        {displayTimes.map((displayTime, index) => {
           return (
             <div
-              id={`${number}`}
+              key={`${index}`}
               className={cn(styles.labelWrapper, {
-                [styles.labelWrapper__selected]: number === duration,
+                [styles.labelWrapper__selected]: displayTime === time,
+                [styles.labelWrapper__invisible]: displayTime === 0,
               })}
               onClick={() => {
                 itemRefs?.current?.scrollTo({
-                  left: 30 * number!,
+                  left: TIME_BLOCK_WIDTH * (displayTime - 1),
                   behavior: "smooth",
                 });
-                setDuration(number!);
+                setTime(displayTime);
               }}
             >
-              <span>{number}</span>
+              <span>{displayTime}</span>
             </div>
           );
         })}
@@ -91,7 +90,7 @@ export function TimePickerTest() {
   const [duration, setDuration] = useState<number>(40);
   return (
     <div>
-      <TimePicker duration={duration} setDuration={setDuration} />
+      <TimePicker time={duration} setTime={setDuration} />
       <span>{duration}</span>
     </div>
   );

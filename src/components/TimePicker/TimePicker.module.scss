@@ -27,6 +27,9 @@
           color: var(--text-reverse-color);
         }
       }
+      &__invisible {
+        visibility: hidden;
+      }
     }
   }
   .numbersWrapper::-webkit-scrollbar {
