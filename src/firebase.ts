@@ -35,8 +35,6 @@ export const requestForToken = async (uid: string) => {
         uid: uid,
         token: token,
       });
-      console.log("FCM TOEKN: ", token);
-      //TODO: save user token on backend
     } else {
       console.error("Permission not granted for Notification");
     }
@@ -49,5 +47,4 @@ export const requestForToken = async (uid: string) => {
 export const getTestMessage = () =>
   onMessage(messaging, (payload) => {
     console.log("message received. ", payload);
-    //TODO: show a notification
   });
