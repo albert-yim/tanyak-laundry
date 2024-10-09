@@ -30,7 +30,7 @@ export default function TimePicker({ time, setTime }: TimePickerTypes) {
     itemRefs?.current?.scrollTo({
       left: TIME_BLOCK_WIDTH * (time - 1),
     });
-  }, []);
+  }, [time]);
 
   //function that runs another function after ensuring scolling is done
   function handleScroll() {

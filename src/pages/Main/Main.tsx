@@ -12,14 +12,16 @@ type MainType = {
 export default function Main({ user }: MainType) {
   const [appliances, setAppliances] = useState<Appliance[]>([]);
   const [selectedAppliance, setSelectedAppliance] = useState<Appliance | null>(
-    null
+    null,
   );
 
   useEffect(() => {
-    //get appliances at first
-    getAppliances();
-    requestForToken(user.id);
-  }, []);
+    //get appliances at first and set fcm device token
+    if (user && !appliances.length) {
+      getAppliances();
+      requestForToken(user.id);
+    }
+  }, [user, appliances]);
 
   const getAppliances = () => {
     // rearrage appliances

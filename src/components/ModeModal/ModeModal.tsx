@@ -1,4 +1,4 @@
-import React, { useState, ReactNode, useEffect, useMemo } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./ModeModal.module.scss";
 import Modal from "../Modal/Modal";
 import ModeButton from "../ModeButton/ModeButton";
@@ -32,11 +32,11 @@ export default function ModeModal({
     appliance?.type === "dryer" ? DRYER_OPTIONS : LAUNDRY_OPTIONS;
 
   useEffect(() => {
-    if (!!visible) {
+    if (!!visible && !!modeOptions.left) {
       // set selectedMode when modal is visible
-      setSelectedMode(modeOptions.left?.[0]!);
+      setSelectedMode(modeOptions.left[0]);
     }
-  }, [visible]);
+  }, [visible, modeOptions]);
 
   //function to return estimate end time with selectedMode
   const getEndTime = (format: string = "") => {
