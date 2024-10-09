@@ -4,6 +4,7 @@ import Modal from "../Modal/Modal";
 import ModeButton from "../ModeButton/ModeButton";
 import TimePicker from "../TimePicker/TimePicker";
 import { Appliance, OptionType, ModeButtonOptionType, User } from "@src/types";
+import { stopAppliance } from "@src/api";
 import moment from "moment";
 import { insertUsageHistory } from "@api";
 
@@ -30,10 +31,13 @@ export default function ModeModal({
   const [editDuration, setEditDuration] = useState<number>(
     selectedMode.duration
   );
-
+  const isUsed = appliance?.lastUsage.status === "active";
   // set modeOptions depend on appliance type
-  const modeOptions =
-    appliance?.type === "dryer" ? DRYER_OPTIONS : LAUNDRY_OPTIONS;
+  const modeOptions = isUsed
+    ? { left: [], right: [] }
+    : appliance?.type === "dryer"
+    ? DRYER_OPTIONS
+    : LAUNDRY_OPTIONS;
 
   useEffect(() => {
     if (!!visible && !!modeOptions.left) {
@@ -58,12 +62,15 @@ export default function ModeModal({
       return;
     }
 
-    await insertUsageHistory({
-      uid: user.id,
-      aid: appliance.id,
-      end_time: getEndTime(),
-    });
-
+    if (isUsed) {
+      await stopAppliance(appliance.lastUsage.id);
+    } else {
+      await insertUsageHistory({
+        uid: user.id,
+        aid: appliance.id,
+        end_time: getEndTime(),
+      });
+    }
     onClose(true);
   };
 
@@ -91,13 +98,19 @@ export default function ModeModal({
             modeOptions={modeOptions}
             selectedMode={selectedMode}
             setSelectedMode={setSelectedMode}
-            icon={appliance.type}
+            icon={!isUsed ? appliance.type : "stop"}
           />
         </div>
-        <div className={styles.timePicker}>
-          <TimePicker time={editDuration} setTime={setEditDuration} />
-        </div>
-        <div className={styles.endTimeText}>{getEndTime("HH:mm")}</div>
+        {!isUsed ? (
+          <>
+            <div className={styles.timePicker}>
+              <TimePicker time={editDuration} setTime={setEditDuration} />
+            </div>
+            <div className={styles.endTimeText}>{getEndTime("HH:mm")}</div>
+          </>
+        ) : (
+          <></>
+        )}
       </div>
     </Modal>
   );
