@@ -58,11 +58,18 @@ export default function ModeModal({
       return;
     }
 
+    if (isUsed) {
+      console.log("stopped");
+      onClose(true);
+      return;
+    }
+
     await insertUsageHistory({
       uid: user.id,
       aid: appliance.id,
       end_time: getEndTime(),
     });
+
     onClose(true);
   };
 
