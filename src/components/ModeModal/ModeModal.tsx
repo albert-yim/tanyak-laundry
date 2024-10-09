@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import styles from "./ModeModal.module.scss";
 import Modal from "../Modal/Modal";
 import ModeButton from "../ModeButton/ModeButton";
+import TimePicker from "../TimePicker/TimePicker";
 import { Appliance, OptionType, ModeButtonOptionType, User } from "@src/types";
 import moment from "moment";
 import { insertUsageHistory } from "@api";
@@ -26,8 +27,10 @@ export default function ModeModal({
   const [selectedMode, _setSelectedMode] = useState<OptionType>(
     LAUNDRY_OPTIONS?.left?.[0]!
   );
+  const [editDuration, setEditDuration] = useState<number>(selectedMode.duration);
 
   const isUsed = appliance?.lastUsage.status === "active";
+
   // set modeOptions depend on appliance type
   const modeOptions = isUsed
     ? { left: [], right: [] }
@@ -46,7 +49,7 @@ export default function ModeModal({
   const getEndTime = (format: string = "") => {
     const startTime = new Date();
     return moment(startTime)
-      .add(selectedMode.duration, "minutes")
+      .add(editDuration, "minutes")
       .local()
       .format(format);
   };
@@ -101,7 +104,7 @@ export default function ModeModal({
             icon={!isUsed ? appliance.type : "stop"}
           />
         </div>
-        <div className={styles.durationText}>{selectedMode.duration}m</div>
+        <TimePicker time={editDuration} setTime={setEditDuration} />
         <div className={styles.endTimeText}>{getEndTime("HH:mm")}</div>
       </div>
     </Modal>
