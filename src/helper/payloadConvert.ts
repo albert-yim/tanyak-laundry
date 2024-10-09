@@ -6,7 +6,7 @@ import { Appliance, AppliancePayload } from "@src/types";
  * to appliance frontend data type
  */
 export function convertAppliancesPayload(
-  payload: AppliancePayload[]
+  payload: AppliancePayload[],
 ): Appliance[] {
   return payload.map((data) => ({
     id: data.id,
@@ -14,6 +14,7 @@ export function convertAppliancesPayload(
     type: data.type,
     status: data.status,
     lastUsage: {
+      id: data.usage_history?.id ?? "",
       status: data.usage_history?.status ?? "completed",
       startTime: data.usage_history?.start_time ?? "",
       endTime: data.usage_history?.end_time ?? "",
