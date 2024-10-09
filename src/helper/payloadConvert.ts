@@ -14,6 +14,8 @@ export function convertAppliancesPayload(
     type: data.type,
     status: data.status,
     lastUsage: {
+      id: data.usage_history?.id ?? "",
+      status: data.usage_history?.status ?? "completed",
       startTime: data.usage_history?.start_time ?? "",
       endTime: data.usage_history?.end_time ?? "",
       user: data.usage_history?.user ?? {

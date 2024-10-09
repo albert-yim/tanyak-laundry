@@ -2,7 +2,9 @@ import React, { useState, useEffect } from "react";
 import styles from "./ModeModal.module.scss";
 import Modal from "../Modal/Modal";
 import ModeButton from "../ModeButton/ModeButton";
+import TimePicker from "../TimePicker/TimePicker";
 import { Appliance, OptionType, ModeButtonOptionType, User } from "@src/types";
+import { stopAppliance } from "@src/api";
 import moment from "moment";
 import { insertUsageHistory } from "@api";
 
@@ -23,26 +25,33 @@ export default function ModeModal({
   appliance,
   onClose,
 }: ModeModalTypes) {
-  const [selectedMode, setSelectedMode] = useState<OptionType>(
-    LAUNDRY_OPTIONS?.left?.[0]!,
+  const [selectedMode, _setSelectedMode] = useState<OptionType>(
+    LAUNDRY_OPTIONS?.left?.[0]!
   );
-
+  const [editDuration, setEditDuration] = useState<number>(
+    selectedMode.duration
+  );
+  const isUsed = appliance?.lastUsage.status === "active";
   // set modeOptions depend on appliance type
-  const modeOptions =
-    appliance?.type === "dryer" ? DRYER_OPTIONS : LAUNDRY_OPTIONS;
+  const modeOptions = isUsed
+    ? { left: [], right: [] }
+    : appliance?.type === "dryer"
+    ? DRYER_OPTIONS
+    : LAUNDRY_OPTIONS;
 
   useEffect(() => {
     if (!!visible && !!modeOptions.left) {
       // set selectedMode when modal is visible
       setSelectedMode(modeOptions.left[0]);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [visible, modeOptions]);
 
   //function to return estimate end time with selectedMode
   const getEndTime = (format: string = "") => {
     const startTime = new Date();
     return moment(startTime)
-      .add(selectedMode.duration, "minutes")
+      .add(editDuration, "minutes")
       .local()
       .format(format);
   };
@@ -54,12 +63,24 @@ export default function ModeModal({
       return;
     }
 
-    await insertUsageHistory({
-      uid: user.id,
-      aid: appliance.id,
-      end_time: getEndTime(),
-    });
+    if (isUsed) {
+      await stopAppliance(appliance.lastUsage.id);
+    } else {
+      await insertUsageHistory({
+        uid: user.id,
+        aid: appliance.id,
+        end_time: getEndTime(),
+      });
+    }
     onClose(true);
+  };
+
+  const setSelectedMode = (mode: OptionType) => {
+    if (appliance?.lastUsage.status === "active") {
+      return;
+    }
+    _setSelectedMode(mode);
+    setEditDuration(mode.duration);
   };
 
   // return empty node if appliance is null
@@ -78,11 +99,19 @@ export default function ModeModal({
             modeOptions={modeOptions}
             selectedMode={selectedMode}
             setSelectedMode={setSelectedMode}
-            icon={appliance.type}
+            icon={!isUsed ? appliance.type : "stop"}
           />
         </div>
-        <div className={styles.durationText}>{selectedMode.duration}m</div>
-        <div className={styles.endTimeText}>{getEndTime("HH:mm")}</div>
+        {!isUsed ? (
+          <>
+            <div className={styles.timePicker}>
+              <TimePicker time={editDuration} setTime={setEditDuration} />
+            </div>
+            <div className={styles.endTimeText}>{getEndTime("HH:mm")}</div>
+          </>
+        ) : (
+          <></>
+        )}
       </div>
     </Modal>
   );

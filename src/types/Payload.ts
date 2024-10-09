@@ -1,13 +1,15 @@
-import { ApplianceType } from "./Appliance";
+import { ApplianceStatus, ApplianceType } from "./Appliance";
 import { User } from "./User";
 
 /**
  * UsageHistory Payload from backend
  */
 export type UsageHistoryPayload = {
+  id: string;
   start_time: string;
   end_time: string;
   user: User;
+  status: ApplianceStatus;
 };
 
 /**

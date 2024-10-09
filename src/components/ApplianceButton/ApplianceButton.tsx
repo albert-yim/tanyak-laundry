@@ -20,13 +20,13 @@ export default function ApplianceButton({
 }: ApplianceButtonType) {
   //remainingTime in sec
   const [remainingTime, setRemainingTime] = useState<number>(0);
-  const isUsed = remainingTime > 0;
+  const isUsed = lastUsage.status === "active";
   const typeName = type === "dryer" ? "건조기" : "세탁기";
   const typeIcon =
     type === "dryer" ? <DRYER_ICON width="15" /> : <LAUNDRY_ICON width="15" />;
   const totalTime = moment(lastUsage.endTime).diff(
     moment(lastUsage.startTime),
-    "second",
+    "second"
   );
   const remainingPercent = (remainingTime / totalTime) * 100;
 
@@ -94,9 +94,11 @@ const USER1: UsageHistory["user"] = {
 };
 export function ApplianceButtonTest() {
   const lastUsage: UsageHistory = {
+    id: "",
     user: USER1,
     startTime: "2024-09-03T23:23:23",
     endTime: "2024-09-03T23:59:59",
+    status: "completed",
   };
   return (
     <div

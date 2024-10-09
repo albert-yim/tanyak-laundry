@@ -5,7 +5,7 @@ export { default as Input } from "./Input/Input";
 export { default as Modal } from "./Modal/Modal";
 export { default as ModeButton } from "./ModeButton/ModeButton";
 export { default as ModeModal } from "./ModeModal/ModeModal";
-export { default as TimePicker } from "./TimePicker/TimePicker"
+export { default as TimePicker } from "./TimePicker/TimePicker";
 export * from "./ApplianceButton/ApplianceButton";
 export * from "./Button/Button";
 export * from "./Carousel/Carousel";
