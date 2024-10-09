@@ -46,7 +46,8 @@ export const requestForToken = async (uid: string) => {
 };
 
 // Listen for messages when the app is in the foreground
-// onMessage(messaging, (payload) => {
-//   console.log("message received. ", payload);
-//   //TODO: show a notification
-// });
+export const getTestMessage = () =>
+  onMessage(messaging, (payload) => {
+    console.log("message received. ", payload);
+    //TODO: show a notification
+  });

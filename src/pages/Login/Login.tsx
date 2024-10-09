@@ -17,6 +17,7 @@ export default function Login() {
       return;
     }
 
+    console.error("??");
     if (isSignUp) {
       //should show someting to indicate signUp
       signUpWithUserData({

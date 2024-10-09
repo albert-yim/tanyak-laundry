@@ -3,6 +3,7 @@ import styles from "./Main.module.scss";
 import { Appliance, User } from "@src/types";
 import { fetchAppliances } from "@api";
 import { ModeModal, Carousel, ApplianceButton } from "@components";
+import { requestForToken } from "@src/firebase";
 
 type MainType = {
   user: User;
@@ -17,6 +18,7 @@ export default function Main({ user }: MainType) {
   useEffect(() => {
     //get appliances at first
     getAppliances();
+    requestForToken(user.id);
   }, []);
 
   const getAppliances = () => {
