@@ -5,7 +5,6 @@ const clientEmail = Deno.env.get("GOOGLE_SERVICE_ACCOUNT_CLIENT_EMAIL");
 const privateKey = Deno.env
   .get("GOOGLE_SERVICE_ACCOUNT_PRIVATE_KEY")
   .replace(/\\n/g, "\n");
-const tokenUri = "https://oauth2.googleapis.com/token";
 
 // Function to get OAuth token
 async function getOAuthToken() {
@@ -17,28 +16,9 @@ async function getOAuthToken() {
     });
     const jwtToken = await ga.getToken();
 
-    //
-    // if (!jwtToken.ok) {
-    //   throw new Error("jwtToken error ");
-    // }
     return jwtToken;
-
-    console.log("response");
-    const response = await fetch(tokenUri, {
-      method: "POST",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: new URLSearchParams({
-        grant_type: "urn:ietf:params:oauth:grant-type:jwt-bearer",
-        assertion: jwtToken,
-      }).toString(),
-      // body: `grant_type=urn:ietf:params:oauth:grant-type:jwt-bearer&assertion=${jwtToken}`,
-    });
-
-    console.log(response);
-    const data = await response.json();
-    return data.access_token;
   } catch (error) {
-    console.log("ERROR getOAuthToken ", error);
+    console.error("ERROR getOAuthToken ", error);
     return new Response(`[getOAuthToken] Error: ${error.message}`);
   }
 }
@@ -53,17 +33,15 @@ Deno.serve(async (req: any) => {
     const payload = {
       message: {
         token: fcm_token,
-        // topic: "tanyak",
         notification: {
           title: "탄약 세탁소",
           body: `${appliance_location}번${type}가 완료 되었습니다.`,
         },
       },
     };
-    // return new Response(`[Edge-function] Error: `);
+    // request to send fcm
     const response = await fetch(
       "https://fcm.googleapis.com/v1/projects/tanyak-laundry-7b673/messages:send",
-      // "https://fcm.googleapis.com/v1/projects/your-project-id/messages:send"
       {
         method: "POST",
         headers: {
@@ -73,8 +51,10 @@ Deno.serve(async (req: any) => {
         body: JSON.stringify(payload),
       },
     );
-
-    console.log(response);
+    if (!response.ok) {
+      console.error(response);
+      throw new Error(`[ERROR] to send fcm message`);
+    }
 
     return new Response("Notification send successfully!", { status: 200 });
   } catch (error) {
