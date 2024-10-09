@@ -27,7 +27,6 @@ export const requestForToken = async (uid: string) => {
     // request nitification permission
     const permission = await Notification.requestPermission();
     if (permission === "granted") {
-      console.log(process.env.REACT_APP_FIREBASE_VAPID_KEY);
       const token = await getToken(messaging, {
         vapidKey: process.env.REACT_APP_FIREBASE_VAPID_KEY,
       });
@@ -39,7 +38,7 @@ export const requestForToken = async (uid: string) => {
       console.error("Permission not granted for Notification");
     }
   } catch (error) {
-    console.log("[ERROR]: cannot get token", error);
+    console.error("[ERROR]: cannot get token", error);
   }
 };
 
