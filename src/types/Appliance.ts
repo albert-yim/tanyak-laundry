@@ -1,7 +1,7 @@
 import { User } from "./User";
 
 export type ApplianceType = "dryer" | "washing_machine";
-
+export type ApplianceStatus = "completed" | "active";
 export type ApplianceMode = {
   id: number;
   applianceType: ApplianceType;
@@ -31,4 +31,5 @@ export type UsageHistory = {
   endTime: string;
   // user who used appliance
   user: User;
+  status: ApplianceStatus;
 };

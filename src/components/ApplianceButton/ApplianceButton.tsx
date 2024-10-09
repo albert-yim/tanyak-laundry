@@ -97,6 +97,7 @@ export function ApplianceButtonTest() {
     user: USER1,
     startTime: "2024-09-03T23:23:23",
     endTime: "2024-09-03T23:59:59",
+    status: "completed"
   };
   return (
     <div

@@ -23,13 +23,17 @@ export default function ModeModal({
   appliance,
   onClose,
 }: ModeModalTypes) {
-  const [selectedMode, setSelectedMode] = useState<OptionType>(
-    LAUNDRY_OPTIONS?.left?.[0]!,
+  const [selectedMode, _setSelectedMode] = useState<OptionType>(
+    LAUNDRY_OPTIONS?.left?.[0]!
   );
 
+  const isUsed = appliance?.lastUsage.status === "active";
   // set modeOptions depend on appliance type
-  const modeOptions =
-    appliance?.type === "dryer" ? DRYER_OPTIONS : LAUNDRY_OPTIONS;
+  const modeOptions = isUsed
+    ? { left: [], right: [] }
+    : appliance?.type === "dryer"
+    ? DRYER_OPTIONS
+    : LAUNDRY_OPTIONS;
 
   useEffect(() => {
     if (!!visible && !!modeOptions.left) {
@@ -62,8 +66,17 @@ export default function ModeModal({
     onClose(true);
   };
 
+  const setSelectedMode = (mode: OptionType) => {
+    if (appliance?.lastUsage.status === "active") {
+      return;
+    }
+    _setSelectedMode(mode);
+  };
+
   // return empty node if appliance is null
   if (appliance == null) return <></>;
+
+  console.log(appliance?.lastUsage.status);
 
   return (
     <Modal onClose={() => onClose(false)} visible={visible}>
@@ -78,7 +91,7 @@ export default function ModeModal({
             modeOptions={modeOptions}
             selectedMode={selectedMode}
             setSelectedMode={setSelectedMode}
-            icon={appliance.type}
+            icon={!isUsed ? appliance.type : "stop"}
           />
         </div>
         <div className={styles.durationText}>{selectedMode.duration}m</div>
