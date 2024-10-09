@@ -110,7 +110,7 @@ const DRYER_OPTIONS: ModeButtonOptionType = {
     {
       mode: "10분건조",
       position: "bottom",
-      duration: 45,
+      duration: 10,
     },
   ],
 };
