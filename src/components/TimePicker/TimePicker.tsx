@@ -23,6 +23,7 @@ export default function TimePicker({ time, setTime }: TimePickerTypes) {
 
   //use div element for referencing a value
   const itemRefs = useRef<HTMLDivElement>(null);
+  const timeoutRef = useRef<number | null>(null);
 
   //scroll automatically towards default duration number while rendering
   useEffect(() => {
@@ -30,8 +31,6 @@ export default function TimePicker({ time, setTime }: TimePickerTypes) {
       left: TIME_BLOCK_WIDTH * (time - 1),
     });
   }, []);
-
-  const timeoutRef = useRef<number | null>(null);
 
   //function that runs another function after ensuring scolling is done
   function handleScroll() {
