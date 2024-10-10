@@ -8,6 +8,7 @@
     align-items: center;
     width: 150px;
     overflow-x: scroll;
+    overscroll-behavior: none;
     transition: transform 0.3s ease;
     scroll-snap-type: x mandatory;
     .labelWrapper {
