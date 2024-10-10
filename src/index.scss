@@ -6,6 +6,13 @@ body {
   font-size: 13px;
   color: var(--text-color);
   overflow: hidden;
+  touch-action: none;
+
+  //block text-drag
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 
   input,
   button {
