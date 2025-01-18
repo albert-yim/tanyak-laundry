@@ -13,8 +13,8 @@
     padding-bottom: 55px;
   }
   .machineWrapper {
-    width: 320px;
     display: flex !important;
+    justify-content: center;
     flex-wrap: wrap;
     gap: 24px;
     // space between dot and page
@@ -31,8 +31,12 @@
     width: 319px;
     height: 70px;
     gap: 24px;
-    .Button_buttonWrapper{
-      font-size: 20px;
-    }
+  }
+
+  .versionTextWrapper {
+    padding-top: 30px;
+    white-space: pre-line;
+    line-height: 25px;
+    text-align: center;
   }
 }

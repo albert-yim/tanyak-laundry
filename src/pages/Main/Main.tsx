@@ -103,6 +103,12 @@ export default function Main({ user }: MainType) {
         <Button children="새로고침" onClick={() => window.location.reload()} />
         <Button children="로그아웃" onClick={logOutButtonClicked} />
       </div>
+
+      <div className={styles.versionTextWrapper}>
+        <p>
+          {`v.1.1.0 \n문제생기면 846 임찬양 851 김건중으로 연락주세요!`}
+        </p>
+      </div>
     </div>
   );
 }
