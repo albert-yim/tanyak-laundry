@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import styles from "./Main.module.scss";
 import { Appliance, User } from "@src/types";
 import { fetchAppliances } from "@api";
-import { ModeModal, Carousel, ApplianceButton } from "@components";
+import { Button, ModeModal, Carousel, ApplianceButton } from "@components";
 import { requestForToken } from "@src/firebase";
 
 type MainType = {
@@ -76,6 +76,11 @@ export default function Main({ user }: MainType) {
 
   const SLIDES = [FirstSlide, SecondSlide];
 
+  const logOutButtonClicked = () => {
+    localStorage.clear();
+    window.location.reload();
+  };
+
   return (
     <div className={styles.mainWrapper}>
       <span className={styles.mainText}>{user.name}님 환영합니다</span>
@@ -93,6 +98,11 @@ export default function Main({ user }: MainType) {
           setSelectedAppliance(null);
         }}
       />
+
+      <div className={styles.MainButtonWrapper}>
+        <Button children="새로고침" onClick={() => window.location.reload()} />
+        <Button children="로그아웃" onClick={logOutButtonClicked} />
+      </div>
     </div>
   );
 }
