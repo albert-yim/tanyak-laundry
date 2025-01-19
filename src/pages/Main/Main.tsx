@@ -2,8 +2,9 @@ import React, { useEffect, useState } from "react";
 import styles from "./Main.module.scss";
 import { Appliance, User } from "@src/types";
 import { fetchAppliances } from "@api";
-import { Button, ModeModal, Carousel, ApplianceButton } from "@components";
+import { ModeModal, Carousel, ApplianceButton } from "@components";
 import { requestForToken } from "@src/firebase";
+import { ReactComponent as REFRESH_ICON } from "@assets/refresh.svg";
 
 type MainType = {
   user: User;
@@ -76,11 +77,6 @@ export default function Main({ user }: MainType) {
 
   const SLIDES = [FirstSlide, SecondSlide];
 
-  const logOutButtonClicked = () => {
-    localStorage.clear();
-    window.location.reload();
-  };
-
   return (
     <div className={styles.mainWrapper}>
       <span className={styles.mainText}>{user.name}님 환영합니다</span>
@@ -99,15 +95,13 @@ export default function Main({ user }: MainType) {
         }}
       />
 
-      <div className={styles.MainButtonWrapper}>
-        <Button children="새로고침" onClick={() => window.location.reload()} />
-        <Button children="로그아웃" onClick={logOutButtonClicked} />
-      </div>
+      
+        <div className={styles.refreshButtonWrapper} onClick={() => window.location.reload()}>
+          <REFRESH_ICON />
+        </div>
 
       <div className={styles.versionTextWrapper}>
-        <p>
-          {`v.1.1.0 \n문제생기면 846 임찬양 851 김건중으로 연락주세요!`}
-        </p>
+        <p>v.1.1.0</p>
       </div>
     </div>
   );
