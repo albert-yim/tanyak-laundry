@@ -100,7 +100,7 @@ export default function Main({ user }: MainType) {
           <REFRESH_ICON />
         </div>
 
-      <div className={styles.versionTextWrapper}>
+      <div className={styles.versionTextWrapper} onClick={()=>alert("문제생기면 846 임찬양 851 김건중으로 연락주세요!")}>
         <p>v.1.1.0</p>
       </div>
     </div>
