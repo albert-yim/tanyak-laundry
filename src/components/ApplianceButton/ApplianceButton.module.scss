@@ -15,7 +15,7 @@
   .contentsWrapper {
     height: 115px;
     width: 115px;
-    z-index: 3;
+    z-index: 10;
     display: flex;
     flex-direction: column;
     .header {
@@ -41,37 +41,36 @@
       margin-bottom: 2px;
     }
   }
-}
-
-.waveProgress {
-  position: absolute;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background: var(--primary-color);
-  z-index: 2;
-  &:before,
-  &:after {
-    content: "";
+  .waveProgress {
     position: absolute;
-    top: -50%;
-    left: 50%;
-    width: 200%;
-    height: 200%;
-    transform: translate(-50%, -75%);
-  }
-  //full color wave
-  &:before {
-    border-radius: 45%;
-    background: rgba(255, 255, 255, 1);
-    animation: animate 10s linear infinite;
-  }
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--primary-color);
+    z-index: 2;
+    &:before,
+    &:after {
+      content: "";
+      position: absolute;
+      top: -50%;
+      left: 50%;
+      width: 200%;
+      height: 200%;
+      transform: translate(-50%, -75%);
+    }
+    //full color wave
+    &:before {
+      border-radius: 45%;
+      background: rgba(255, 255, 255, 1);
+      animation: animate 10s linear infinite;
+    }
 
-  //half transparent color wave to make more dynamic
-  &:after {
-    border-radius: 40%;
-    background: rgba(255, 255, 255, 0.5);
-    animation: animate 20s linear infinite;
+    //half transparent color wave to make more dynamic
+    &:after {
+      border-radius: 40%;
+      background: rgba(255, 255, 255, 0.5);
+      animation: animate 20s linear infinite;
+    }
   }
 }
 

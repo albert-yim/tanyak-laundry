@@ -26,7 +26,7 @@ export default function ApplianceButton({
     type === "dryer" ? <DRYER_ICON width="15" /> : <LAUNDRY_ICON width="15" />;
   const totalTime = moment(lastUsage.endTime).diff(
     moment(lastUsage.startTime),
-    "second",
+    "second"
   );
   const remainingPercent = (remainingTime / totalTime) * 100;
 
