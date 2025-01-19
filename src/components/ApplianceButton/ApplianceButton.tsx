@@ -26,7 +26,7 @@ export default function ApplianceButton({
     type === "dryer" ? <DRYER_ICON width="15" /> : <LAUNDRY_ICON width="15" />;
   const totalTime = moment(lastUsage.endTime).diff(
     moment(lastUsage.startTime),
-    "second",
+    "second"
   );
   const remainingPercent = (remainingTime / totalTime) * 100;
 
@@ -60,13 +60,6 @@ export default function ApplianceButton({
 
   return (
     <div className={styles.wrapper} onClick={onClick}>
-      <div
-        className={styles.waveProgress}
-        style={{
-          display: isUsed ? "unset" : "none",
-          top: `${remainingPercent}%`,
-        }}
-      />
       <div className={styles.contentsWrapper}>
         <div className={styles.header}>
           <div className={styles.iconWrapper}>{typeIcon}</div>
@@ -82,6 +75,13 @@ export default function ApplianceButton({
           className={styles.name}
         >{`${lastUsage.user.class}기 ${lastUsage.user.name}`}</span>
       </div>
+      <div
+        className={styles.waveProgress}
+        style={{
+          display: isUsed ? "unset" : "none",
+          top: `${remainingPercent}%`,
+        }}
+      />
     </div>
   );
 }
