@@ -11,10 +11,18 @@ export default function Login() {
   const [isSignUp, setIsSignUp] = useState(false);
 
   const loginButtonClicked = async () => {
-    if (number === "") {
+    const numberRegex = /^[0-9]{2}(-)[0-9]{8}$/;
+    const nameRegex = /^[가-힣]$/;
+    const userClassRegex = /[^0-9]$/;
+
+    if (number === "" || !numberRegex.test(number)) {
       //should handle error
-      console.log("empty number");
+      alert("군번을 적어주세요!");
       return;
+    } else if (name === "" || !nameRegex.test(name)) {
+      alert("이름을 적어주세요!");
+    } else if (userClass === "" || !userClassRegex.test(userClass)) {
+      alert("기수를 적어주세요!");
     }
 
     if (isSignUp) {
