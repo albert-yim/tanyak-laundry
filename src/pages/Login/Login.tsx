@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styles from "./Login.module.scss";
 import { Button, Input } from "@components";
 import { ReactComponent as LOGOICON } from "@assets/logo.svg";
-import { signInWithId, signUpWithUserData } from "@api";
+import { signInWithId, signUpWithUserData } from "@src/api";
 
 export default function Login() {
   const [name, setName] = useState("");
@@ -11,18 +11,25 @@ export default function Login() {
   const [isSignUp, setIsSignUp] = useState(false);
 
   const loginButtonClicked = async () => {
+    //regex for input validation
     const numberRegex = /^[0-9]{2}(-)[0-9]{8}$/;
-    const nameRegex = /^[가-힣]$/;
-    const userClassRegex = /[^0-9]$/;
+    const nameRegex = /^[가-힣]{1,10}$/;
+    const userClassRegex = /^[0-9]{1,4}$/;
 
+    //checking input validation
     if (number === "" || !numberRegex.test(number)) {
-      //should handle error
-      alert("군번을 적어주세요!");
-      return;
-    } else if (name === "" || !nameRegex.test(name)) {
-      alert("이름을 적어주세요!");
-    } else if (userClass === "" || !userClassRegex.test(userClass)) {
-      alert("기수를 적어주세요!");
+      alert("군번을 적어주세요!\n예) 00-00000000");
+      return null;
+    }
+
+    if (isSignUp) {
+      if (name === "" || !nameRegex.test(name)) {
+        alert("이름을 적어주세요!\n예) 김공군");
+        return null;
+      } else if (userClass === "" || !userClassRegex.test(userClass)) {
+        alert("기수를 적어주세요!\n(예) 800");
+        return null;
+      }
     }
 
     if (isSignUp) {

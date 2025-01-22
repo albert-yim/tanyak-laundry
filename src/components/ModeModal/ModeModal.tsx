@@ -6,7 +6,7 @@ import TimePicker from "../TimePicker/TimePicker";
 import { Appliance, OptionType, ModeButtonOptionType, User } from "@src/types";
 import { stopAppliance } from "@src/api";
 import moment from "moment";
-import { insertUsageHistory } from "@api";
+import { insertUsageHistory } from "@src/api";
 
 export type ModeModalTypes = {
   // callback function to close modal

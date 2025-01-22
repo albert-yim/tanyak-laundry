@@ -8,7 +8,7 @@ import Logout from "./Logout/Logout";
 import { User } from "@src/types";
 import { supabase } from "@src/supabase";
 import { Session } from "@supabase/supabase-js";
-import { fetchCurrentUser } from "@api";
+import { fetchCurrentUser } from "@src/api";
 
 function App() {
   const [session, setSession] = useState<Session | null>(null);
@@ -41,7 +41,7 @@ function App() {
         {session ? (
           <Route
             path="/"
-            element={user ? <Main user={user} /> : <>Loading</>}
+            element={user ? <Main user={user} /> : <div>logging in</div>}
           ></Route>
         ) : (
           <Route path="/" element={<Login />}></Route>

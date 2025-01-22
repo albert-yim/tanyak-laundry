@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styles from "./Main.module.scss";
 import { Appliance, User } from "@src/types";
-import { fetchAppliances } from "@api";
+import { fetchAppliances } from "@src/api";
 import { ModeModal, Carousel, ApplianceButton } from "@components";
 import { requestForToken } from "@src/firebase";
 import { ReactComponent as REFRESH_ICON } from "@assets/refresh.svg";
@@ -95,12 +95,19 @@ export default function Main({ user }: MainType) {
         }}
       />
 
-      
-        <div className={styles.refreshButtonWrapper} onClick={() => window.location.reload()}>
-          <REFRESH_ICON />
-        </div>
+      <div
+        className={styles.refreshButtonWrapper}
+        onClick={() => window.location.reload()}
+      >
+        <REFRESH_ICON />
+      </div>
 
-      <div className={styles.versionTextWrapper} onClick={()=>alert("문제생기면 846 임찬양 851 김건중으로 연락주세요!")}>
+      <div
+        className={styles.versionTextWrapper}
+        onClick={() =>
+          alert("문제생기면 846 임찬양 851 김건중으로 연락주세요!")
+        }
+      >
         <p>v.1.1.0</p>
       </div>
     </div>
