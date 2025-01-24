@@ -3,6 +3,7 @@ import styles from "./Login.module.scss";
 import { Button, Input } from "@components";
 import { ReactComponent as LOGOICON } from "@assets/logo.svg";
 import { signInWithId, signUpWithUserData } from "@src/api";
+import { motion } from "framer-motion";
 
 export default function Login() {
   const [name, setName] = useState("");
@@ -49,14 +50,35 @@ export default function Login() {
   };
 
   return (
-    <div className={styles.loginWrapper}>
-      <LOGOICON />
-      <span className={styles.text}>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.5, ease: "easeInOut" }}
+      className={styles.loginWrapper}
+    >
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1, ease: "easeInOut" }}
+      >
+        <LOGOICON />
+      </motion.div>
+      <motion.span
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1.5, ease: "easeInOut" }}
+        className={styles.text}
+      >
         더욱 간단해진
         <br />
         탄약중대 세탁 시스템
-      </span>
-      <div className={styles.inputWrapper}>
+      </motion.span>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 2, ease: "easeInOut" }}
+        className={styles.inputWrapper}
+      >
         <Input placeholder="군번" value={number} setValue={setNumber} />
         {isSignUp ? (
           <>
@@ -70,10 +92,15 @@ export default function Login() {
         ) : (
           <></>
         )}
-      </div>
-      <div className={styles.buttonWrapper}>
+      </motion.div>
+      <motion.div
+        className={styles.buttonWrapper}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 2.5, ease: "easeInOut" }}
+      >
         <Button onClick={loginButtonClicked}>로그인</Button>
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   );
 }
