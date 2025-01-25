@@ -5,13 +5,11 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  .logoWrapper {
-    padding-bottom: 12%;
-  }
   .text {
     font-size: 20px;
     color: var(--text-reverse-color);
-    padding-bottom: 10%;
+    padding-top: 70px;
+    padding-bottom: 39px;
     width: 306px;
     line-height: 150%;
   }
@@ -19,19 +17,20 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap: 24px;
     width: 306px;
-    Input {
-      margin-bottom: 8%;
+    padding-bottom: 50px;
+    .extraInputWrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      gap: 24px;
     }
   }
-  .extraInputWrapper {
-    Input {
-      margin-bottom: 8%;
-    }
-  }
+
   .buttonWrapper {
     width: 322px;
     height: 48px;
-    padding-top: 5%;
   }
 }
