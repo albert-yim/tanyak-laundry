@@ -53,22 +53,20 @@ export default function Login() {
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
       transition={{ duration: 0.5, ease: "easeInOut" }}
       className={styles.loginWrapper}
     >
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
         transition={{ duration: 1, ease: "easeInOut" }}
+        className={styles.logoWrapper}
       >
         <LOGOICON width="250px" height="250px" />
       </motion.div>
       <motion.span
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
         transition={{ duration: 1.5, ease: "easeInOut" }}
         className={styles.text}
       >
@@ -79,20 +77,24 @@ export default function Login() {
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
         transition={{ duration: 2, ease: "easeInOut" }}
         className={styles.inputWrapper}
       >
         <Input placeholder="군번" value={number} setValue={setNumber} />
         {isSignUp ? (
-          <>
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5, ease: "easeInOut" }}
+            className={styles.extraInputWrapper}
+          >
             <Input placeholder="이름" value={name} setValue={setName} />
             <Input
               placeholder="기수"
               value={userClass}
               setValue={setUserClass}
             />
-          </>
+          </motion.div>
         ) : (
           <></>
         )}
@@ -101,7 +103,6 @@ export default function Login() {
         className={styles.buttonWrapper}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
         transition={{ duration: 2.5, ease: "easeInOut" }}
       >
         <Button onClick={loginButtonClicked}>로그인</Button>

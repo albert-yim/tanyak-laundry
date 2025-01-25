@@ -15,6 +15,7 @@ export default function Carousel({ contents }: CarouselTypes) {
     slidesToShow: 1,
     slidesToScroll: 1,
     arrows: false,
+    pauseOnHover: false,
   };
   return <Slider {...settings}>{contents.map((element) => element)}</Slider>;
 }
@@ -23,8 +24,8 @@ export function CarouselTest() {
   const FirstPage = (
     <div
       style={{
-        height: 300,
-        width: 400,
+        height: "300px",
+        width: "400px",
         backgroundColor: "blue",
       }}
     >

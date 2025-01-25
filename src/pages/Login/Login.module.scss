@@ -5,12 +5,13 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-
+  .logoWrapper {
+    padding-bottom: 12%;
+  }
   .text {
     font-size: 20px;
     color: var(--text-reverse-color);
-    padding-top: 80px;
-    padding-bottom: 39px;
+    padding-bottom: 10%;
     width: 306px;
     line-height: 150%;
   }
@@ -18,12 +19,19 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 24px;
     width: 306px;
-    padding-bottom: 51px;
+    Input {
+      margin-bottom: 8%;
+    }
+  }
+  .extraInputWrapper {
+    Input {
+      margin-bottom: 8%;
+    }
   }
   .buttonWrapper {
     width: 322px;
     height: 48px;
+    padding-top: 5%;
   }
 }
