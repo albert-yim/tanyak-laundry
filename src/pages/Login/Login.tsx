@@ -63,7 +63,7 @@ export default function Login() {
         exit={{ opacity: 0 }}
         transition={{ duration: 1, ease: "easeInOut" }}
       >
-        <LOGOICON />
+        <LOGOICON width="250px" height="250px" />
       </motion.div>
       <motion.span
         initial={{ opacity: 0 }}

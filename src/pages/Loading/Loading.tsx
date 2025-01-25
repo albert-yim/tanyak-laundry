@@ -7,13 +7,13 @@ export default function Loading() {
   return (
     <div className={styles.loadingWrapper}>
       <motion.div
-        animate={{ opacity: [0, 1] }}
+        animate={{ opacity: [0, 1, 0] }}
         transition={{
           duration: 3,
           repeat: Infinity,
         }}
       >
-        <LOGOICON />
+        <LOGOICON width="250px" height="250px" />
       </motion.div>
     </div>
   );
