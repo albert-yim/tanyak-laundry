@@ -5,7 +5,7 @@ import { fetchAppliances } from "@src/api";
 import { ModeModal, Carousel, ApplianceButton } from "@components";
 import { requestForToken } from "@src/firebase";
 import { ReactComponent as REFRESH_ICON } from "@assets/refresh.svg";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 
 type MainType = {
   user: User;
@@ -80,6 +80,7 @@ export default function Main({ user }: MainType) {
 
   return (
     <div className={styles.mainWrapper}>
+      <AnimatePresence>
       <motion.span
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -88,6 +89,7 @@ export default function Main({ user }: MainType) {
       >
         {user.name}님 환영합니다
       </motion.span>
+      </AnimatePresence>
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}

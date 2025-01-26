@@ -4,7 +4,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 export type CarouselTypes = {
-  contents: JSX.Element[];
+  contents: React.ReactNode[];
 };
 
 export default function Carousel({ contents }: CarouselTypes) {
