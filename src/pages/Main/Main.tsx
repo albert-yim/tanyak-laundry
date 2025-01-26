@@ -80,7 +80,6 @@ export default function Main({ user }: MainType) {
 
   return (
     <div className={styles.mainWrapper}>
-      <AnimatePresence>
       <motion.span
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -89,7 +88,6 @@ export default function Main({ user }: MainType) {
       >
         {user.name}님 환영합니다
       </motion.span>
-      </AnimatePresence>
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -99,16 +97,29 @@ export default function Main({ user }: MainType) {
         <Carousel contents={SLIDES} />
       </motion.div>
 
-      <ModeModal
-        user={user}
-        visible={!!selectedAppliance}
-        appliance={selectedAppliance}
-        onClose={(refetch: boolean) => {
-          //get Appliances from backend when refetch=true
-          if (refetch) getAppliances();
-          setSelectedAppliance(null);
-        }}
-      />
+      <AnimatePresence>
+        {selectedAppliance && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.1 }}
+            exit={{
+              opacity: 0,
+            }}
+          >
+            <ModeModal
+              user={user}
+              visible={!!selectedAppliance}
+              appliance={selectedAppliance}
+              onClose={(refetch: boolean) => {
+                //get Appliances from backend when refetch=true
+                if (refetch) getAppliances();
+                setSelectedAppliance(null);
+              }}
+            />
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       <motion.div
         initial={{ opacity: 0 }}
