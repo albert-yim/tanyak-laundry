@@ -15,7 +15,7 @@ export default function Modal({ visible, children, onClose }: ModalTypes) {
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      transition={{ duration: 0.5 }}
+      transition={{ duration: 0.2 }}
       exit={{
         opacity: 0,
       }}
