@@ -12,7 +12,14 @@ export type ModalTypes = {
 export default function Modal({ visible, children, onClose }: ModalTypes) {
   if (!visible) return <></>;
   return (
-    <>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.5 }}
+      exit={{
+        opacity: 0,
+      }}
+    >
       <div className={styles.modalBackground}></div>
       <div className={styles.modalWrapper}>
         <div className={styles.closeButton} onClick={onClose}>
@@ -20,7 +27,7 @@ export default function Modal({ visible, children, onClose }: ModalTypes) {
         </div>
         <div className={styles.contents}>{children}</div>
       </div>
-    </>
+    </motion.div>
   );
 }
 
@@ -31,19 +38,10 @@ export function ModalTest() {
       <button onClick={() => setModalVisible(true)}>Open Modal</button>
       <AnimatePresence initial={false}>
         {modalVisible && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.5 }}
-            exit={{
-              opacity: 0,
-            }}
-          >
-            <Modal
-              visible={modalVisible}
-              onClose={() => setModalVisible(false)}
-            />
-          </motion.div>
+          <Modal
+            visible={modalVisible}
+            onClose={() => setModalVisible(false)}
+          />
         )}
       </AnimatePresence>
     </div>

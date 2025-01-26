@@ -99,25 +99,16 @@ export default function Main({ user }: MainType) {
 
       <AnimatePresence>
         {selectedAppliance && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.1 }}
-            exit={{
-              opacity: 0,
+          <ModeModal
+            user={user}
+            visible={!!selectedAppliance}
+            appliance={selectedAppliance}
+            onClose={(refetch: boolean) => {
+              //get Appliances from backend when refetch=true
+              if (refetch) getAppliances();
+              setSelectedAppliance(null);
             }}
-          >
-            <ModeModal
-              user={user}
-              visible={!!selectedAppliance}
-              appliance={selectedAppliance}
-              onClose={(refetch: boolean) => {
-                //get Appliances from backend when refetch=true
-                if (refetch) getAppliances();
-                setSelectedAppliance(null);
-              }}
-            />
-          </motion.div>
+          />
         )}
       </AnimatePresence>
 
