@@ -1,21 +1,43 @@
 import React, { useState } from "react";
+import styles from "./alertModal.module.scss";
 import Modal from "../Modal/Modal";
 
 export type AlertModalTypes = {
+  visible: boolean;
   title: string;
-  text: string;
+  detail: string;
+  onClose: () => void;
 };
 
-export default function AlertModal(title, detail) {
-  return <></>;
+export default function AlertModal({
+  visible,
+  title,
+  detail,
+  onClose,
+}: AlertModalTypes) {
+  return (
+    <Modal visible={visible} onClose={onClose}>
+      <div className={styles.contentWrapper}>
+        <div className={styles.titleTextWrapper}>{title}</div>
+        <div className={styles.detailTextWrapper}>{detail}</div>
+      </div>
+    </Modal>
+  );
 }
 
 export function AlertModalTest() {
-  const [modalVisible, setModalVisible] = useState(false);
+  const [alertModalVisible, setAlertModalVisible] = useState(false);
   return (
     <>
-      <button onClick={() => setModalVisible(true)}>Open AlertModal</button>
-      {modalVisible && <AlertModal title="제목" detail="설명설명설명" />}
+      <button onClick={() => setAlertModalVisible(true)}>
+        Open AlertModal
+      </button>
+      <AlertModal
+        visible={alertModalVisible}
+        title="이름을 입력해주세요!"
+        detail="예) 김공군"
+        onClose={() => setAlertModalVisible(false)}
+      />
     </>
   );
 }
