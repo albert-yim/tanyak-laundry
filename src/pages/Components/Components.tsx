@@ -8,7 +8,7 @@ import {
   CarouselTest,
   TimePickerTest,
 } from "@components";
-import { insertUsageHistory, fetchAppliances } from "@api";
+import { insertUsageHistory, fetchAppliances } from "@src/api";
 import { UsageHistoryInsertPayload } from "@src/types";
 
 type Components =

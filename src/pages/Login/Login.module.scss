@@ -1,31 +1,36 @@
-.loginWrapper{
+.loginWrapper {
   background-color: var(--background-color);
   height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  
-  .text{
+  .text {
     font-size: 20px;
     color: var(--text-reverse-color);
-    padding-top: 112px;
+    padding-top: 70px;
     padding-bottom: 39px;
     width: 306px;
     line-height: 150%;
   }
-  .inputWrapper{
+  .inputWrapper {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 24px;
     width: 306px;
-    padding-bottom: 51px;
-
+    padding-bottom: 50px;
+    .extraInputWrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      gap: 24px;
+    }
   }
-  .buttonWrapper{
+
+  .buttonWrapper {
     width: 322px;
     height: 48px;
   }
 }
-

@@ -18,7 +18,7 @@ export const fetchAppliances = async (): Promise<Appliance[]> => {
       location,
       status,
       type,
-      usage_history!last_usage_id(id, start_time, end_time, user(*), status)`,
+      usage_history!last_usage_id(id, start_time, end_time, user(*), status)`
     )
     .returns<AppliancePayload[]>();
   if (error) {
@@ -55,7 +55,7 @@ export const stopAppliance = async (id: string) => {
  * SignUp with email
  */
 export const signUpWithUserData = async (
-  userData: UserInsertPayload,
+  userData: UserInsertPayload
 ): Promise<AuthResponse> => {
   const { service_id } = userData;
   //SignUp with supabase email auth
@@ -97,9 +97,11 @@ export const updateFCMToken = async (data: { uid: string; token: string }) => {
 /**
  * fetch user data with session user id
  */
+
 export const fetchCurrentUser = async () => {
   //get current session user
   const authResponse = await supabase.auth.getUser();
+
   if (!!authResponse.error || !authResponse.data.user?.id) {
     console.log("[ERROR] fetch current user: error getUser");
     return null;

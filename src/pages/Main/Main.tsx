@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import styles from "./Main.module.scss";
 import { Appliance, User } from "@src/types";
-import { fetchAppliances } from "@api";
+import { fetchAppliances } from "@src/api";
 import { ModeModal, Carousel, ApplianceButton } from "@components";
 import { requestForToken } from "@src/firebase";
 import { ReactComponent as REFRESH_ICON } from "@assets/refresh.svg";
+import { motion, AnimatePresence } from "framer-motion";
 
 type MainType = {
   user: User;
@@ -79,30 +80,59 @@ export default function Main({ user }: MainType) {
 
   return (
     <div className={styles.mainWrapper}>
-      <span className={styles.mainText}>{user.name}님 환영합니다</span>
-      <div className={styles.carouselWrapper}>
+      <motion.span
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.5, ease: "easeInOut" }}
+        className={styles.mainText}
+      >
+        {user.name}님 환영합니다
+      </motion.span>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1, ease: "easeInOut" }}
+        className={styles.carouselWrapper}
+      >
         <Carousel contents={SLIDES} />
-      </div>
+      </motion.div>
 
-      <ModeModal
-        user={user}
-        visible={!!selectedAppliance}
-        appliance={selectedAppliance}
-        onClose={(refetch: boolean) => {
-          //get Appliances from backend when refetch=true
-          if (refetch) getAppliances();
-          setSelectedAppliance(null);
-        }}
-      />
+      <AnimatePresence>
+        {selectedAppliance && (
+          <ModeModal
+            user={user}
+            visible={!!selectedAppliance}
+            appliance={selectedAppliance}
+            onClose={(refetch: boolean) => {
+              //get Appliances from backend when refetch=true
+              if (refetch) getAppliances();
+              setSelectedAppliance(null);
+            }}
+          />
+        )}
+      </AnimatePresence>
 
-      
-        <div className={styles.refreshButtonWrapper} onClick={() => window.location.reload()}>
-          <REFRESH_ICON />
-        </div>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1.5, ease: "easeInOut" }}
+        className={styles.refreshButtonWrapper}
+        onClick={() => window.location.reload()}
+      >
+        <REFRESH_ICON />
+      </motion.div>
 
-      <div className={styles.versionTextWrapper} onClick={()=>alert("문제생기면 846 임찬양 851 김건중으로 연락주세요!")}>
-        <p>v.1.1.0</p>
-      </div>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 2, ease: "easeInOut" }}
+        className={styles.versionTextWrapper}
+        onClick={() =>
+          alert("문제생기면 846 임찬양 851 김건중으로 연락주세요!")
+        }
+      >
+        <p>v 1.1.1</p>
+      </motion.div>
     </div>
   );
 }
