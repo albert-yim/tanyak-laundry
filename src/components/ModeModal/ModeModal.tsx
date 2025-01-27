@@ -87,7 +87,12 @@ export default function ModeModal({
   if (appliance == null) return <></>;
 
   return (
-    <Modal onClose={() => onClose(false)} visible={visible}>
+    <Modal
+      onClose={() => onClose(false)}
+      visible={visible}
+      modalWidth="323px"
+      modalHeight="348px"
+    >
       <div className={styles.contentWrapper}>
         <div className={styles.locationText}>
           {appliance.location}번{" "}

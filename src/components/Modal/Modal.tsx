@@ -7,9 +7,17 @@ export type ModalTypes = {
   onClose: () => void;
   children?: ReactNode;
   visible: boolean;
+  modalWidth?: string;
+  modalHeight?: string;
 };
 
-export default function Modal({ visible, children, onClose }: ModalTypes) {
+export default function Modal({
+  visible,
+  children,
+  modalWidth,
+  modalHeight,
+  onClose,
+}: ModalTypes) {
   if (!visible) return <></>;
   return (
     <motion.div
@@ -21,7 +29,10 @@ export default function Modal({ visible, children, onClose }: ModalTypes) {
       }}
     >
       <div className={styles.modalBackground}></div>
-      <div className={styles.modalWrapper}>
+      <div
+        className={styles.modalWrapper}
+        style={{ width: modalWidth || "323px", height: modalHeight || "140px" }}
+      >
         <div className={styles.closeButton} onClick={onClose}>
           <CLOSE_ICON />
         </div>
