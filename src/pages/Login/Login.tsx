@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./Login.module.scss";
-import { Button, Input } from "@components";
+import { Button, Input, AlertModal } from "@components";
 import { ReactComponent as LOGOICON } from "@assets/logo.svg";
 import { signInWithId, signUpWithUserData } from "@src/api";
 import { motion } from "framer-motion";
@@ -10,6 +10,8 @@ export default function Login() {
   const [number, setNumber] = useState("");
   const [userClass, setUserClass] = useState("");
   const [isSignUp, setIsSignUp] = useState(false);
+  const [validProb, setValidProb] = useState(0);
+  const [alertModalVisible, setAlertModalVisible] = useState(false);
 
   const loginButtonClicked = async () => {
     //regex for input validation
@@ -19,16 +21,20 @@ export default function Login() {
 
     //checking input validation
     if (number === "" || !numberRegex.test(number)) {
-      alert("군번을 적어주세요!\n예) 00-00000000");
+      console.log(validProb);
+      setValidProb(1);
+      setAlertModalVisible(true);
       return null;
     }
 
     if (isSignUp) {
       if (name === "" || !nameRegex.test(name)) {
-        alert("이름을 적어주세요!\n예) 김공군");
+        setValidProb(2);
+        setAlertModalVisible(true);
         return null;
       } else if (userClass === "" || !userClassRegex.test(userClass)) {
-        alert("기수를 적어주세요!\n(예) 800");
+        setValidProb(3);
+        setAlertModalVisible(true);
         return null;
       }
     }
@@ -74,6 +80,29 @@ export default function Login() {
         <br />
         탄약중대 세탁 시스템
       </motion.span>
+      {validProb === 1 ? (
+        <AlertModal
+          visible={alertModalVisible}
+          title="군번을 입력해주세요!"
+          detail="예) 00-00000000"
+          onClose={() => setAlertModalVisible(false)}
+        />
+      ) : validProb === 2 ? (
+        <AlertModal
+          visible={alertModalVisible}
+          title="이름을 입력해주세요!"
+          detail="예) 김공군"
+          onClose={() => setAlertModalVisible(false)}
+        />
+      ) : validProb === 3 ? (
+        <AlertModal
+          visible={alertModalVisible}
+          title="기수를 입력해주세요!"
+          detail="예) 800"
+          onClose={() => setAlertModalVisible(false)}
+        />
+      ) : null}
+
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
