@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import styles from "./Login.module.scss";
 import { Button, Input, AlertModal } from "@components";
 import { ReactComponent as LOGOICON } from "@assets/logo.svg";
@@ -10,6 +10,8 @@ export default function Login() {
   const [number, setNumber] = useState("");
   const [userClass, setUserClass] = useState("");
   const [isSignUp, setIsSignUp] = useState(false);
+
+  //useStates required for checking input validation
   const [validProb, setValidProb] = useState(0);
   const [alertModalVisible, setAlertModalVisible] = useState(false);
 

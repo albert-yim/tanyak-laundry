@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import styles from "./Main.module.scss";
 import { Appliance, User } from "@src/types";
 import { fetchAppliances } from "@src/api";
-import { ModeModal, Carousel, ApplianceButton } from "@components";
+import { ModeModal, Carousel, ApplianceButton, AlertModal } from "@components";
 import { requestForToken } from "@src/firebase";
 import { ReactComponent as REFRESH_ICON } from "@assets/refresh.svg";
 import { motion, AnimatePresence } from "framer-motion";
@@ -16,6 +16,7 @@ export default function Main({ user }: MainType) {
   const [selectedAppliance, setSelectedAppliance] = useState<Appliance | null>(
     null
   );
+  const [alertModalVisible, setAlertModalVisible] = useState(false);
 
   useEffect(() => {
     //get appliances at first and set fcm device token
@@ -122,16 +123,21 @@ export default function Main({ user }: MainType) {
         <REFRESH_ICON />
       </motion.div>
 
+      <AlertModal
+        visible={alertModalVisible}
+        title="궁금한 점이 생겼나요?"
+        detail="846기 임찬양과 851기 김건중에게 연락주세요!"
+        onClose={() => setAlertModalVisible(false)}
+      />
+
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 2, ease: "easeInOut" }}
         className={styles.versionTextWrapper}
-        onClick={() =>
-          alert("문제생기면 846 임찬양 851 김건중으로 연락주세요!")
-        }
+        onClick={() => setAlertModalVisible(true)}
       >
-        <p>v 1.1.1</p>
+        <p>v 1.2.0</p>
       </motion.div>
     </div>
   );
