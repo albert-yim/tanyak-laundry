@@ -137,6 +137,7 @@ export default function Login() {
         transition={{ duration: 2.5, ease: "easeInOut" }}
       >
         <Button onClick={loginButtonClicked}>로그인</Button>
+        <div>로그인 전에 다운로드하기!</div>
       </motion.div>
     </motion.div>
   );

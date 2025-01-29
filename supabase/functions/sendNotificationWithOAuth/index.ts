@@ -35,7 +35,7 @@ Deno.serve(async (req: any) => {
         token: fcm_token,
         notification: {
           title: "탄약 세탁소",
-          body: `${appliance_location}번${type}가 완료 되었습니다.`,
+          body: `${appliance_location}번 ${type}가 완료되었습니다.`,
         },
       },
     };
@@ -49,7 +49,7 @@ Deno.serve(async (req: any) => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(payload),
-      },
+      }
     );
     if (!response.ok) {
       console.error(response);
