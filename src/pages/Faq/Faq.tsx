@@ -8,6 +8,8 @@ export default function Faq() {
       <div className={styles.logoWrapper}>
         <LOGOICON width="250px" height="250px" />
       </div>
+      <div>자주 묻는 질문</div>
+      <div>v 1.3.0</div>
     </div>
   );
 }
