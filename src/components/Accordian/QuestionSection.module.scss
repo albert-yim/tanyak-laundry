@@ -1,0 +1,15 @@
+.questionSectionWrapper {
+  color: var(--text-reverse-color);
+  .questionWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 300px;
+    height: 30px;
+    font-size: 20px;
+  }
+  .answerWrapper {
+    width: 300px;
+    height: auto;
+  }
+}
