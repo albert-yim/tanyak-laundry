@@ -31,9 +31,9 @@ export default function QuestionSection({
       <div className={styles.questionWrapper} onClick={onClick}>
         {question}
         {isVisible ? (
-          <UPARROW_ICON width="20px" height="auto" />
+          <UPARROW_ICON width="20px" height="20px" />
         ) : (
-          <DOWNARROW_ICON width="20px" height="auto" />
+          <DOWNARROW_ICON width="20px" height="20px" />
         )}
       </div>
       {isVisible ? (
@@ -41,7 +41,9 @@ export default function QuestionSection({
           {answer}
           {answerImgList}
         </div>
-      ) : null}
+      ) : (
+        <></>
+      )}
     </div>
   );
 }
