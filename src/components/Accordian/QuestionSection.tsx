@@ -25,6 +25,7 @@ export default function QuestionSection({
         onClick={() => setIsAnswerVisible(!isAnswerVisible)}
       >
         {question}
+
         <DOWNARROW_ICON width="20px" height="auto" />
       </div>
       {isAnswerVisible ? (

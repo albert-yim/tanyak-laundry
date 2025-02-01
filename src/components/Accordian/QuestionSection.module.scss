@@ -2,22 +2,25 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-bottom: 20px;
+  padding: 10px 0 0 0;
   width: 100%;
   .questionWrapper {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 90%;
+    width: 100%;
+    padding: 10px;
     height: 30px;
     font-size: 20px;
     color: var(--text-reverse-color);
   }
   .answerWrapper {
+    padding: 20px;
     width: 100%;
     height: auto;
-    font-size: 10px;
+    font-size: 15px;
     background-color: var(--primary-color);
     color: var(--text-color);
+    white-space: pre-line;
   }
 }
