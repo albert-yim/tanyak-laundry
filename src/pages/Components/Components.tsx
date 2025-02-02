@@ -8,6 +8,7 @@ import {
   CarouselTest,
   TimePickerTest,
   AlertModalTest,
+  AccordianTest,
 } from "@components";
 import { insertUsageHistory, fetchAppliances } from "@src/api";
 import { UsageHistoryInsertPayload } from "@src/types";
@@ -21,11 +22,12 @@ type Components =
   | "carousel"
   | "apis"
   | "timepicker"
-  | "alertmodal";
+  | "alertmodal"
+  | "accordian";
 
 export default function ComponentsPage() {
   const [selectedComponent, setSelectedComponent] =
-    useState<Components>("alertmodal");
+    useState<Components>("accordian");
   const COMPONENT_LIST: Components[] = [
     "button",
     "modebutton",
@@ -36,6 +38,7 @@ export default function ComponentsPage() {
     "apis",
     "timepicker",
     "alertmodal",
+    "accordian",
   ];
   const renderComponent = () => {
     switch (selectedComponent) {
@@ -57,11 +60,13 @@ export default function ComponentsPage() {
         return <TimePickerTest />;
       case "alertmodal":
         return <AlertModalTest />;
+      case "accordian":
+        return <AccordianTest />;
     }
   };
 
   return (
-    <div style={{ display: "flex", height: "100vh" }}>
+    <div style={{ display: "flex", height: "100vh", overflowY: "auto" }}>
       <div
         style={{ width: "200px", backgroundColor: "#f4f4f4", padding: "10px" }}
       >
