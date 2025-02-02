@@ -8,10 +8,33 @@
   align-items: center;
   color: var(--text-reverse-color);
   max-width: 100%;
+  .closeButton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 35px;
+    width: 35px;
+    border-radius: 30px;
+    border-color: transparent;
+    background-color: var(--text-reverse-color);
+    position: absolute;
+    right: 17px;
+    top: 17px;
+    padding: 0px;
+  }
   .logoWrapper {
-    top: 85px;
+    margin-top: 20%;
+  }
+  .titleWrapper {
+    margin-top: 10%;
+    font-size: 20px;
   }
   .accordianWrapper {
+    margin-top: 10%;
     width: 100%;
+  }
+  .versionWrapper {
+    margin-top: 10%;
+    font-size: 15px;
   }
 }

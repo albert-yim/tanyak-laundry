@@ -66,7 +66,7 @@ export default function ComponentsPage() {
   };
 
   return (
-    <div style={{ display: "flex", height: "100vh" }}>
+    <div style={{ display: "flex", height: "100vh", overflowY: "auto" }}>
       <div
         style={{ width: "200px", backgroundColor: "#f4f4f4", padding: "10px" }}
       >

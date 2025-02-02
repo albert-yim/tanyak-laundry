@@ -2,10 +2,11 @@ import React, { useEffect, useState } from "react";
 import styles from "./Main.module.scss";
 import { Appliance, User } from "@src/types";
 import { fetchAppliances } from "@src/api";
-import { ModeModal, Carousel, ApplianceButton, AlertModal } from "@components";
+import { ModeModal, Carousel, ApplianceButton } from "@components";
 import { requestForToken } from "@src/firebase";
 import { ReactComponent as REFRESH_ICON } from "@assets/refresh.svg";
 import { motion, AnimatePresence } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 
 type MainType = {
   user: User;
@@ -16,7 +17,7 @@ export default function Main({ user }: MainType) {
   const [selectedAppliance, setSelectedAppliance] = useState<Appliance | null>(
     null
   );
-  const [alertModalVisible, setAlertModalVisible] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     //get appliances at first and set fcm device token
@@ -123,21 +124,16 @@ export default function Main({ user }: MainType) {
         <REFRESH_ICON />
       </motion.div>
 
-      <AlertModal
-        visible={alertModalVisible}
-        title="궁금한 점이 생겼나요?"
-        detail="846기 임찬양과 851기 김건중에게 연락주세요!"
-        onClose={() => setAlertModalVisible(false)}
-      />
-
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 2, ease: "easeInOut" }}
         className={styles.versionTextWrapper}
-        onClick={() => setAlertModalVisible(true)}
+        onClick={() => {
+          navigate(("/faq"));
+        }}
       >
-        <p>v 1.2.0</p>
+        <p>물어볼게 있어요!</p>
       </motion.div>
     </div>
   );
