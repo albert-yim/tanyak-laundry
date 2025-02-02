@@ -4,12 +4,14 @@ import { Button, Input, AlertModal } from "@components";
 import { ReactComponent as LOGOICON } from "@assets/logo.svg";
 import { signInWithId, signUpWithUserData } from "@src/api";
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 
 export default function Login() {
   const [name, setName] = useState("");
   const [number, setNumber] = useState("");
   const [userClass, setUserClass] = useState("");
   const [isSignUp, setIsSignUp] = useState(false);
+  const navigate = useNavigate();
 
   //useStates required for checking input validation
   const [validProb, setValidProb] = useState(0);
@@ -137,7 +139,12 @@ export default function Login() {
         transition={{ duration: 2.5, ease: "easeInOut" }}
       >
         <Button onClick={loginButtonClicked}>로그인</Button>
-        <div>로그인 전에 다운로드하기!</div>
+        <div
+          className={styles.loginTextWrapper}
+          onClick={() => navigate("/faq")}
+        >
+          로그인 전에 다운로드하기!
+        </div>
       </motion.div>
     </motion.div>
   );
