@@ -11,6 +11,7 @@
   justify-content: center;
   position: relative;
   overflow: hidden;
+  will-change: transform;
 
   .contentsWrapper {
     height: 115px;
