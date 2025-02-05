@@ -130,7 +130,7 @@ export default function Main({ user }: MainType) {
         transition={{ duration: 2, ease: "easeInOut" }}
         className={styles.versionTextWrapper}
         onClick={() => {
-          navigate(("/faq"));
+          navigate("/faq");
         }}
       >
         <p>물어볼게 있어요!</p>
