@@ -137,7 +137,7 @@ export default function Main({ user }: MainType) {
         className={styles.versionTextWrapper}
         onClick={() => setAlertModalVisible(true)}
       >
-        <p>v 1.2.0</p>
+        <p>v 1.1.2</p>
       </motion.div>
     </div>
   );
