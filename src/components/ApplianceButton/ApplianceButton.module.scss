@@ -13,7 +13,6 @@
   overflow: hidden;
 
   .contentsWrapper {
-    position: relative;
     height: 115px;
     width: 115px;
     position: absolute;
@@ -81,15 +80,6 @@
 }
 
 //wave animation
-@-webkit-keyframes animate {
-  0% {
-    transform: translate(-50%, -75%) rotate(0deg);
-  }
-  100% {
-    transform: translate(-50%, -75%) rotate(360deg);
-  }
-}
-
 @keyframes animate {
   0% {
     transform: translate(-50%, -75%) rotate(0deg);
