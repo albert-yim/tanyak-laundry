@@ -11,12 +11,11 @@
   justify-content: center;
   position: relative;
   overflow: hidden;
-  will-change: transform;
 
   .contentsWrapper {
     height: 115px;
     width: 115px;
-    z-index: 3;
+    z-index: 9999;
     display: flex;
     flex-direction: column;
     .header {
@@ -77,6 +76,15 @@
 }
 
 //wave animation
+@-webkit-keyframes animate {
+  0% {
+    transform: translate(-50%, -75%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -75%) rotate(360deg);
+  }
+}
+
 @keyframes animate {
   0% {
     transform: translate(-50%, -75%) rotate(0deg);
