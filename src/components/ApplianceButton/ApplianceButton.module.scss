@@ -55,17 +55,19 @@
   &:after {
     content: "";
     position: absolute;
-    top: -80%;
+    top: -50%;
     left: 50%;
     width: 200%;
     height: 200%;
     transform: translate(-50%, -75%);
+    z-index: 2;
   }
   //full color wave
   &:before {
     border-radius: 45%;
     background: rgba(255, 255, 255, 1);
     animation: animate 10s linear infinite;
+    z-index: 2;
   }
 
   //half transparent color wave to make more dynamic
@@ -73,6 +75,7 @@
     border-radius: 40%;
     background: rgba(255, 255, 255, 0.5);
     animation: animate 20s linear infinite;
+    z-index: 2;
   }
 }
 
