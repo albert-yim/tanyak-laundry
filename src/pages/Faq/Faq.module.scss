@@ -31,6 +31,15 @@
   .accordianWrapper {
     margin-top: 3vh;
     width: 100%;
+    min-width: 350px;
+  }
+
+  @media (min-width: 700px) {
+    .accordianWrapper {
+      margin-top: 3vh;
+      width: 100%;
+      max-width: 350px;
+    }
   }
   .versionWrapper {
     margin-top: 5vh;

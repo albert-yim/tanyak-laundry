@@ -27,12 +27,16 @@ export default function Faq() {
     },
     {
       question: "알림이 안떠요",
-      answer: "앱을 다시 설치해보세요",
+      answer: `- 로그아웃 후 앱을 재설치해보세요!\n
+      -  iPhone에서는 탄약세탁소 앱의 알림 설정, Android에서는 브라우저의 알림 설정에서 알림이 켜져 있는지 확인해주세요!
+       `,
       image: [],
     },
     {
       question: "누가 앱을 만들었나요?",
-      answer: "846기 임찬양과 851기 김건중이 만들어써요",
+      answer: `20비 탄약중대 유도무기반 846기 임찬양과 851기 김건중이 만들었어요. \n
+        궁금한게 있으면 인스타그램 @chocolatefactory_02를 찾아주세요!
+        `,
       image: [],
     },
   ];
