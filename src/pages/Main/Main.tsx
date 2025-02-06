@@ -2,9 +2,11 @@ import React, { useEffect, useState } from "react";
 import styles from "./Main.module.scss";
 import { Appliance, User } from "@src/types";
 import { fetchAppliances } from "@src/api";
-import { ModeModal, Carousel, ApplianceButton } from "@components";
+import { Button, ModeModal, Carousel, ApplianceButton } from "@components";
 import { requestForToken } from "@src/firebase";
 import { ReactComponent as REFRESH_ICON } from "@assets/refresh.svg";
+import { ReactComponent as FAQ_ICON } from "@assets/faq.svg";
+import { ReactComponent as LOGOUT_ICON } from "@assets/logout.svg";
 import { motion, AnimatePresence } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 
@@ -118,22 +120,29 @@ export default function Main({ user }: MainType) {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1.5, ease: "easeInOut" }}
-        className={styles.refreshButtonWrapper}
-        onClick={() => window.location.reload()}
+        className={styles.actionBarWrapper}
       >
-        <REFRESH_ICON />
-      </motion.div>
-
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 2, ease: "easeInOut" }}
-        className={styles.versionTextWrapper}
-        onClick={() => {
-          navigate("/faq");
-        }}
-      >
-        <p>물어볼게 있어요!</p>
+        <button
+          className={styles.actionButtonWrapper}
+          onClick={() => navigate("faq")}
+        >
+          <FAQ_ICON width="25px" height="25px" />
+          {"자주 묻는 질문"}
+        </button>
+        <button
+          className={styles.actionButtonWrapper}
+          onClick={() => window.location.reload()}
+        >
+          <REFRESH_ICON width="25px" height="25px" />
+          {"새로고침"}
+        </button>
+        <button
+          className={styles.actionButtonWrapper}
+          onClick={() => navigate("logout")}
+        >
+          <LOGOUT_ICON width="25px" height="25px" />
+          {"로그아웃"}
+        </button>
       </motion.div>
     </div>
   );

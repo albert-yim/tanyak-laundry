@@ -39,12 +39,21 @@
     bottom: 10%;
   }
 
-  .versionTextWrapper {
-    white-space: pre-line;
-    line-height: 25px;
-    font-size: 15px;
-    color: var(--text-reverse-color);
-    text-decoration: underline;
-    text-align: center;
+  .actionBarWrapper {
+    display: flex;
+    position: absolute;
+    bottom: 2vh;
+    gap: 5vh;
+    .actionButtonWrapper {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      font-size: 15px;
+      background-color: transparent;
+      border: none;
+      gap: 1vh;
+      color: var(--text-reverse-color);
+    }
   }
 }
