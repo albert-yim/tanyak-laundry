@@ -41,8 +41,9 @@
 
   .actionBarWrapper {
     display: flex;
+    align-items: center;
     position: absolute;
-    width: 80%;
+    width: 90%;
     bottom: 12vh;
     .actionButtonWrapper {
       flex: 1;
