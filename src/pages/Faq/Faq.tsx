@@ -52,11 +52,7 @@ export default function Faq() {
   ];
   return (
     <div className={styles.faqWrapper}>
-<<<<<<< HEAD
       <div className={styles.closeButton} onClick={() => navigate(-1)}>
-=======
-      <div className={styles.closeButton} onClick={() => navigate("/")}>
->>>>>>> a1bda07 (edited accordian component make question sticky)
         <CLOSE_ICON />
       </div>
       <div className={styles.logoWrapper}>
