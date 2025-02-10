@@ -26,21 +26,11 @@ export default function Faq() {
       ],
     },
     {
-      question: "앱을 다운로드 하고 싶어요",
-      answer: `아이폰\n
-      1. 카카오톡 링크에 방문 후 Safari로 열기\n
-      2. 조수 표시줄에서 공유를 탭\n
-      3. 홈 화면에 추가를 찾아서 탭\n
-      4. 웹사이트 세부정보를 확인하거나 수정하고 추가를 탭\n
-      
-      갤럭시\n
-      1. 카카오톡 링크에 방문 후 다른 브라우저(삼성 브라우저)로 열기\n
-      2. 우측 상단에 다운로드 버튼 클릭\n
-      `,
-      image: [
-        "https://blogger.googleusercontent.com/img/a/AVvXsEirmY6jerPZSgry1_JoBrnMcJWgPaTDtCczkOPL6VcCgAjPWSqgVINWwnvX6I9bTd-9P7-VG-X7Jf2JTQpmxaOWhnp6dQEwOvII2FrpxkjfY3ddzRC6ugvhVhJva0BdOCiIHMhqMtVQK7E0-MJhIrj9iNCUzM5bRyoBBE_qOLWlGevDhBJveHq0ixdAMOPG",
-        "https://blogger.googleusercontent.com/img/a/AVvXsEgThWozCdMxBt3ZacahLDIszp4fqmV33JfwWwoTAIE4WlNNqOOVfhDJyV71co52m1TU39iDHu_Re5-t2ymWPkqT1EkETvsCiwYjIwpdsxg0xzEFEGa1loLa5YfRULImnFtDW6-Imby1O6Oacx5q5OAEiy3kr9CzrNIcUKt2yDnxfwKhW2jbCb3wKmrs8gt1",
-      ],
+      question: "알림이 안떠요",
+      answer: `- 로그아웃 후 앱을 재설치해보세요!\n
+      -  iPhone에서는 탄약세탁소 앱의 알림 설정, Android에서는 브라우저의 알림 설정에서 알림이 켜져 있는지 확인해주세요!
+       `,
+      image: [],
     },
     {
       question: "누가 앱을 만들었나요?",
