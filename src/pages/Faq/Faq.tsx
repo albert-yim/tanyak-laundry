@@ -62,7 +62,7 @@ export default function Faq() {
       <div className={styles.accordianWrapper}>
         <Accordian questionList={questionList} />
       </div>
-      <div className={styles.versionWrapper}>v 1.3.0</div>
+      <div className={styles.versionWrapper}>v 1.2.0</div>
     </div>
   );
 }
