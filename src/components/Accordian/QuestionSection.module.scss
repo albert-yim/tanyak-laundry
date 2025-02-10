@@ -1,0 +1,31 @@
+.questionSectionWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  .questionWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 30px;
+    height: 30px;
+    font-size: 20px;
+    background-color: var(--background-color);
+    color: var(--text-reverse-color);
+    position: sticky;
+    top: 0px;
+  }
+  .answerWrapper {
+    box-sizing: border-box;
+    width: 100%;
+    height: auto;
+    font-size: 15px;
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    white-space: pre-line;
+    padding: 20px;
+    line-height: 20px;
+  }
+}

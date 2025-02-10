@@ -2,10 +2,13 @@ import React, { useEffect, useState } from "react";
 import styles from "./Main.module.scss";
 import { Appliance, User } from "@src/types";
 import { fetchAppliances } from "@src/api";
-import { ModeModal, Carousel, ApplianceButton, AlertModal } from "@components";
+import { ModeModal, Carousel, ApplianceButton } from "@components";
 import { requestForToken } from "@src/firebase";
 import { ReactComponent as REFRESH_ICON } from "@assets/refresh.svg";
+import { ReactComponent as FAQ_ICON } from "@assets/faq.svg";
+import { ReactComponent as LOGOUT_ICON } from "@assets/logout.svg";
 import { motion, AnimatePresence } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 
 type MainType = {
   user: User;
@@ -16,8 +19,7 @@ export default function Main({ user }: MainType) {
   const [selectedAppliance, setSelectedAppliance] = useState<Appliance | null>(
     null
   );
-  const [alertModalVisible, setAlertModalVisible] = useState(false);
-
+  const navigate = useNavigate();
   useEffect(() => {
     //get appliances at first and set fcm device token
     if (user && !appliances.length) {
@@ -117,27 +119,29 @@ export default function Main({ user }: MainType) {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1.5, ease: "easeInOut" }}
-        className={styles.refreshButtonWrapper}
-        onClick={() => window.location.reload()}
+        className={styles.actionBarWrapper}
       >
-        <REFRESH_ICON />
-      </motion.div>
-
-      <AlertModal
-        visible={alertModalVisible}
-        title="궁금한 점이 생겼나요?"
-        detail="846기 임찬양과 851기 김건중에게 연락주세요!"
-        onClose={() => setAlertModalVisible(false)}
-      />
-
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 2, ease: "easeInOut" }}
-        className={styles.versionTextWrapper}
-        onClick={() => setAlertModalVisible(true)}
-      >
-        <p>v 1.1.2</p>
+        <button
+          className={styles.actionButtonWrapper}
+          onClick={() => navigate("faq")}
+        >
+          <FAQ_ICON width="25px" height="25px" />
+          {"자주 묻는 질문"}
+        </button>
+        <button
+          className={styles.actionButtonWrapper}
+          onClick={() => window.location.reload()}
+        >
+          <REFRESH_ICON width="25px" height="25px" />
+          {"새로고침"}
+        </button>
+        <button
+          className={styles.actionButtonWrapper}
+          onClick={() => navigate("logout")}
+        >
+          <LOGOUT_ICON width="25px" height="25px" />
+          {"로그아웃"}
+        </button>
       </motion.div>
     </div>
   );

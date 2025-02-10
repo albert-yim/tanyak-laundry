@@ -3,13 +3,15 @@ import styles from "./Login.module.scss";
 import { Button, Input, AlertModal } from "@components";
 import { ReactComponent as LOGOICON } from "@assets/logo.svg";
 import { signInWithId, signUpWithUserData } from "@src/api";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 
 export default function Login() {
   const [name, setName] = useState("");
   const [number, setNumber] = useState("");
   const [userClass, setUserClass] = useState("");
   const [isSignUp, setIsSignUp] = useState(false);
+  const navigate = useNavigate();
 
   //useStates required for checking input validation
   const [validProb, setValidProb] = useState(0);
@@ -82,29 +84,30 @@ export default function Login() {
         <br />
         탄약중대 세탁 시스템
       </motion.span>
-      {validProb === 1 ? (
-        <AlertModal
-          visible={alertModalVisible}
-          title="군번을 입력해주세요!"
-          detail="예) 00-00000000"
-          onClose={() => setAlertModalVisible(false)}
-        />
-      ) : validProb === 2 ? (
-        <AlertModal
-          visible={alertModalVisible}
-          title="이름을 입력해주세요!"
-          detail="예) 김공군"
-          onClose={() => setAlertModalVisible(false)}
-        />
-      ) : validProb === 3 ? (
-        <AlertModal
-          visible={alertModalVisible}
-          title="기수를 입력해주세요!"
-          detail="예) 800"
-          onClose={() => setAlertModalVisible(false)}
-        />
-      ) : null}
-
+      <AnimatePresence>
+        {validProb === 1 ? (
+          <AlertModal
+            visible={alertModalVisible}
+            title="군번을 입력해주세요!"
+            detail="예) 00-00000000"
+            onClose={() => setAlertModalVisible(false)}
+          />
+        ) : validProb === 2 ? (
+          <AlertModal
+            visible={alertModalVisible}
+            title="이름을 입력해주세요!"
+            detail="예) 김공군"
+            onClose={() => setAlertModalVisible(false)}
+          />
+        ) : validProb === 3 ? (
+          <AlertModal
+            visible={alertModalVisible}
+            title="기수를 입력해주세요!"
+            detail="예) 800"
+            onClose={() => setAlertModalVisible(false)}
+          />
+        ) : null}
+      </AnimatePresence>
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -137,6 +140,12 @@ export default function Login() {
         transition={{ duration: 2.5, ease: "easeInOut" }}
       >
         <Button onClick={loginButtonClicked}>로그인</Button>
+        <div
+          className={styles.loginTextWrapper}
+          onClick={() => navigate("/faq")}
+        >
+          로그인 전에 다운로드하기!
+        </div>
       </motion.div>
     </motion.div>
   );

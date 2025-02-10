@@ -6,6 +6,7 @@ import Login from "./Login/Login";
 import Main from "./Main/Main";
 import Logout from "./Logout/Logout";
 import Loading from "./Loading/Loading";
+import Faq from "./Faq/Faq";
 import { User } from "@src/types";
 import { supabase } from "@src/supabase";
 import { Session } from "@supabase/supabase-js";
@@ -50,6 +51,7 @@ function App() {
         <Route path="/components" element={<Compoennts />}></Route>
         <Route path="/logout" element={<Logout />}></Route>
         <Route path="/loading" element={<Loading />}></Route>
+        <Route path="/faq" element={<Faq />}></Route>
       </Routes>
     </BrowserRouter>
   );

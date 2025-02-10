@@ -30,7 +30,16 @@
   }
 
   .buttonWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2vh;
     width: 322px;
-    height: 48px;
+    .loginTextWrapper {
+      color: var(--text-reverse-color);
+      padding-bottom: 1px;
+      border-bottom-width: 1px;
+      border-bottom-color: var(--text-reverse-color);
+    }
   }
 }

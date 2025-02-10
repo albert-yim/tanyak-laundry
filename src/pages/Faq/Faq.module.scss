@@ -1,0 +1,61 @@
+.faqWrapper {
+  background-color: var(--background-color);
+  height: 100vh; // Allows growth instead of fixed height
+  overflow-y: auto;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: var(--text-reverse-color);
+  .closeButton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 35px;
+    width: 35px;
+    border-radius: 30px;
+    border-color: transparent;
+    background-color: var(--text-reverse-color);
+    position: absolute;
+    right: 17px;
+    top: 17px;
+    padding: 0px;
+  }
+  .logoWrapper {
+    margin-top: 15vh; // 화면 높이에 비례한 여백
+  }
+  .titleWrapper {
+    margin-top: 1vh;
+    font-size: 20px;
+  }
+  .accordianWrapper {
+    margin-top: 3vh;
+    width: 100%;
+    min-width: 350px;
+  }
+
+  @media (min-width: 700px) {
+    .accordianWrapper {
+      margin-top: 3vh;
+      width: 100%;
+      max-width: 350px;
+    }
+  }
+  .versionWrapper {
+    margin-top: 5vh;
+    margin-bottom: 5vh;
+    font-size: 15px;
+  }
+  .versionWrapper {
+    margin-top: 10%;
+    font-size: 15px;
+  }
+  .versionWrapper {
+    margin-top: 10%;
+    font-size: 15px;
+  }
+  .versionWrapper {
+    margin-top: 10%;
+    font-size: 15px;
+  }
+}

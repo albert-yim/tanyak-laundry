@@ -7,6 +7,7 @@ export { default as ModeButton } from "./ModeButton/ModeButton";
 export { default as ModeModal } from "./ModeModal/ModeModal";
 export { default as TimePicker } from "./TimePicker/TimePicker";
 export { default as AlertModal } from "./AlertModal/alertModal";
+export { default as Accordian } from "./Accordian/Accordian";
 export * from "./ApplianceButton/ApplianceButton";
 export * from "./Button/Button";
 export * from "./Carousel/Carousel";
@@ -16,3 +17,5 @@ export * from "./ModeButton/ModeButton";
 export * from "./ModeModal/ModeModal";
 export * from "./TimePicker/TimePicker";
 export * from "./AlertModal/alertModal";
+export * from "./Accordian/Accordian";
+
