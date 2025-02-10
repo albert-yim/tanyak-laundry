@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import styles from "./alertModal.module.scss";
 import Modal from "../Modal/Modal";
 import { AnimatePresence } from "framer-motion";
-
 export type AlertModalTypes = {
   visible: boolean;
   title: string;

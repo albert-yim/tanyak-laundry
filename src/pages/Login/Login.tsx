@@ -17,6 +17,10 @@ export default function Login() {
   const [validProb, setValidProb] = useState(0);
   const [alertModalVisible, setAlertModalVisible] = useState(false);
 
+  //useStates required for checking input validation
+  const [validProb, setValidProb] = useState(0);
+  const [alertModalVisible, setAlertModalVisible] = useState(false);
+
   const loginButtonClicked = async () => {
     //regex for input validation
     const numberRegex = /^[0-9]{2}(-)[0-9]{8}$/;

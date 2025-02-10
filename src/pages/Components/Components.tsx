@@ -28,6 +28,12 @@ type Components =
 export default function ComponentsPage() {
   const [selectedComponent, setSelectedComponent] =
     useState<Components>("accordian");
+=======
+  | "alertmodal";
+
+export default function ComponentsPage() {
+  const [selectedComponent, setSelectedComponent] =
+    useState<Components>("alertmodal");
   const COMPONENT_LIST: Components[] = [
     "button",
     "modebutton",

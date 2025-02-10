@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import styles from "./Main.module.scss";
 import { Appliance, User } from "@src/types";
 import { fetchAppliances } from "@src/api";
-import { ModeModal, Carousel, ApplianceButton } from "@components";
+import { ModeModal, Carousel, ApplianceButton, AlertModal } from "@components";
 import { requestForToken } from "@src/firebase";
 import { ReactComponent as REFRESH_ICON } from "@assets/refresh.svg";
 import { ReactComponent as FAQ_ICON } from "@assets/faq.svg";
@@ -20,7 +20,7 @@ export default function Main({ user }: MainType) {
     null
   );
   const navigate = useNavigate();
-
+  const [alertModalVisible, setAlertModalVisible] = useState(false);
   useEffect(() => {
     //get appliances at first and set fcm device token
     if (user && !appliances.length) {
