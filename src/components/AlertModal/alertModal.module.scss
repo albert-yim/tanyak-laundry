@@ -1,0 +1,15 @@
+.contentWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  color: var(--text-reverse-color);
+  width: 230px;
+  gap: 10px;
+  .titleTextWrapper {
+    font-size: 20px;
+  }
+  .detailTextWrapper {
+    font-size: 15px;
+    line-height: 20px;
+  }
+}

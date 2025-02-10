@@ -7,6 +7,7 @@ import {
   ModeButtonTest,
   CarouselTest,
   TimePickerTest,
+  AlertModalTest,
 } from "@components";
 import { insertUsageHistory, fetchAppliances } from "@src/api";
 import { UsageHistoryInsertPayload } from "@src/types";
@@ -19,11 +20,12 @@ type Components =
   | "laundryerButton"
   | "carousel"
   | "apis"
-  | "timepicker";
+  | "timepicker"
+  | "alertmodal";
 
 export default function ComponentsPage() {
   const [selectedComponent, setSelectedComponent] =
-    useState<Components>("timepicker");
+    useState<Components>("alertmodal");
   const COMPONENT_LIST: Components[] = [
     "button",
     "modebutton",
@@ -33,6 +35,7 @@ export default function ComponentsPage() {
     "carousel",
     "apis",
     "timepicker",
+    "alertmodal",
   ];
   const renderComponent = () => {
     switch (selectedComponent) {
@@ -52,6 +55,8 @@ export default function ComponentsPage() {
         return <ApiTest />;
       case "timepicker":
         return <TimePickerTest />;
+      case "alertmodal":
+        return <AlertModalTest />;
     }
   };
 
