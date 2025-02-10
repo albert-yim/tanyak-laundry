@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styles from "./alertModal.module.scss";
 import Modal from "../Modal/Modal";
+import { AnimatePresence } from "framer-motion";
 
 export type AlertModalTypes = {
   visible: boolean;
@@ -32,12 +33,14 @@ export function AlertModalTest() {
       <button onClick={() => setAlertModalVisible(true)}>
         Open AlertModal
       </button>
-      <AlertModal
-        visible={alertModalVisible}
-        title="이름을 입력해주세요!"
-        detail="예) 김공군"
-        onClose={() => setAlertModalVisible(false)}
-      />
+      <AnimatePresence>
+        <AlertModal
+          visible={alertModalVisible}
+          title="이름을 입력해주세요!"
+          detail="예) 김공군"
+          onClose={() => setAlertModalVisible(false)}
+        />
+      </AnimatePresence>
     </>
   );
 }

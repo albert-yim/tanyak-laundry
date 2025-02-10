@@ -3,7 +3,7 @@ import styles from "./Login.module.scss";
 import { Button, Input, AlertModal } from "@components";
 import { ReactComponent as LOGOICON } from "@assets/logo.svg";
 import { signInWithId, signUpWithUserData } from "@src/api";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 
 export default function Login() {
@@ -84,29 +84,30 @@ export default function Login() {
         <br />
         탄약중대 세탁 시스템
       </motion.span>
-      {validProb === 1 ? (
-        <AlertModal
-          visible={alertModalVisible}
-          title="군번을 입력해주세요!"
-          detail="예) 00-00000000"
-          onClose={() => setAlertModalVisible(false)}
-        />
-      ) : validProb === 2 ? (
-        <AlertModal
-          visible={alertModalVisible}
-          title="이름을 입력해주세요!"
-          detail="예) 김공군"
-          onClose={() => setAlertModalVisible(false)}
-        />
-      ) : validProb === 3 ? (
-        <AlertModal
-          visible={alertModalVisible}
-          title="기수를 입력해주세요!"
-          detail="예) 800"
-          onClose={() => setAlertModalVisible(false)}
-        />
-      ) : null}
-
+      <AnimatePresence>
+        {validProb === 1 ? (
+          <AlertModal
+            visible={alertModalVisible}
+            title="군번을 입력해주세요!"
+            detail="예) 00-00000000"
+            onClose={() => setAlertModalVisible(false)}
+          />
+        ) : validProb === 2 ? (
+          <AlertModal
+            visible={alertModalVisible}
+            title="이름을 입력해주세요!"
+            detail="예) 김공군"
+            onClose={() => setAlertModalVisible(false)}
+          />
+        ) : validProb === 3 ? (
+          <AlertModal
+            visible={alertModalVisible}
+            title="기수를 입력해주세요!"
+            detail="예) 800"
+            onClose={() => setAlertModalVisible(false)}
+          />
+        ) : null}
+      </AnimatePresence>
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
